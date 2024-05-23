@@ -19,4 +19,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     //ini codingan logic android
+    // ini update dari avrians
 }
