@@ -17,4 +17,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+
+    //ini codingan logic android
 }
