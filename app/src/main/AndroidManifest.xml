@@ -15,11 +15,9 @@
         tools:ignore="LockedOrientationActivity">
         <activity
             android:name=".view.main.MainActivity"
-            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.splash.SplashScreenActivity"
-            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
