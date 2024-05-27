@@ -56,7 +56,8 @@
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3"
-        android:src="@drawable/slide_welcome_2" />
+        android:src="@drawable/slide_welcome_2"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/titleWelcome2"
