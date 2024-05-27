@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.app.com/apk/res/app">
+
+    <font
+        app:font="@font/poppins_semibold"
+        app:fontStyle="normal"
+        app:fontWeight="600" />
+
+    <font
+        app:font="@font/poppins_regular"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+</font-family>
