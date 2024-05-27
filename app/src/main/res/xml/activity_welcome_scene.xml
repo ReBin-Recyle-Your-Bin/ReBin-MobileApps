@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
@@ -8,8 +7,6 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="1000">
-       <KeyFrameSet>
-       </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -19,17 +16,18 @@
         <Constraint
             android:id="@+id/imageWelcome1"
             android:layout_width="0dp"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.40"
-            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent" />
-
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.40"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" />
         <Constraint
             android:id="@+id/welcome1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="32dp"
             android:layout_marginBottom="16dp"
             motion:layout_constraintBottom_toBottomOf="parent"
@@ -40,5 +38,316 @@
                 motion:attributeName="crossfade"
                 motion:customFloatValue="1" />
         </Constraint>
+        <Constraint
+            android:id="@+id/welcome2"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome3"
+            motion:layout_constraintStart_toEndOf="@+id/welcome1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome1"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome1" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome3"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome4"
+            motion:layout_constraintStart_toEndOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome2"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome2">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome4"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/welcome3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome3"
+            motion:layout_constraintVertical_bias="0.0"
+            android:layout_marginEnd="32dp"
+            motion:layout_constraintTop_toTopOf="@+id/welcome3">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
     </ConstraintSet>
+    <ConstraintSet
+        android:id="@+id/welcome2"
+        motion:deriveConstraintsFrom="@+id/end" >
+        <Constraint
+            android:id="@+id/imageWelcome1"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.3"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/imageWelcome2"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.4"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" />
+        <Constraint
+            android:id="@+id/welcome1"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome2"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome3"
+            motion:layout_constraintStart_toEndOf="@+id/welcome1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome1"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome1" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome3"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome4"
+            motion:layout_constraintStart_toEndOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome2"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome2"
+            motion:crossfade="0">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome4"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/welcome3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome3"
+            motion:layout_constraintVertical_bias="0.0"
+            android:layout_marginEnd="24dp"
+            motion:layout_constraintTop_toTopOf="@+id/welcome3"
+            motion:crossfade="0">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/welcome2" >
+        <OnSwipe motion:dragDirection="dragLeft" />
+    </Transition>
+    <ConstraintSet
+        android:id="@+id/welcome3"
+        motion:deriveConstraintsFrom="@+id/welcome2" >
+        <Constraint
+            android:layout_height="250dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            motion:layout_constraintVertical_bias="0.3"
+            android:id="@+id/imageWelcome2"
+            motion:layout_constraintEnd_toStartOf="parent" />
+        <Constraint
+            android:layout_height="250dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            motion:layout_constraintVertical_bias="0.4"
+            android:id="@+id/imageWelcome3"
+            motion:layout_constraintStart_toEndOf="@+id/imageWelcome1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp" />
+        <Constraint
+            android:id="@+id/welcome3"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome4"
+            motion:layout_constraintStart_toEndOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome2"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome2">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome2"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome3"
+            motion:layout_constraintStart_toEndOf="@+id/welcome1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome1"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome1"
+            motion:crossfade="0" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome1"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="32dp"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:crossfade="0" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome4"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/welcome3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome3"
+            motion:layout_constraintVertical_bias="0.0"
+            android:layout_marginEnd="32dp"
+            motion:layout_constraintTop_toTopOf="@+id/welcome3"
+            motion:crossfade="0">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/welcome2"
+        motion:constraintSetEnd="@+id/welcome3" >
+        <OnSwipe motion:dragDirection="dragLeft" />
+    </Transition>
+    <ConstraintSet
+        android:id="@+id/welcome4"
+        motion:deriveConstraintsFrom="@+id/welcome3" >
+        <Constraint
+            android:id="@+id/welcome4"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/welcome3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome3"
+            motion:layout_constraintVertical_bias="0.0"
+            android:layout_marginEnd="32dp"
+            motion:layout_constraintTop_toTopOf="@+id/welcome3">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome1"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="32dp"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:crossfade="0">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome3"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome4"
+            motion:layout_constraintStart_toEndOf="@+id/welcome2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome2"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome2"
+            motion:crossfade="0" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/welcome2"
+            motion:layout_constraintEnd_toStartOf="@+id/welcome3"
+            motion:layout_constraintStart_toEndOf="@+id/welcome1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/welcome1"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/welcome1"
+            motion:crossfade="0">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:layout_height="250dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            motion:layout_constraintVertical_bias="0.3"
+            android:id="@+id/imageWelcome3"
+            motion:layout_constraintEnd_toStartOf="parent" />
+        <Constraint
+            android:layout_height="250dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            motion:layout_constraintVertical_bias="0.4"
+            android:id="@+id/imageWelcome4"
+            motion:layout_constraintStart_toEndOf="@+id/imageWelcome1"
+            android:layout_marginStart="32dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp" />
+        <Constraint
+            android:id="@+id/button"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            motion:layout_constraintBottom_toTopOf="@+id/welcome2"
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/welcome3"
+        motion:constraintSetEnd="@+id/welcome4" >
+        <OnSwipe motion:dragDirection="dragLeft" />
+    </Transition>
 </MotionScene>
