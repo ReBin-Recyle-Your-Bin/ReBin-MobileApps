@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_welcome_scene"
+    tools:context=".view.welcome.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/imageWelcome1"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:src="@drawable/slide_welcome_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/titleWelcome1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_horizontal"
+        android:text="@string/title_welcome_1"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageWelcome1"
+        app:layout_constraintStart_toStartOf="@+id/imageWelcome1"
+        app:layout_constraintTop_toBottomOf="@+id/imageWelcome1" />
+
+    <TextView
+        android:id="@+id/descWelcome1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_horizontal"
+        android:text="@string/desc_welcome_1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/titleWelcome1"
+        app:layout_constraintStart_toStartOf="@+id/titleWelcome1"
+        app:layout_constraintTop_toBottomOf="@+id/titleWelcome1" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/welcome1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintEnd_toStartOf="@+id/welcome2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/dark_olive_green" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/welcome2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintBottom_toBottomOf="@+id/welcome1"
+        app:layout_constraintEnd_toStartOf="@+id/welcome3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/welcome1"
+        app:layout_constraintTop_toTopOf="@+id/welcome1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/dark_olive_green" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/welcome3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintBottom_toBottomOf="@+id/welcome2"
+        app:layout_constraintEnd_toStartOf="@+id/welcome4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/welcome2"
+        app:layout_constraintTop_toTopOf="@+id/welcome2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/dark_olive_green" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/welcome4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="32dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintBottom_toBottomOf="@+id/welcome3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/welcome3"
+        app:layout_constraintTop_toTopOf="@+id/welcome3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/dark_olive_green" />
+
+<!--    preview-->
+<!--    menambahkan button lets get started-->
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

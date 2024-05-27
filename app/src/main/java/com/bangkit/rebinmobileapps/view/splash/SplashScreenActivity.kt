@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.view.main.MainActivity
+import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -25,12 +26,19 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            goToMainActivity()
+            goToWelcomeActivity()
         }, 3000L)
     }
 
     private fun goToMainActivity() {
         Intent(this, MainActivity::class.java).also {
+            startActivity(it)
+            finish()
+        }
+    }
+
+    private fun goToWelcomeActivity() {
+        Intent(this, WelcomeActivity::class.java).also {
             startActivity(it)
             finish()
         }
