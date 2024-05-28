@@ -9,5 +9,17 @@
     <string name="title_welcome_4">Welcome</string>
     <string name="desc_welcome_4">Let\'s explore Rebin </string>
     <string name="lets_get_started">Let\'s Get Started</string>
-
+    <string name="login_title">Log in\nto your account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Log in</string>
+    <string name="or">Or</string>
+    <string name="login_with_google">Log in with Google</string>
+    <string name="dont_have_account">Do\'nt have an account yet?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="signup_title">Sign up\nto your account</string>
+    <string name="name">Name</string>
+    <string name="signup_with_google">Sign up with Google</string>
+    <string name="already_have_account">Already have an account?</string>
 </resources>
