@@ -87,6 +87,84 @@
         app:layout_constraintTop_toBottomOf="@+id/titleWelcome2"
         android:text="@string/desc_welcome_2" />
 
+    <ImageView
+        android:id="@+id/imageWelcome3"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        android:src="@drawable/slide_welcome_3"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/titleWelcome3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/dark_olive_green"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageWelcome3"
+        app:layout_constraintStart_toStartOf="@+id/imageWelcome3"
+        app:layout_constraintTop_toBottomOf="@+id/imageWelcome3"
+        android:text="@string/title_welcome_2" />
+
+    <TextView
+        android:id="@+id/descWelcome3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/titleWelcome3"
+        app:layout_constraintStart_toStartOf="@+id/titleWelcome3"
+        app:layout_constraintTop_toBottomOf="@+id/titleWelcome3"
+        android:text="@string/desc_welcome_3" />
+
+    <ImageView
+        android:id="@+id/imageWelcome4"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        android:src="@drawable/logo_rebin"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/titleWelcome4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/dark_olive_green"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageWelcome4"
+        app:layout_constraintStart_toStartOf="@+id/imageWelcome4"
+        app:layout_constraintTop_toBottomOf="@+id/imageWelcome4"
+        android:text="@string/title_welcome_4" />
+
+    <TextView
+        android:id="@+id/descWelcome4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/titleWelcome4"
+        app:layout_constraintStart_toStartOf="@+id/titleWelcome4"
+        app:layout_constraintTop_toBottomOf="@+id/titleWelcome4"
+        android:text="@string/desc_welcome_4" />
+
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/welcome1"
         android:layout_width="24dp"
