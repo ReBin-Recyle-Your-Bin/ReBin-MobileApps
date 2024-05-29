@@ -32,6 +32,8 @@
         android:text="@string/signup_title"
         android:textColor="@color/black"
         android:textSize="28sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +49,8 @@
         android:text="@string/name"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpTitleTextView" />
 
@@ -58,6 +62,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="100"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
         app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/dark_olive_green"
@@ -86,6 +92,8 @@
         android:text="@string/email"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
 
@@ -97,6 +105,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="100"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
         app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/dark_olive_green"
@@ -127,6 +137,8 @@
         android:text="@string/password"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
 
@@ -138,6 +150,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="100"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
         app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/dark_olive_green"
@@ -160,7 +174,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginButton"
+        android:id="@+id/signupButton"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"
@@ -171,6 +185,8 @@
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,9 +201,11 @@
         android:text="@string/or"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/signupButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSignupGoogle"
@@ -197,6 +215,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/white"
+        android:alpha="0"
+        tools:alpha="100"
         app:strokeWidth="2dp"
         app:strokeColor="@color/dark_olive_green"
         app:cornerRadius="15dp"
@@ -221,6 +241,8 @@
         android:fontFamily="@font/poppins_regular"
         android:text="@string/already_have_account"
         android:textColor="@color/black"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
@@ -235,6 +257,8 @@
         android:fontFamily="@font/poppins_regular"
         android:text="@string/login"
         android:textColor="@color/blue_sea"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintStart_toEndOf="@+id/tv_already_have_account"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignupGoogle" />
 
