@@ -7,8 +7,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doBeforeTextChanged
 import com.bangkit.rebinmobileapps.R
 
 class CustomTextEmail: AppCompatEditText, View.OnTouchListener {
