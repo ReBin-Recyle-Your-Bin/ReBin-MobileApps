@@ -1,7 +1,14 @@
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowBackground">@color/white</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="Theme.RebinMobileApps" parent="Base.Theme.RebinMobileApps" />
+
+    <style name="ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15%</item>
     </style>
 </resources>
