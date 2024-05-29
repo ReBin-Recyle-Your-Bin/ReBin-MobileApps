@@ -22,4 +22,6 @@
     <string name="name">Name</string>
     <string name="signup_with_google">Sign up with Google</string>
     <string name="already_have_account">Already have an account?</string>
+    <string name="email_error_message">Enter the correct email</string>
+    <string name="password_error_message">Password must be more than 8 characters</string>
 </resources>

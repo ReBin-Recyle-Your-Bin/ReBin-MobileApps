@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
+        android:indeterminateTint="@color/dark_olive_green"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/login_title"
@@ -62,15 +63,20 @@
         app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/dark_olive_green"
         app:boxBackgroundColor="@color/box_background"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/dark_olive_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextView" >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
+            android:id="@+id/emailEdittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -101,17 +107,20 @@
         app:boxStrokeColor="@color/dark_olive_green"
         app:boxBackgroundColor="@color/box_background"
         app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/dark_olive_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView" >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.bangkit.rebinmobileapps.view.customView.CustomTextPassword
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
