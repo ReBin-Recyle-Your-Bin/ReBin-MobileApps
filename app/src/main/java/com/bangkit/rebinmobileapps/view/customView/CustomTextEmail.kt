@@ -47,7 +47,7 @@ class CustomTextEmail: AppCompatEditText, View.OnTouchListener {
         return false
     }
 
-    private fun isValidEmail(email: CharSequence?) = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    private fun isValidEmail(email: CharSequence) = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
 
 
