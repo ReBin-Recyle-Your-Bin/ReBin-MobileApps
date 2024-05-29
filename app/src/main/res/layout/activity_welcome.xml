@@ -221,7 +221,7 @@
         app:tint="@color/dark_olive_green" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnGetStarted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
