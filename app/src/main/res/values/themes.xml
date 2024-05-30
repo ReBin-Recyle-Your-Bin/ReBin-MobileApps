@@ -5,6 +5,15 @@
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
+    <style name="Theme.Fab_Bottom_app_bar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#0F9D58</item>
+        <item name="colorPrimaryVariant">#0F9D58</item>
+        <item name="colorOnPrimary">#000</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
     <style name="Theme.RebinMobileApps" parent="Base.Theme.RebinMobileApps" />
 
     <style name="ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded" parent="">

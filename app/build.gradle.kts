@@ -49,4 +49,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Material design
+    implementation("com.google.android.material:material:1.3.0-alpha03")
 }

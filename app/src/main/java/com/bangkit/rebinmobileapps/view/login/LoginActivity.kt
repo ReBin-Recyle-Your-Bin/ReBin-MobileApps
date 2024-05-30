@@ -2,6 +2,7 @@ package com.bangkit.rebinmobileapps.view.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,7 @@ import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.databinding.ActivityLoginBinding
 import com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
 import com.bangkit.rebinmobileapps.view.customView.CustomTextPassword
+import com.bangkit.rebinmobileapps.view.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,18 +23,17 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         playAnimation()
 
         customTextEmail = binding.emailEdittext
         customTextPassword = binding.passwordEditText
+
+        binding.loginButton.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun playAnimation() {
