@@ -24,4 +24,7 @@
     <string name="already_have_account">Already have an account?</string>
     <string name="email_error_message">Enter the correct email</string>
     <string name="password_error_message">Password must be more than 8 characters</string>
+    <string name="analize">Analize</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
 </resources>
