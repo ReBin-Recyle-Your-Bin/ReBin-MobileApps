@@ -32,6 +32,7 @@
     <string name="profile">Profile</string>
     <string name="this_is_your_picture">This is your picture</string>
     <string name="update">Update</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prediction_image">Prediction Image</string>
+    <string name="clear_all">Clear All</string>
 </resources>
