@@ -27,4 +27,11 @@
     <string name="analize">Analize</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="logout">Logout</string>
+    <string name="menu_to_exit">Menu to exit</string>
+    <string name="profile">Profile</string>
+    <string name="this_is_your_picture">This is your picture</string>
+    <string name="update">Update</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
