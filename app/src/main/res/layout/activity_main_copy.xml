@@ -121,36 +121,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
 
-        <LinearLayout
-            android:id="@+id/llCraft"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_craft"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="180dp"
+            tools:listitem="@layout/item_craft_potr"
             android:orientation="horizontal"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/tvCraft">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/craft_sample"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/craft_sample"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/craft_sample"
-                android:scaleType="centerInside" />
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/tvCraft"
+            />
 
         <TextView
             android:id="@+id/tvStoryInspiration"
@@ -163,7 +142,7 @@
             android:textColor="@android:color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llCraft" />
+            app:layout_constraintTop_toBottomOf="@id/rv_craft" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_stories"
