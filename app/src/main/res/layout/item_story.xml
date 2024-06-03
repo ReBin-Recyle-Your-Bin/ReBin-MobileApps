@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:padding="4dp">
 
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#768390"
                 android:textSize="12sp"
-                tools:text="Description Story" />
+                tools:text="@tools:sample/lorem/random"/>
 
         </LinearLayout>
 

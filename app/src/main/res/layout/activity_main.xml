@@ -209,20 +209,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llCraft" />
 
-        <ImageView
-            android:id="@+id/imgStoryInspiration1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_stories"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sample_story"
-            app:layout_constraintTop_toBottomOf="@+id/tvStoryInspiration"/>
-
-        <ImageView
-            android:id="@+id/imgStoryInspiratio2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/sample_story"
-            app:layout_constraintTop_toBottomOf="@+id/imgStoryInspiration1"/>
+            android:layout_height="300dp"
+            tools:listitem="@layout/item_story"
+            app:layout_constraintTop_toBottomOf="@id/tvStoryInspiration"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
