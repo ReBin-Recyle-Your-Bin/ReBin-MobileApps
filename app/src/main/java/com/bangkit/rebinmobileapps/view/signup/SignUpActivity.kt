@@ -2,6 +2,7 @@ package com.bangkit.rebinmobileapps.view.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,8 @@ import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.databinding.ActivitySignUpBinding
 import com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
 import com.bangkit.rebinmobileapps.view.customView.CustomTextPassword
+import com.bangkit.rebinmobileapps.view.login.LoginActivity
+import com.bangkit.rebinmobileapps.view.main.MainActivity
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -33,6 +36,16 @@ class SignUpActivity : AppCompatActivity() {
 
         customTextEmail = binding.emailEdittext
         customTextPassword = binding.passwordEditText
+
+        binding.tbLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.signupButton.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun playAnimation() {
@@ -47,7 +60,7 @@ class SignUpActivity : AppCompatActivity() {
         val or = ObjectAnimator.ofFloat(binding.orTextView, View.ALPHA, 1f).setDuration(100)
         val btnSignUpGoogle = ObjectAnimator.ofFloat(binding.buttonSignupGoogle, View.ALPHA, 1f).setDuration(100)
         val alreadyAccountTextView = ObjectAnimator.ofFloat(binding.tvAlreadyHaveAccount, View.ALPHA, 1f).setDuration(100)
-        val loginTextView = ObjectAnimator.ofFloat(binding.tvLogin, View.ALPHA, 1f).setDuration(100)
+        val loginTextView = ObjectAnimator.ofFloat(binding.tbLogin, View.ALPHA, 1f).setDuration(100)
 
         AnimatorSet().apply {
             playSequentially(

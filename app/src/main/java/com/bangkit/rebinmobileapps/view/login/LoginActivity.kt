@@ -14,6 +14,7 @@ import com.bangkit.rebinmobileapps.databinding.ActivityLoginBinding
 import com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
 import com.bangkit.rebinmobileapps.view.customView.CustomTextPassword
 import com.bangkit.rebinmobileapps.view.main.MainActivity
+import com.bangkit.rebinmobileapps.view.signup.SignUpActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,6 +35,11 @@ class LoginActivity : AppCompatActivity() {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.tbSignUp.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun playAnimation() {
@@ -47,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
         val or = ObjectAnimator.ofFloat(binding.orTextView, View.ALPHA, 1f).setDuration(100)
         val btnLoginGoogle = ObjectAnimator.ofFloat(binding.buttonLoginGoogle, View.ALPHA, 1f).setDuration(100)
         val dontAccountTextView = ObjectAnimator.ofFloat(binding.tvDontHaveAccount, View.ALPHA, 1f).setDuration(100)
-        val signUpTextView = ObjectAnimator.ofFloat(binding.tvSignUp, View.ALPHA, 1f).setDuration(100)
+        val signUpTextView = ObjectAnimator.ofFloat(binding.tbSignUp, View.ALPHA, 1f).setDuration(100)
 
         AnimatorSet().apply {
             playSequentially(

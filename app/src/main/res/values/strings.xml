@@ -5,7 +5,7 @@
     <string name="title_welcome_2">All Recyclable</string>
     <string name="desc_welcome_2">By recycling, you are\npreserving the earth and\nbringing prosperity to the community.</string>
     <string name="title_welcome_3">Let\'s Join Us</string>
-    <string name="desc_welcome_3">Become an agent of waste management for a bright future</string>
+    <string name="desc_welcome_3">Become an agent of\nwaste management\nfor a bright future</string>
     <string name="title_welcome_4">Welcome</string>
     <string name="desc_welcome_4">Let\'s explore Rebin </string>
     <string name="lets_get_started">Let\'s Get Started</string>
@@ -36,4 +36,7 @@
     <string name="prediction_image">Prediction Image</string>
     <string name="clear_all">Clear All</string>
     <string name="searchbar_hint">Looking for crafts?</string>
+    <string name="search">Search</string>
+    <string name="history">History</string>
+    <string name="home">Home</string>
 </resources>

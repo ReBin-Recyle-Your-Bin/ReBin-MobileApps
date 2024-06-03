@@ -229,16 +229,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLoginGoogle" />
 
-    <TextView
-        android:id="@+id/tv_sign_up"
+    <Button
+        android:id="@+id/tb_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/sign_up"
+        android:textSize="16sp"
         android:textColor="@color/blue_sea"
         android:alpha="0"
+        style="@style/Widget.Material3.Button.TextButton"
         tools:alpha="100"
         app:layout_constraintStart_toEndOf="@+id/tv_dont_have_account"
         app:layout_constraintTop_toBottomOf="@+id/buttonLoginGoogle" />
