@@ -31,7 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/logo_rebin_land" />
+                android:src="@drawable/logo_rebin_land"
+                android:background="@android:color/transparent"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -108,50 +109,6 @@
             app:layout_constraintTop_toBottomOf="@id/ProfileInfo" />
 
         <TextView
-            android:id="@+id/tvHelpSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Help Save the Earth"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
-
-        <LinearLayout
-            android:id="@+id/llHelpSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/tvHelpSave">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/img_recycling_challenge"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/img_selling_trash"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/img_partner_business"
-                android:scaleType="centerInside" />
-        </LinearLayout>
-
-        <TextView
             android:id="@+id/tvCraft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -162,7 +119,7 @@
             android:textColor="@android:color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llHelpSave" />
+            app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
 
         <LinearLayout
             android:id="@+id/llCraft"
@@ -208,20 +165,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llCraft" />
 
-        <ImageView
-            android:id="@+id/imgStoryInspiration1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_stories"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sample_story"
-            app:layout_constraintTop_toBottomOf="@+id/tvStoryInspiration"/>
-
-        <ImageView
-            android:id="@+id/imgStoryInspiratio2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/sample_story"
-            app:layout_constraintTop_toBottomOf="@+id/imgStoryInspiration1"/>
+            android:layout_height="320dp"
+            tools:listitem="@layout/item_story"
+            app:layout_constraintTop_toBottomOf="@id/tvStoryInspiration"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
