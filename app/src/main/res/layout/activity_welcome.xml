@@ -183,8 +183,8 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/welcome1"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
         android:layout_marginStart="32dp"
         app:altSrc="@drawable/ic_circle_full"
         app:layout_constraintEnd_toStartOf="@+id/welcome2"
@@ -196,8 +196,8 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/welcome2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
         app:altSrc="@drawable/ic_circle_full"
         app:layout_constraintBottom_toBottomOf="@+id/welcome1"
         app:layout_constraintEnd_toStartOf="@+id/welcome3"
@@ -210,8 +210,8 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/welcome3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
         app:altSrc="@drawable/ic_circle_full"
         app:layout_constraintBottom_toBottomOf="@+id/welcome2"
         app:layout_constraintEnd_toStartOf="@+id/welcome4"
@@ -224,8 +224,8 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/welcome4"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
         android:layout_marginEnd="32dp"
         app:altSrc="@drawable/ic_circle_full"
         app:layout_constraintBottom_toBottomOf="@+id/welcome3"
