@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toBottomOf="@id/newsButton"
+        app:layout_constraintBottom_toBottomOf="@id/analizeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/newsButton"
+        android:id="@+id/analizeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

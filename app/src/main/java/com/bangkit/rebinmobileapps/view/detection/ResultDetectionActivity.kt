@@ -1,12 +1,10 @@
 package com.bangkit.rebinmobileapps.view.detection
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.databinding.ActivityResultDetectionBinding
+import com.bangkit.rebinmobileapps.view.main.MainActivity
 
 class ResultDetectionActivity : AppCompatActivity() {
 
@@ -16,7 +14,9 @@ class ResultDetectionActivity : AppCompatActivity() {
         binding = ActivityResultDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        binding.tlbResultDetection.setNavigationOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
 

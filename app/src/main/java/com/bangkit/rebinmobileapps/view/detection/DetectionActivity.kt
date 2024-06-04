@@ -56,6 +56,10 @@ class DetectionActivity : AppCompatActivity() {
         binding.tlbDetection.setNavigationOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+        binding.analizeButton.setOnClickListener {
+            startActivity(Intent(this, ResultDetectionActivity::class.java))
+        }
+
     }
 
     @Deprecated("Deprecated in Java")

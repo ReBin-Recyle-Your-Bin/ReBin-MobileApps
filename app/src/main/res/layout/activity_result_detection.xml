@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".view.detection.ResultDetectionActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tlbResultDetection"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow"
+        app:showAsAction="ifRoom"
+        app:title="@string/result_detection"
+        app:titleTextColor="@color/black"  />
+
     <ImageView
         android:id="@+id/previewImageView"
         android:layout_width="398dp"
