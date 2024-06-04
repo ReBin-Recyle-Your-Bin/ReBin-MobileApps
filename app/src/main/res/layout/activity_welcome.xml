@@ -8,6 +8,22 @@
     app:layoutDescription="@xml/activity_welcome_scene"
     tools:context=".view.welcome.WelcomeActivity">
 
+
+    <TextView
+        android:id="@+id/skipWelcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_horizontal"
+        android:text="Skip"
+        android:textColor="@color/dark_olive_green"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ImageView
         android:id="@+id/imageWelcome1"
         android:layout_width="0dp"
