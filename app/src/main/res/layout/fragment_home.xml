@@ -25,12 +25,13 @@
                 app:contentInsetEnd="16dp"
                 tools:ignore="MissingConstraints">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/historyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/logo_rebin_land" />
+                    android:src="@drawable/logo_rebin_land"
+                    />
 
             </androidx.appcompat.widget.Toolbar>
 

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".view.detection.DetectionActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tlbDetection"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow"
+        app:showAsAction="ifRoom"
+        app:title="@string/detection"
+        app:titleTextColor="@color/black"  />
+
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
         android:layout_width="match_parent"
@@ -15,7 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <ImageView
         android:id="@+id/previewImageView"
