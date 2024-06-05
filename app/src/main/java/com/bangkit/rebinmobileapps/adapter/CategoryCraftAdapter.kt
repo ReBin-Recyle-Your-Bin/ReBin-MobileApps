@@ -29,16 +29,12 @@ class CategoryCraftAdapter(private val context: Context, private val craftList: 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val cardView: CardView = itemView.findViewById(R.id.cv_craft_category)
         private val imageView: ImageView = itemView.findViewById(R.id.iv_craft_category)
         private val titleTextView: TextView = itemView.findViewById(R.id.tv_craft_category)
 
         fun bind(craft: CraftCategory) {
             imageView.setImageResource(craft.imageResource)
             titleTextView.text = craft.title
-
-            cardView.setOnClickListener {
-            }
         }
     }
 }

@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv_craft_category"
+    android:id="@+id/ll_category_craft"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@drawable/card_border"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp">
-
-    <LinearLayout
-        android:id="@+id/ll_category_craft"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+    android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_craft_category"
@@ -35,6 +26,4 @@
             android:textSize="10sp"
             tools:text="Galon" />
 
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+</LinearLayout>
