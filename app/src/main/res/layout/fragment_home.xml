@@ -108,51 +108,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ProfileInfo" />
 
             <TextView
-                android:id="@+id/tvHelpSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Help Save the Earth"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
-
-            <LinearLayout
-                android:id="@+id/llHelpSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:ignore="MissingConstraints"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/tvHelpSave">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/img_recycling_challenge"
-                    android:scaleType="centerInside" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/img_selling_trash"
-                    android:scaleType="centerInside" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/img_partner_business"
-                    android:scaleType="centerInside" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvCraft"
+                android:id="@+id/tvVariousCrafts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -162,38 +118,26 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llHelpSave" />
+                app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
 
-            <LinearLayout
-                android:id="@+id/llCraft"
+            <RelativeLayout
+                android:id="@+id/rlVariousCrafts"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:ignore="MissingConstraints"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/tvCraft">
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvVariousCrafts" >
 
-                <ImageView
-                    android:layout_width="0dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvVariousCrafts"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/craft_sample"
-                    android:scaleType="centerInside" />
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    tools:ignore="MissingConstraints" />
+            </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/craft_sample"
-                    android:scaleType="centerInside" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/craft_sample"
-                    android:scaleType="centerInside" />
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvStoryInspiration"
@@ -206,7 +150,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llCraft" />
+                app:layout_constraintTop_toBottomOf="@id/rlVariousCrafts" />
 
             <ImageView
                 android:id="@+id/imgStoryInspiration1"

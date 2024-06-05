@@ -13,167 +13,218 @@
         android:layout_marginBottom="80dp"
         android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:contentInsetStart="16dp"
-            app:contentInsetEnd="16dp"
-            tools:ignore="MissingConstraints">
+            android:layout_height="wrap_content">
 
-            <ImageButton
-                android:id="@+id/historyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/logo_rebin_land"
-                android:background="@android:color/transparent"/>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_main"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:contentInsetStart="16dp"
+                app:contentInsetEnd="16dp"
+                tools:ignore="MissingConstraints">
 
-        </androidx.appcompat.widget.Toolbar>
+                <ImageView
+                    android:id="@+id/historyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo_rebin_land"
+                    />
 
-        <LinearLayout
-            android:id="@+id/ProfileInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-            tools:ignore="MissingConstraints">
+            </androidx.appcompat.widget.Toolbar>
 
-            <!-- Kolom Foto Profil -->
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgProfilePhoto"
-                android:layout_width="0dp"
-                android:layout_height="64dp"
-                android:layout_weight="0.5"
-                android:contentDescription="profile_photo"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/avatars" />
-
-            <!-- Kolom Total Point dengan Dua TextView -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/ProfileInfo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+                tools:ignore="MissingConstraints">
 
-                <TextView
-                    android:id="@+id/tvTotalPointLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Total Points:"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                <!-- Kolom Foto Profil -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgProfilePhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="64dp"
+                    android:layout_weight="0.5"
+                    android:contentDescription="profile_photo"
+                    android:scaleType="centerCrop"
+                    tools:src="@tools:sample/avatars" />
 
-                <TextView
-                    android:id="@+id/tvTotalPoint"
-                    android:layout_width="wrap_content"
+                <!-- Kolom Total Point dengan Dua TextView -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="21.000"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:layout_weight="3"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTotalPointLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total Points:"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalPoint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="21.000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnPointHistory"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/dark_olive_green"
+                    android:text="Point History"
+                    android:textColor="@android:color/white"
+                    android:textSize="8sp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnPointHistory"
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/dark_olive_green"
-                android:text="Point History"
-                android:textColor="@android:color/white"
-                android:textSize="8sp" />
-        </LinearLayout>
-
-
-        <ImageView
-            android:id="@+id/viewPagerBanner"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="16dp"
-            android:clipToPadding="false"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:src="@drawable/sample_banner_1"
-            app:layout_constraintTop_toBottomOf="@id/ProfileInfo" />
-
-        <TextView
-            android:id="@+id/tvCraft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Craft"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
-
-        <LinearLayout
-            android:id="@+id/llCraft"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/tvCraft">
 
             <ImageView
-                android:layout_width="0dp"
+                android:id="@+id/viewPagerBanner"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="16dp"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:src="@drawable/sample_banner_1"
+                app:layout_constraintTop_toBottomOf="@id/ProfileInfo" />
+
+            <TextView
+                android:id="@+id/tvHelpSave"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/craft_sample"
-                android:scaleType="centerInside" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Help Save the Earth"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
+
+            <LinearLayout
+                android:id="@+id/llHelpSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tvHelpSave">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_recycling_challenge"
+                    android:scaleType="centerInside" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_selling_trash"
+                    android:scaleType="centerInside" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_partner_business"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCraft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Various Crafts"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llHelpSave" />
+
+            <LinearLayout
+                android:id="@+id/llCraft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tvCraft">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/craft_sample"
+                    android:scaleType="centerInside" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/craft_sample"
+                    android:scaleType="centerInside" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/craft_sample"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvStoryInspiration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Inspirational Stories"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llCraft" />
 
             <ImageView
-                android:layout_width="0dp"
+                android:id="@+id/imgStoryInspiration1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/craft_sample"
-                android:scaleType="centerInside" />
+                android:src="@drawable/sample_story"
+                app:layout_constraintTop_toBottomOf="@+id/tvStoryInspiration"/>
 
             <ImageView
-                android:layout_width="0dp"
+                android:id="@+id/imgStoryInspiratio2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/craft_sample"
-                android:scaleType="centerInside" />
-        </LinearLayout>
+                android:layout_marginTop="8dp"
+                android:src="@drawable/sample_story"
+                app:layout_constraintTop_toBottomOf="@+id/imgStoryInspiration1"/>
 
-        <TextView
-            android:id="@+id/tvStoryInspiration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Inspirational Stories"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llCraft" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_stories"
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            tools:listitem="@layout/item_story"
-            app:layout_constraintTop_toBottomOf="@id/tvStoryInspiration"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
