@@ -9,15 +9,15 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.bangkit.rebinmobileapps.data.model.UserModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "session")
-class UserPrefences private constructor(private val dataStore: DataStore<Preferences>){
+class UserPreferences private constructor(private val dataStore: DataStore<Preferences>){
 
     suspend fun saveSession(user: UserModel) {
         dataStore.edit { preferences ->
             preferences[EMAIL_KEY] = user.email
+            preferences[PASSWORD_KEY] = user.password
             preferences[TOKEN_KEY] = user.token
             preferences[IS_LOGIN_KEY] = true
         }
@@ -27,6 +27,7 @@ class UserPrefences private constructor(private val dataStore: DataStore<Prefere
             UserModel(
                 preferences[EMAIL_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
+                preferences[PASSWORD_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
             )
         }
@@ -34,34 +35,24 @@ class UserPrefences private constructor(private val dataStore: DataStore<Prefere
 
     suspend fun logout() {
         dataStore.edit { preferences ->
-            preferences.clear()
+            preferences[TOKEN_KEY] = ""
+            preferences[EMAIL_KEY] = ""
+            preferences[PASSWORD_KEY] = ""
+            preferences[IS_LOGIN_KEY] = false
         }
-    }
-
-    fun getToken(): Flow<String> {
-        return dataStore.data.map {
-            it[TOKEN_KEY] ?: ""
-        }
-    }
-    suspend fun getUser(): UserModel {
-        val preferences = dataStore.data.first()
-        return UserModel(
-            preferences[EMAIL_KEY] ?: "",
-            preferences[TOKEN_KEY] ?: "",
-            preferences[IS_LOGIN_KEY] ?: false
-        )
     }
 
     companion object {
         @Volatile
-        private var INSTANCE: UserPrefences? = null
+        private var INSTANCE: UserPreferences? = null
         private val EMAIL_KEY = stringPreferencesKey("email")
+        private val PASSWORD_KEY = stringPreferencesKey("password")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 
-        fun getInstance(dataStore: DataStore<Preferences>): UserPrefences {
+        fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {
             return INSTANCE ?: synchronized(this) {
-                val instance = UserPrefences(dataStore)
+                val instance = UserPreferences(dataStore)
                 INSTANCE = instance
                 instance
             }
