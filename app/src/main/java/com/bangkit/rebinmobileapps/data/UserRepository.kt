@@ -1,18 +1,19 @@
-package com.bangkit.rebinmobileapps.data.repository
+package com.bangkit.rebinmobileapps.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.bangkit.rebinmobileapps.data.ResultState
-import com.bangkit.rebinmobileapps.data.UserPrefences
 import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.model.UserModel
+import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import retrofit2.HttpException
 
-class AuthRepository private constructor(
+class UserRepository private constructor(
     private val apiService: ApiService,
-    private val userPreferences: UserPrefences
+    private val userPreferences: UserPreferences
 ){
     fun register(
         name: String,
@@ -23,8 +24,10 @@ class AuthRepository private constructor(
         try {
             val response = apiService.register(name, email, password)
             emit(ResultState.Success(response))
-        } catch (e: Exception) {
-            emit(ResultState.Error(e.message.toString()))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
         }
     }
 
@@ -35,11 +38,16 @@ class AuthRepository private constructor(
         emit(ResultState.Loading)
         try {
             val response = apiService.login(email, password)
-            userPreferences.saveSession(UserModel(email, response.loginResult.token, true))
             emit(ResultState.Success(response))
-        } catch (e: Exception) {
-            emit(ResultState.Error(e.message.toString()))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
         }
+    }
+
+    suspend fun saveSession(user: UserModel) {
+        userPreferences.saveSession(user)
     }
 
     fun getSession(): Flow<UserModel> {
@@ -51,15 +59,19 @@ class AuthRepository private constructor(
     }
 
     companion object {
-        @Volatile
-        private var instance: AuthRepository? = null
+
+        private var INSTANCE: UserRepository? = null
+
+        fun clearInstance() {
+            INSTANCE = null
+        }
         fun getInstance(
             apiService: ApiService,
-            userPreferences: UserPrefences
-        ): AuthRepository =
-            instance ?: synchronized(this) {
-                instance ?: AuthRepository(apiService, userPreferences)
-            }.also { instance = it }
+            userPreferences: UserPreferences
+        ): UserRepository =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: UserRepository(apiService, userPreferences)
+            }.also { INSTANCE = it }
     }
 }
 

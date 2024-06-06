@@ -1,15 +1,20 @@
 package com.bangkit.rebinmobileapps.di
 
 import android.content.Context
-import com.bangkit.rebinmobileapps.data.UserPrefences
+import com.bangkit.rebinmobileapps.data.UserPreferences
 import com.bangkit.rebinmobileapps.data.api.ApiConfig
 import com.bangkit.rebinmobileapps.data.dataStore
-import com.bangkit.rebinmobileapps.data.repository.AuthRepository
+import com.bangkit.rebinmobileapps.data.UserRepository
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 object Injection {
-    fun provideAuthRepository(context: Context): AuthRepository {
-        val pref = UserPrefences.getInstance(context.dataStore)
-        val apiService = ApiConfig.getApiService()
-        return AuthRepository.getInstance(apiService, pref)
+    fun provideRepository(context: Context): UserRepository {
+        val pref = UserPreferences.getInstance(context.dataStore)
+        val user = runBlocking {
+            pref.getSession().first()
+        }
+        val apiService = ApiConfig.getApiService(user.token)
+        return UserRepository.getInstance(apiService, pref)
     }
 }
