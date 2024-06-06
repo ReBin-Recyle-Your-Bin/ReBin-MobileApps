@@ -59,6 +59,12 @@ dependencies {
     // Circle Image View
     implementation (libs.circleimageview)
 
+    //DataStore , ViewModel, LiveData, Activity ktx
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.activity.ktx)
+
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
