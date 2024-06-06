@@ -8,7 +8,7 @@
     tools:context=".view.history.PointHistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tlbDetection"
+        android:id="@+id/tlbHistoryPoint"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/rv_history"
+        android:id="@+id/rv_history_point"
         tools:listitem="@layout/item_point_history"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

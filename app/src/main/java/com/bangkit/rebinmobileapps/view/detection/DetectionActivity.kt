@@ -54,7 +54,7 @@ class DetectionActivity : AppCompatActivity() {
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.cameraButton.setOnClickListener { startCamera() }
         binding.tlbDetection.setNavigationOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            onBackPressed()
         }
         binding.analizeButton.setOnClickListener {
             startActivity(Intent(this, ResultDetectionActivity::class.java))
