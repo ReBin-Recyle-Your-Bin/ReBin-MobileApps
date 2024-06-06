@@ -67,5 +67,6 @@ dependencies {
 
     //Ucrop
     implementation("com.github.yalantis:ucrop:2.2.9")
-
+    // Slide Image
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }
