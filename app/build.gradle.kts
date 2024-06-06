@@ -54,19 +54,19 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Material design
-    implementation("com.google.android.material:material:1.3.0-alpha03")
+    //implementation("com.google.android.material:material:1.3.0-alpha03")
 
-    // Clicrle Image View
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    // Circle Image View
+    implementation (libs.circleimageview)
 
     // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     //Ucrop
-    implementation("com.github.yalantis:ucrop:2.2.9")
+    implementation(libs.ucrop)
     // Slide Image
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation(libs.androidx.viewpager2)
 }
