@@ -2,42 +2,96 @@ package com.bangkit.rebinmobileapps.view.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.ProgressDialog.show
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.ResultState
+import com.bangkit.rebinmobileapps.data.model.UserModel
 import com.bangkit.rebinmobileapps.databinding.ActivityLoginBinding
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
 import com.bangkit.rebinmobileapps.view.customView.CustomTextPassword
 import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.bangkit.rebinmobileapps.view.signup.SignUpActivity
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var customTextEmail: CustomTextEmail
     private lateinit var customTextPassword: CustomTextPassword
+
+    private val viewModel by viewModels<LoginViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //untuk mensetup login
+        setupAction()
         playAnimation()
 
         customTextEmail = binding.emailEdittext
         customTextPassword = binding.passwordEditText
 
-        binding.loginButton.setOnClickListener {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
         binding.tbSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupAction() {
+        binding.loginButton.setOnClickListener {
+            val email = binding.emailEdittext.text.toString()
+            val password = binding.passwordEditText.text.toString()
+
+            viewModel.login(email,password).observe(this){user->
+                when(user){
+                    is ResultState.Success -> {
+                        binding.progressBar.visibility = View.INVISIBLE
+                        saveSession(
+                            UserModel(
+                                user.data.loginResult.token,
+                                user.data.loginResult.name,
+                                user.data.loginResult.userId,
+                                true
+                            )
+                        )
+                        val success = user.data.message
+                        Toast.makeText(this, success, Toast.LENGTH_SHORT).show()
+                    }
+                    is ResultState.Loading ->{
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                    is ResultState.Error ->{
+                        binding.progressBar.visibility = View.INVISIBLE
+                        val error = user.error
+                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun saveSession(session: UserModel){
+        lifecycleScope.launch {
+            viewModel.saveSession(session)
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            ViewModelFactory.clearInstance()
             startActivity(intent)
         }
     }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.rebinmobileapps.data.UserRepository
 import com.bangkit.rebinmobileapps.di.Injection
+import com.bangkit.rebinmobileapps.view.login.LoginViewModel
 import com.bangkit.rebinmobileapps.view.signup.SignupViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -15,6 +16,10 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
 
             modelClass.isAssignableFrom(SignupViewModel::class.java) -> {
                 SignupViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(LoginViewModel::class.java) ->{
+                LoginViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
