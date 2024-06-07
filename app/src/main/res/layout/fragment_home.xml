@@ -54,7 +54,7 @@
                     android:layout_weight="0.5"
                     android:contentDescription="profile_photo"
                     android:scaleType="centerCrop"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/ic_user"/>
 
                 <!-- Kolom Total Point dengan Dua TextView -->
                 <LinearLayout
