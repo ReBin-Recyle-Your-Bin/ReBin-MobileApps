@@ -4,7 +4,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class CraftCategory(
-    val imageResource: Int, val title: String
+data class StoryInpiration(
+    val imageResource: Int,
+    val title: String,
+    val description: String
 ) : Parcelable
-
