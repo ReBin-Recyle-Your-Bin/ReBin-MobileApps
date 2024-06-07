@@ -2,6 +2,7 @@ package com.bangkit.rebinmobileapps.view.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -53,6 +54,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     //setup aksi signup
+    @SuppressLint("SuspiciousIndentation")
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
             val name = binding.nameEditText.text.toString()
