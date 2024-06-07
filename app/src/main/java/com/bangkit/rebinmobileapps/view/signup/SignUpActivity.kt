@@ -2,25 +2,33 @@ package com.bangkit.rebinmobileapps.view.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.databinding.ActivitySignUpBinding
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
 import com.bangkit.rebinmobileapps.view.customView.CustomTextPassword
 import com.bangkit.rebinmobileapps.view.login.LoginActivity
-import com.bangkit.rebinmobileapps.view.main.MainActivity
 
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var customTextEmail: CustomTextEmail
     private lateinit var customTextPassword: CustomTextPassword
+
+    private val viewModel by viewModels<SignupViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -32,6 +40,7 @@ class SignUpActivity : AppCompatActivity() {
             insets
         }
 
+        setupAction()
         playAnimation()
 
         customTextEmail = binding.emailEdittext
@@ -42,9 +51,36 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    //setup aksi signup
+    @SuppressLint("SuspiciousIndentation")
+    private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val name = binding.nameEditText.text.toString()
+            val email = binding.emailEdittext.text.toString()
+            val password = binding.passwordEditText.text.toString()
+
+            viewModel.register(name, email, password).observe(this) { user ->
+                when (user) {
+                    is ResultState.Error -> {
+                        binding.progressBar.visibility = View.INVISIBLE
+                        val error = user.error
+                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                    }
+
+                    is ResultState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+
+                    is ResultState.Success -> {
+                        binding.progressBar.visibility = View.INVISIBLE
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        val success = user.data.message
+                        Toast.makeText(this, success, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
