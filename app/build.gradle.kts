@@ -75,4 +75,5 @@ dependencies {
     implementation(libs.ucrop)
     // Slide Image
     implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.fragment.ktx)
 }
