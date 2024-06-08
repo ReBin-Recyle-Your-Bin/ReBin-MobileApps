@@ -1,6 +1,7 @@
 package com.bangkit.rebinmobileapps.view.detection
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -11,11 +12,24 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.UserPreferences
+import com.bangkit.rebinmobileapps.data.api.ApiConfig
+import com.bangkit.rebinmobileapps.data.dataStore
+import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.databinding.ActivityDetectionBinding
 import com.bangkit.rebinmobileapps.getImageUri
 import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.yalantis.ucrop.UCrop
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Callback
+import retrofit2.Call
+import retrofit2.Response
 import java.io.File
 
 class DetectionActivity : AppCompatActivity() {
@@ -57,7 +71,17 @@ class DetectionActivity : AppCompatActivity() {
             onBackPressed()
         }
         binding.analizeButton.setOnClickListener {
-            startActivity(Intent(this, ResultDetectionActivity::class.java))
+            croppedImageUri?.let { uri ->
+                // Mengambil token menggunakan coroutine
+                lifecycleScope.launch {
+                    val token = getToken(this@DetectionActivity)
+                    if (token != null) {
+                        uploadPhoto(uri, token)
+                    } else {
+                        showToast("No token found, please login first")
+                    }
+                }
+            } ?: showToast("No image to analyze")
         }
 
     }
@@ -129,6 +153,40 @@ class DetectionActivity : AppCompatActivity() {
             .withAspectRatio(1f, 1f)
             .withMaxResultSize(1000, 1000)
             .start(this)
+    }
+
+    private fun uploadPhoto(uri: Uri, token: String) {
+        val file = File(uri.path!!)
+        val requestFile = RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
+        val photoPart = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+
+        val apiService = ApiConfig.getDetectionApiService(token)
+        val call = apiService.uploadPhotoDetection(photoPart)
+        call.enqueue(object : Callback<DetectionResult> {
+            override fun onResponse(call: Call<DetectionResult>, response: Response<DetectionResult>) {
+                if (response.isSuccessful) {
+                    val detectionResult = response.body()
+                    detectionResult?.let {
+                        // Tangani hasil deteksi di sini
+                        val intent = Intent(this@DetectionActivity, ResultDetectionActivity::class.java)
+                        intent.putExtra("detectionResult", detectionResult)
+                        startActivity(intent)
+                    }
+                } else {
+                    showToast("Failed to get detection result")
+                }
+            }
+
+            override fun onFailure(call: Call<DetectionResult>, t: Throwable) {
+                showToast("Error: ${t.message}")
+            }
+        })
+    }
+
+    private suspend fun getToken(context: Context): String? {
+        val userPreferences = UserPreferences.getInstance(context.dataStore)
+        val user = userPreferences.getSession().first()
+        return user.token
     }
 
 

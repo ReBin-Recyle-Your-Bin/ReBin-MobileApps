@@ -32,7 +32,7 @@ interface ApiService {
 
     @Multipart
     @POST("predict")
-    fun getDetectionResult(
+    fun uploadPhotoDetection(
         @Part photo: MultipartBody.Part,
 //        @Header("Authorization") token: String
     ): Call<DetectionResult>

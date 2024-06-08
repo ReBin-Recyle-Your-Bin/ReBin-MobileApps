@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-        fun getApiService(token: String): ApiService {
+    fun getApiService(token: String): ApiService {
             val loggingInterceptor =
                 if (BuildConfig.DEBUG) {
                     HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -33,7 +33,7 @@ object ApiConfig {
                 .client(client)
                 .build()
             return retrofit.create(ApiService::class.java)
-        }
+    }
 
     private fun createRetrofit(baseUrl: String, token: String): Retrofit {
         val loggingInterceptor =
@@ -66,7 +66,7 @@ object ApiConfig {
     }
 
     fun getDetectionApiService(token: String): ApiService {
-        return createRetrofit("https://detection-api.example.com/v1/", token).create(ApiService::class.java)
+        return createRetrofit("http://10.0.2.2:5000/", token).create(ApiService::class.java)
     }
 }
 

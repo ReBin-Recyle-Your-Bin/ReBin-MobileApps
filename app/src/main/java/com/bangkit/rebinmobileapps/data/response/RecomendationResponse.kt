@@ -1,7 +1,10 @@
 package com.bangkit.rebinmobileapps.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Recommendation(
     @SerializedName("Class")
     val Class: String,
@@ -23,8 +26,9 @@ data class Recommendation(
 
     @SerializedName("steps")
     val steps: String
-)
+) : Parcelable
 
+@Parcelize
 data class DetectionResult(
     @SerializedName("error")
     val error: Boolean,
@@ -40,4 +44,4 @@ data class DetectionResult(
 
     @SerializedName("recommendation")
     val recommendation: List<Recommendation>
-)
+) : Parcelable
