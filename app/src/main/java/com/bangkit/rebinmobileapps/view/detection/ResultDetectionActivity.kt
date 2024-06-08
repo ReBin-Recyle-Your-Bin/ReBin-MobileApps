@@ -2,10 +2,15 @@ package com.bangkit.rebinmobileapps.view.detection
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
+import com.bangkit.rebinmobileapps.data.response.Recommendation
 import com.bangkit.rebinmobileapps.databinding.ActivityResultDetectionBinding
 import com.bangkit.rebinmobileapps.view.main.MainActivity
 
@@ -16,6 +21,7 @@ class ResultDetectionActivity : AppCompatActivity() {
     private lateinit var tvResultConfidence: TextView
     private lateinit var tvRecomendation: TextView
     private lateinit var tvRecomendationContent: TextView
+    private lateinit var llRecommendations : LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +34,8 @@ class ResultDetectionActivity : AppCompatActivity() {
         tvResultWashType = binding.tvResultWashType
         tvResultConfidence = binding.tvResultConfidence
         tvRecomendation = binding.tvRecomendation
-        tvRecomendationContent = binding.tvRecomendationContent
+//        tvRecomendationContent = binding.tvRecomendationContent
+        llRecommendations = binding.llRecommendations
 
 
         val detectionResult: DetectionResult? = intent.getParcelableExtra("detectionResult")
@@ -38,17 +45,28 @@ class ResultDetectionActivity : AppCompatActivity() {
             tvResultConfidence.text = "${it.accuracy} %" ?: "Unknown"
             tvRecomendation.text = "Recommendation:"
             if (it.recommendation.isNotEmpty()) {
-                val recommendation = it.recommendation[0]
-                tvRecomendationContent.text = "Name: ${recommendation.name}\n" +
-                        "Class: ${recommendation.Class}\n" +
-                        "Ingredients: ${recommendation.ingredients}\n" +
-                        "Steps: ${recommendation.steps}"
+                val recommendationsToShow = it.recommendation.take(3)
+                for(recomendation in recommendationsToShow){
+                    addRecomendationView(recomendation)
+                }
             } else {
-                tvRecomendationContent.text = "No recommendation available"
+                val noRecommendation = TextView(this)
+                noRecommendation.text = "No recommendation available"
+                llRecommendations.addView(noRecommendation)
             }
 
         } ?: showToast("No detection result found")
+    }
 
+    private fun addRecomendationView(recommendation: Recommendation) {
+        val recomendationView: View = LayoutInflater.from(this).inflate(R.layout.item_recomendation, llRecommendations, false)
+        val tvName: TextView = recomendationView.findViewById(R.id.tv_title_recommendation)
+        val tvClass: TextView = recomendationView.findViewById(R.id.tv_class_recommendation)
+
+        tvName.text = "Name: ${recommendation.name}"
+        tvClass.text = "Class: ${recommendation.Class}"
+
+        llRecommendations.addView(recomendationView)
     }
 
     private fun showToast(message: String) {
