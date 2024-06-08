@@ -170,6 +170,7 @@ class DetectionActivity : AppCompatActivity() {
                         // Tangani hasil deteksi di sini
                         val intent = Intent(this@DetectionActivity, ResultDetectionActivity::class.java)
                         intent.putExtra("detectionResult", detectionResult)
+                        intent.putExtra("imageUri", uri.toString())
                         startActivity(intent)
                     }
                 } else {

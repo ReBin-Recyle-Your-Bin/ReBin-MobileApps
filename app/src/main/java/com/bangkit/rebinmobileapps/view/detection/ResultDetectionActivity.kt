@@ -1,9 +1,11 @@
 package com.bangkit.rebinmobileapps.view.detection
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +15,7 @@ import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.Recommendation
 import com.bangkit.rebinmobileapps.databinding.ActivityResultDetectionBinding
 import com.bangkit.rebinmobileapps.view.main.MainActivity
+import com.bumptech.glide.Glide
 
 class ResultDetectionActivity : AppCompatActivity() {
 
@@ -22,6 +25,7 @@ class ResultDetectionActivity : AppCompatActivity() {
     private lateinit var tvRecomendation: TextView
     private lateinit var tvRecomendationContent: TextView
     private lateinit var llRecommendations : LinearLayout
+    private lateinit var ivResultDetection : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +40,11 @@ class ResultDetectionActivity : AppCompatActivity() {
         tvRecomendation = binding.tvRecomendation
 //        tvRecomendationContent = binding.tvRecomendationContent
         llRecommendations = binding.llRecommendations
+        ivResultDetection = binding.ivResultDetection
 
 
         val detectionResult: DetectionResult? = intent.getParcelableExtra("detectionResult")
+        val imageUriString: String? = intent.getStringExtra("imageUri")
 
         detectionResult?.let {
             tvResultWashType.text = it.label ?: "Unknown"
@@ -56,6 +62,14 @@ class ResultDetectionActivity : AppCompatActivity() {
             }
 
         } ?: showToast("No detection result found")
+
+        imageUriString?.let {
+            val imageUri = Uri.parse(it)
+            Glide.with(this)
+                .load(imageUri)
+                .placeholder(R.drawable.ic_place_holder)
+                .into(ivResultDetection)
+        }
     }
 
     private fun addRecomendationView(recommendation: Recommendation) {
@@ -67,6 +81,8 @@ class ResultDetectionActivity : AppCompatActivity() {
         tvClass.text = "Class: ${recommendation.Class}"
 
         llRecommendations.addView(recomendationView)
+
+
     }
 
     private fun showToast(message: String) {
