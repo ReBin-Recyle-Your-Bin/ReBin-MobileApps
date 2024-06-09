@@ -10,18 +10,25 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.databinding.FragmentProfileBinding
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.login.LoginActivity
+import com.bangkit.rebinmobileapps.view.main.MainViewModel
+import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 import com.google.android.material.snackbar.Snackbar
-
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
+
+    private val viewModel: MainViewModel by viewModels {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +39,9 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
+
 
         // Setup toolbar
         val toolbar: Toolbar = binding.tlbProfile
@@ -50,11 +60,13 @@ class ProfileFragment : Fragment() {
     }
 
     private fun performLogout() {
-
-        val intent = Intent(activity, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        activity?.finish()
+        lifecycleScope.launch {
+            viewModel.logout()
+            val intent = Intent(activity, WelcomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            activity?.finish()
+        }
     }
 
 
