@@ -5,58 +5,77 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bangkit.rebinmobileapps.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.rebinmobileapps.adapter.HistoryAdapter
 import com.bangkit.rebinmobileapps.databinding.FragmentHistoryBinding
+import com.bangkit.rebinmobileapps.view.factory.HistoryViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryFragment : Fragment() {
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var adapter: HistoryAdapter
+    private lateinit var historyViewModel: HistoryViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        setupViewModel()
+        setupRecyclerView()
+        observeHistory()
+        binding.btnClearAll.setOnClickListener {
+            historyViewModel.deleteAll()
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun setupViewModel() {
+        val factory = HistoryViewModelFactory.getInstance(requireActivity().application)
+        historyViewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
+    }
+
+    private fun setupRecyclerView() {
+        adapter = HistoryAdapter(historyViewModel)
+        with(binding.rvHistory) {
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    (layoutManager as LinearLayoutManager).orientation
+                )
+            )
+            setHasFixedSize(true)
+            adapter = this@HistoryFragment.adapter
+        }
+    }
+
+    private fun observeHistory() {
+        historyViewModel.getAll().observe(viewLifecycleOwner) { historyList ->
+            historyList?.let {
+                adapter.setListHistory(it)
             }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
