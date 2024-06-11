@@ -62,7 +62,7 @@ object ApiConfig {
     }
 
     fun getDataApiService(token: String): ApiService {
-        return createRetrofit("https://story-api.dicoding.dev/v1/", token).create(ApiService::class.java)
+        return createRetrofit("https://rebin-app.et.r.appspot.com/", token).create(ApiService::class.java)
     }
 
     fun getDetectionApiService(token: String): ApiService {

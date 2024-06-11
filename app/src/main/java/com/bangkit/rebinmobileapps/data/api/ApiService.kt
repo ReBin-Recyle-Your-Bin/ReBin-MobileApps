@@ -1,7 +1,10 @@
 package com.bangkit.rebinmobileapps.data.api
 
+import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
+import com.bangkit.rebinmobileapps.data.response.LoginLocalResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
+import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -32,8 +35,17 @@ interface ApiService {
 
     @Multipart
     @POST("predict")
-    fun uploadPhotoDetection(
+    suspend fun uploadPhotoDetection(
         @Part photo: MultipartBody.Part,
 //        @Header("Authorization") token: String
     ): Call<DetectionResult>
+
+
+    @GET("stories")
+    suspend fun  getStory() : StoryInpirationAdapter
+
+    @GET("points")
+    suspend fun getPoint(
+        @Field("id") id: String,
+    ) :PointResponse
 }
