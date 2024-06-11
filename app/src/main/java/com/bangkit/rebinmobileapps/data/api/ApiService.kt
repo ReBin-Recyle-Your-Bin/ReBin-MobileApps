@@ -2,7 +2,6 @@ package com.bangkit.rebinmobileapps.data.api
 
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
-import com.bangkit.rebinmobileapps.data.response.LoginLocalResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
