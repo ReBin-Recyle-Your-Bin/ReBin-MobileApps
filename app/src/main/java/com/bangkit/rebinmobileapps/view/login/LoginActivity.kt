@@ -55,8 +55,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
-            val email = binding.emailEdittext.text.toString()
-            val password = binding.passwordEditText.text.toString()
+            val email = binding.emailEdittext.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
 
             viewModel.login(email,password).observe(this){user->
                 when(user){
@@ -64,22 +64,20 @@ class LoginActivity : AppCompatActivity() {
                         binding.progressBar.visibility = View.INVISIBLE
                         saveSession(
                             UserModel(
-                                user.data.loginResult.token,
-                                user.data.loginResult.name,
-                                user.data.loginResult.userId,
+                                user.data.data.token,
+                                user.data.data.name,
+                                user.data.data.id,
                                 true
                             )
                         )
-                        val success = user.data.message
-                        Toast.makeText(this, success, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, user.data.message, Toast.LENGTH_SHORT).show()
                     }
                     is ResultState.Loading ->{
                         binding.progressBar.visibility = View.VISIBLE
                     }
                     is ResultState.Error ->{
                         binding.progressBar.visibility = View.INVISIBLE
-                        val error = user.error
-                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, user.error, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

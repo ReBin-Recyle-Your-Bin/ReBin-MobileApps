@@ -1,6 +1,7 @@
 package com.bangkit.rebinmobileapps.data.api
 
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
+import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
@@ -19,10 +20,8 @@ interface ApiService {
 
     @POST("login")
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body request: LoginRequest
     ): LoginResponse
-
 
     @POST("register")
     suspend fun register(
