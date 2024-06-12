@@ -6,15 +6,22 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.main.MainActivity
+import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,8 +33,18 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            goToWelcomeActivity()
+            checkSession()
         }, 3000L)
+    }
+
+    private fun checkSession() {
+        viewModel.getSession().observe(this) { user ->
+            if (user.isLogin) {
+                goToMainActivity()
+            } else {
+                goToWelcomeActivity()
+            }
+        }
     }
 
     private fun goToMainActivity() {
