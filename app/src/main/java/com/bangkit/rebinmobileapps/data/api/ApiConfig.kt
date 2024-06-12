@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object ApiConfig {
     fun getApiService(token: String): ApiService {
@@ -52,6 +53,9 @@ object ApiConfig {
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor)
+            .connectTimeout(30, TimeUnit.SECONDS) // Waktu untuk koneksi
+            .writeTimeout(30, TimeUnit.SECONDS)   // Waktu untuk menulis data
+            .readTimeout(30, TimeUnit.SECONDS)
             .build()
 
         return Retrofit.Builder()
@@ -66,7 +70,7 @@ object ApiConfig {
     }
 
     fun getDetectionApiService(token: String): ApiService {
-        return createRetrofit("http://10.0.2.2:5000/", token).create(ApiService::class.java)
+        return createRetrofit("https://rebin-mlapi-kbd6pi6apq-et.a.run.app/EN/", token).create(ApiService::class.java)
     }
 }
 
