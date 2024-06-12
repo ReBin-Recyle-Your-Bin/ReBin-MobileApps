@@ -6,8 +6,14 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Recommendation(
-    @SerializedName("Class")
-    val Class: String,
+    @SerializedName("Description")
+    val Description: String,
+
+    @SerializedName("class")
+    val classItem: String,
+
+    @SerializedName("combined_text")
+    val combined_text: String,
 
     @SerializedName("cosine_similarity")
     val cosine_similarity: Double,
@@ -17,6 +23,9 @@ data class Recommendation(
 
     @SerializedName("ingredients")
     val ingredients: String,
+
+    @SerializedName("languange")
+    val languange: String,
 
     @SerializedName("name")
     val name: String,
@@ -30,11 +39,11 @@ data class Recommendation(
 
 @Parcelize
 data class DetectionResult(
-    @SerializedName("error")
-    val error: Boolean,
-
-    @SerializedName("message")
-    val message: String,
+//    @SerializedName("error")
+//    val error: Boolean,
+//
+//    @SerializedName("message")
+//    val message: String,
 
     @SerializedName("accuracy")
     val accuracy: String,

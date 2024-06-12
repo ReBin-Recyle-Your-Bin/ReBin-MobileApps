@@ -158,7 +158,7 @@ class DetectionActivity : AppCompatActivity() {
     private fun uploadPhoto(uri: Uri, token: String) {
         val file = File(uri.path!!)
         val requestFile = RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
-        val photoPart = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+        val photoPart = MultipartBody.Part.createFormData("file", file.name, requestFile)
 
         val apiService = ApiConfig.getDetectionApiService(token)
         val call = apiService.uploadPhotoDetection(photoPart)
@@ -180,6 +180,7 @@ class DetectionActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<DetectionResult>, t: Throwable) {
                 showToast("Error: ${t.message}")
+                Log.e("API_ERROR", "Error: ${t.message}", t)
             }
         })
     }
