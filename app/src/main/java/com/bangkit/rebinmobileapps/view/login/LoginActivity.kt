@@ -2,19 +2,13 @@ package com.bangkit.rebinmobileapps.view.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.app.ProgressDialog.show
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.data.model.UserModel
 import com.bangkit.rebinmobileapps.databinding.ActivityLoginBinding
