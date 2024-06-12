@@ -9,8 +9,7 @@ import com.bangkit.rebinmobileapps.data.model.UserModel
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: UserRepository): ViewModel() {
-    
-    val userSession: LiveData<UserModel> = repository.getSession().asLiveData()
+
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
