@@ -4,19 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.rebinmobileapps.data.local.entity.History
+import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.local.entity.DetectionResultEntity
 import com.bangkit.rebinmobileapps.databinding.ItemHistoryBinding
 import com.bangkit.rebinmobileapps.util.DateFormat
-import com.bangkit.rebinmobileapps.view.history.HistoryViewModel
+import com.bangkit.rebinmobileapps.view.detection.DetectionResultViewModel
 import com.bumptech.glide.Glide
 
-class HistoryAdapter(
-    private val historyViewModel: HistoryViewModel
-) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>(){
+class HistoryDetectionResultAdapter(
+    private val detectionResultViewModel: DetectionResultViewModel
+) : RecyclerView.Adapter<HistoryDetectionResultAdapter.HistoryViewHolder>(){
 
-    private val listHistory = ArrayList<History>()
+    private val listHistory = ArrayList<DetectionResultEntity>()
 
-    fun setListHistory(listHistory: List<History>) {
+    fun setListHistory(listHistory: List<DetectionResultEntity>) {
         val diffCallback = HistoryDiffCallback(this.listHistory, listHistory)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listHistory.clear()
@@ -28,15 +29,17 @@ class HistoryAdapter(
         private val binding: ItemHistoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(history: History) {
-            binding.tvPrediction.text = "${history.prediction} ${history.score}"
-            binding.tvCreatedAt.text = DateFormat.getRelativeTime(history.createdAt)
+        fun bind(history: DetectionResultEntity) {
+            binding.tvLabelHistoryDetection.text = "${history.wasteType}"
+            binding.tvAccurayHistoryDetection.text = history.accuracy
+            binding.tvCreatedAtHistoryDetection.text = DateFormat.getRelativeTime(history.createdAt)
             Glide.with(binding.root)
                 .load(history.imageUrl)
-                .into(binding.ivImage)
-            binding.btnDelete.setOnClickListener {
-                historyViewModel.delete(history)
-            }
+                .placeholder(R.drawable.ic_place_holder)
+                .into(binding.ivResulHistoryDetection)
+//            binding.btnDelete.setOnClickListener {
+//                historyViewModel.delete(history)
+//            }
         }
     }
 
@@ -55,8 +58,8 @@ class HistoryAdapter(
 }
 
 class HistoryDiffCallback(
-    private val oldHistoryList: List<History>,
-    private val newHistoryList: List<History>
+    private val oldHistoryList: ArrayList<DetectionResultEntity>,
+    private val newHistoryList: List<DetectionResultEntity>
 ): DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldHistoryList.size
 
@@ -70,8 +73,8 @@ class HistoryDiffCallback(
         val oldHistory = oldHistoryList[oldItemPosition]
         val newHistory = newHistoryList[newItemPosition]
         return oldHistory.imageUrl == newHistory.imageUrl &&
-                oldHistory.prediction == newHistory.prediction &&
-                oldHistory.score == newHistory.score
+                oldHistory.wasteType == newHistory.wasteType &&
+                oldHistory.accuracy == newHistory.accuracy
     }
 
 }

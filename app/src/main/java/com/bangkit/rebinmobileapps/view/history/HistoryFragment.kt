@@ -6,55 +6,53 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.rebinmobileapps.adapter.HistoryAdapter
+import com.bangkit.rebinmobileapps.adapter.HistoryDetectionResultAdapter
+import com.bangkit.rebinmobileapps.data.local.room.TrashDetectionResultDatabase
+import com.bangkit.rebinmobileapps.data.repository.DetectionResultRepository
 import com.bangkit.rebinmobileapps.databinding.FragmentHistoryBinding
+import com.bangkit.rebinmobileapps.view.detection.DetectionResultViewModel
+import com.bangkit.rebinmobileapps.view.detection.DetectionResultViewModelFactory
 import com.bangkit.rebinmobileapps.view.factory.HistoryViewModelFactory
+import java.util.concurrent.Executors
 
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: HistoryAdapter
-    private lateinit var historyViewModel: HistoryViewModel
+    private lateinit var adapter: HistoryDetectionResultAdapter
+    private lateinit var detectionResultViewModel: DetectionResultViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         setupViewModel()
         setupRecyclerView()
         observeHistory()
         binding.btnClearAll.setOnClickListener {
-            historyViewModel.deleteAll()
+            detectionResultViewModel.deleteAll()
         }
         return binding.root
     }
 
     private fun setupViewModel() {
-        val factory = HistoryViewModelFactory.getInstance(requireActivity().application)
-        historyViewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
+        val application = requireNotNull(this.activity).application
+        val dao = TrashDetectionResultDatabase.getDatabase(application).detectionResultDao()
+        val repository = DetectionResultRepository.getInstance(dao, Executors.newSingleThreadExecutor())
+        val factory = DetectionResultViewModelFactory(repository)
+        detectionResultViewModel = ViewModelProvider(this, factory)[DetectionResultViewModel::class.java]
     }
 
     private fun setupRecyclerView() {
-        adapter = HistoryAdapter(historyViewModel)
-        with(binding.rvHistory) {
-            layoutManager = LinearLayoutManager(context)
-            addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    (layoutManager as LinearLayoutManager).orientation
-                )
-            )
-            setHasFixedSize(true)
-            adapter = this@HistoryFragment.adapter
-        }
+        adapter = HistoryDetectionResultAdapter(detectionResultViewModel)
+        binding.recyclerViewHistory.adapter = adapter
+        binding.recyclerViewHistory.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun observeHistory() {
-        historyViewModel.getAll().observe(viewLifecycleOwner) { historyList ->
+        detectionResultViewModel.getAll().observe(viewLifecycleOwner) { historyList ->
             historyList?.let {
                 adapter.setListHistory(it)
             }
