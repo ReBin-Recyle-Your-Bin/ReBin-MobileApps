@@ -78,7 +78,7 @@ class ResultDetectionActivity : AppCompatActivity() {
         val tvClass: TextView = recomendationView.findViewById(R.id.tv_class_recommendation)
 
         tvName.text = "Name: ${recommendation.name}"
-        tvClass.text = "Class: ${recommendation.Class}"
+        tvClass.text = "Class: ${recommendation.classItem}"
 
         llRecommendations.addView(recomendationView)
 

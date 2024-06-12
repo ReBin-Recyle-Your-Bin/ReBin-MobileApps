@@ -10,7 +10,7 @@ import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.signup.SignupViewModel
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
@@ -32,7 +32,7 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
     }
 
     companion object {
-
+        @Volatile
         private var INSTANCE : ViewModelFactory? = null
 
         fun clearInstance() {
@@ -41,12 +41,11 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
         }
 
         fun getInstance(context: Context): ViewModelFactory {
-            if (INSTANCE == null) {
-                synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(Injection.provideRepository(context))
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: ViewModelFactory(Injection.provideRepository(context)).also {
+                    INSTANCE = it
                 }
             }
-            return INSTANCE as ViewModelFactory
         }
 
     }

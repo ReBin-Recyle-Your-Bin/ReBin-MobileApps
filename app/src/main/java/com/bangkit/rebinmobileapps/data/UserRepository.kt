@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.model.UserModel
+import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
@@ -17,17 +18,20 @@ class UserRepository private constructor(
 ){
     fun register(
         name: String,
-        email:String,
+        email: String,
         password: String
     ): LiveData<ResultState<RegisterResponse>> = liveData {
         emit(ResultState.Loading)
         try {
-            val response = apiService.register(name, email, password)
+            val request = RegisterRequest(name, email, password)
+            val response = apiService.register(request)
             emit(ResultState.Success(response))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)
             emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
         }
     }
 

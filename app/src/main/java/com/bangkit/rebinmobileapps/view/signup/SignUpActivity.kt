@@ -34,6 +34,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -57,16 +58,15 @@ class SignUpActivity : AppCompatActivity() {
     @SuppressLint("SuspiciousIndentation")
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            val name = binding.nameEditText.text.toString()
-            val email = binding.emailEdittext.text.toString()
-            val password = binding.passwordEditText.text.toString()
+            val name = binding.nameEditText.text.toString().trim()
+            val email = binding.emailEdittext.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
 
             viewModel.register(name, email, password).observe(this) { user ->
                 when (user) {
                     is ResultState.Error -> {
                         binding.progressBar.visibility = View.INVISIBLE
-                        val error = user.error
-                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, user.error, Toast.LENGTH_SHORT).show()
                     }
 
                     is ResultState.Loading -> {
@@ -75,9 +75,9 @@ class SignUpActivity : AppCompatActivity() {
 
                     is ResultState.Success -> {
                         binding.progressBar.visibility = View.INVISIBLE
+                        Toast.makeText(this, user.data.message, Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, LoginActivity::class.java))
-                        val success = user.data.message
-                        Toast.makeText(this, success, Toast.LENGTH_SHORT).show()
+                        finish()
                     }
                 }
             }
