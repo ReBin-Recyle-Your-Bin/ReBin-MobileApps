@@ -60,7 +60,7 @@ class ResultDetectionActivity : AppCompatActivity() {
                 noRecommendation.text = "No recommendation available"
                 llRecommendations.addView(noRecommendation)
             }
-
+            showToast("Detection success")
         } ?: showToast("No detection result found")
 
         imageUriString?.let {
@@ -76,12 +76,19 @@ class ResultDetectionActivity : AppCompatActivity() {
         val recomendationView: View = LayoutInflater.from(this).inflate(R.layout.item_recomendation, llRecommendations, false)
         val tvName: TextView = recomendationView.findViewById(R.id.tv_title_recommendation)
         val tvClass: TextView = recomendationView.findViewById(R.id.tv_class_recommendation)
+        val tvDesc: TextView = recomendationView.findViewById(R.id.tv_desc_recomendation)
 
-        tvName.text = "Name: ${recommendation.name}"
-        tvClass.text = "Class: ${recommendation.classItem}"
+        tvName.text = "${recommendation.name}"
+        tvClass.text = "${recommendation.classItem}"
+        tvDesc.text = "${recommendation.description}"
+
+
+        Glide.with(this)
+            .load(recommendation.pics_url)
+            .placeholder(R.drawable.ic_place_holder)
+            .into(recomendationView.findViewById(R.id.iv_image_recomendation))
 
         llRecommendations.addView(recomendationView)
-
 
     }
 

@@ -7,20 +7,18 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.UserPreferences
 import com.bangkit.rebinmobileapps.data.api.ApiConfig
 import com.bangkit.rebinmobileapps.data.dataStore
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.databinding.ActivityDetectionBinding
 import com.bangkit.rebinmobileapps.getImageUri
-import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -72,10 +70,10 @@ class DetectionActivity : AppCompatActivity() {
         }
         binding.analizeButton.setOnClickListener {
             croppedImageUri?.let { uri ->
-                // Mengambil token menggunakan coroutine
                 lifecycleScope.launch {
                     val token = getToken(this@DetectionActivity)
                     if (token != null) {
+                        showLoading(true)
                         uploadPhoto(uri, token)
                     } else {
                         showToast("No token found, please login first")
@@ -164,6 +162,7 @@ class DetectionActivity : AppCompatActivity() {
         val call = apiService.uploadPhotoDetection(photoPart)
         call.enqueue(object : Callback<DetectionResult> {
             override fun onResponse(call: Call<DetectionResult>, response: Response<DetectionResult>) {
+                showLoading(true)
                 if (response.isSuccessful) {
                     val detectionResult = response.body()
                     detectionResult?.let {
@@ -179,8 +178,8 @@ class DetectionActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<DetectionResult>, t: Throwable) {
+                showLoading(false)
                 showToast("Error: ${t.message}")
-                Log.e("API_ERROR", "Error: ${t.message}", t)
             }
         })
     }
@@ -189,6 +188,11 @@ class DetectionActivity : AppCompatActivity() {
         val userPreferences = UserPreferences.getInstance(context.dataStore)
         val user = userPreferences.getSession().first()
         return user.token
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if(isLoading) View.VISIBLE else View.GONE
+        binding.analizeButton.isEnabled = isLoading
     }
 
 

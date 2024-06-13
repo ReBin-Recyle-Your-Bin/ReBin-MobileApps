@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Recommendation(
     @SerializedName("Description")
-    val Description: String,
+    val description: String,
 
     @SerializedName("class")
     val classItem: String,
