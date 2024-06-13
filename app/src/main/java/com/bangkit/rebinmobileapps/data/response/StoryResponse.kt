@@ -13,7 +13,7 @@ data class StoryResponse(
     val message: String,
 
     @SerializedName("listStory")
-    val listStory: List<StoryItem>
+    val listStoryInpiration: List<StoryItem>
 ): Parcelable
 
 @Parcelize

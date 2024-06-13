@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -17,20 +18,21 @@ import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.adapter.BannerAdapter
 import com.bangkit.rebinmobileapps.adapter.CategoryCraftAdapter
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
+import com.bangkit.rebinmobileapps.data.ResultState
+import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.model.CraftCategory
 import com.bangkit.rebinmobileapps.data.model.StoryInpiration
 import com.bangkit.rebinmobileapps.databinding.FragmentHomeBinding
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class HomeFragment : Fragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var craftRecyclerView: RecyclerView
     private lateinit var storyRecyclerView: RecyclerView
@@ -42,18 +44,24 @@ class HomeFragment : Fragment() {
     private lateinit var bannerViewPager: ViewPager2
     private lateinit var bannerAdapter: BannerAdapter
 
+    private lateinit var apiService: ApiService
+
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        craftRecyclerView = view.findViewById(R.id.rvVariousCrafts)
-        storyRecyclerView = view.findViewById(R.id.rvStoryInspiration)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-
-        bannerViewPager = view.findViewById(R.id.vp_banner)
+        craftRecyclerView = binding.rvVariousCrafts
+        storyRecyclerView = binding.rvStoryInspiration
+        bannerViewPager = binding.vpBanner
 
         val bannerImages = listOf(
             R.drawable.sample_banner_1,
@@ -77,7 +85,7 @@ class HomeFragment : Fragment() {
             }
         }, 5000, 5000)
 
-        val btnHistoryPoint = view.findViewById<ImageView>(R.id.pointHistoryButton)
+        val btnHistoryPoint = binding.pointHistoryButton
 
         btnHistoryPoint.setOnClickListener {
             startActivity(Intent(activity, PointHistoryActivity::class.java))
@@ -90,7 +98,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         populateCraftList()
-        populateStoryList()
+        setupAction()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setupRecyclerView() {
@@ -100,10 +113,31 @@ class HomeFragment : Fragment() {
             adapter = craftAdapter
         }
 
-        storyInpirationAdapter = StoryInpirationAdapter(requireContext(), storyList)
+        storyInpirationAdapter = StoryInpirationAdapter()
         storyRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = storyInpirationAdapter
+        }
+    }
+
+    private fun setupAction() {
+        lifecycleScope.launch {
+            viewModel.getStoryInspiration().observe(viewLifecycleOwner) { story ->
+                when (story) {
+                    is ResultState.Success -> {
+                        binding.progressBar.visibility = View.INVISIBLE
+                        val limitedData = story.data.take(3)
+                        storyInpirationAdapter.submitList(limitedData)
+                    }
+                    is ResultState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                    is ResultState.Error -> {
+                        binding.progressBar.visibility = View.INVISIBLE
+                        Toast.makeText(requireContext(), "Error: ${story.error}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
@@ -121,15 +155,4 @@ class HomeFragment : Fragment() {
 
         craftAdapter.notifyDataSetChanged()
     }
-
-    private fun populateStoryList() {
-        // Tambahkan data story ke dalam storyList
-        storyList.add(StoryInpiration(R.drawable.craft_01, "Inspirasi 1", "Deskripsi Inspirasi 1"))
-        storyList.add(StoryInpiration(R.drawable.craft_02, "Inspirasi 2", "Deskripsi Inspirasi 2"))
-        storyList.add(StoryInpiration(R.drawable.craft_03, "Inspirasi 3", "Deskripsi Inspirasi 3"))
-        // tambahkan data lainnya
-        storyInpirationAdapter.notifyDataSetChanged()
-    }
-
-
 }

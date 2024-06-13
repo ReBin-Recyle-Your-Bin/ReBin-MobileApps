@@ -1,41 +1,46 @@
 package com.bangkit.rebinmobileapps.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.rebinmobileapps.R
-import com.bangkit.rebinmobileapps.data.model.StoryInpiration
+import com.bangkit.rebinmobileapps.data.response.StoryItem
+import com.bangkit.rebinmobileapps.databinding.ItemStoryBinding
+import com.bumptech.glide.Glide
 
-class StoryInpirationAdapter(private val context: Context, private val storyList: List<StoryInpiration>) :
-    RecyclerView.Adapter<StoryInpirationAdapter.ViewHolder>() {
+class StoryInpirationAdapter : ListAdapter<StoryItem, StoryInpirationAdapter.MyViewHolder>(DIFF_CALLBACK){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_story, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val binding = ItemStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val story = storyList[position]
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val story = getItem(position)
         holder.bind(story)
     }
 
-    override fun getItemCount(): Int {
-        return storyList.size
+    inner class MyViewHolder(private val binding: ItemStoryBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(story: StoryItem) {
+            binding.tvStoryInpirationTitle.text = story.title
+            binding.tvStoryInpirationDescription.text = story.description
+
+            Glide.with(itemView.context)
+                .load(story.photoUrl)
+                .into(binding.ivStoryInpiration)
+        }
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageView: ImageView = itemView.findViewById(R.id.iv_story_inpiration)
-        private val titleTextView: TextView = itemView.findViewById(R.id.tv_story_inpiration_title)
-        private val descriptionTextView: TextView = itemView.findViewById(R.id.tv_story_inpiration_description)
+    companion object{
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryItem>() {
+            override fun areItemsTheSame(oldItem: StoryItem, newItem: StoryItem): Boolean {
+                return oldItem == newItem
+            }
 
-        fun bind(story: StoryInpiration) {
-            imageView.setImageResource(story.imageResource)
-            titleTextView.text = story.title
-            descriptionTextView.text = story.description
+            override fun areContentsTheSame(oldItem: StoryItem, newItem: StoryItem): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }

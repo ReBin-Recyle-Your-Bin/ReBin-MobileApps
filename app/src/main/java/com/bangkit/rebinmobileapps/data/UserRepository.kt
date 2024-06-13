@@ -9,6 +9,7 @@ import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
+import com.bangkit.rebinmobileapps.data.response.StoryItem
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
@@ -47,6 +48,19 @@ class UserRepository private constructor(
             //simpan sesi user setelah login
             saveSession(UserModel(response.data.token, email, password, true))
             emit(ResultState.Success(response))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+    fun getStoryInspiration(): LiveData<ResultState<List<StoryItem>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getStoryInspiration()
+            emit(ResultState.Success(response.listStoryInpiration))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)

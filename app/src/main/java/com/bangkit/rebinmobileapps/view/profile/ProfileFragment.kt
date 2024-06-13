@@ -15,7 +15,6 @@ import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.databinding.FragmentProfileBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
-import com.bangkit.rebinmobileapps.view.login.LoginActivity
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 import com.google.android.material.snackbar.Snackbar

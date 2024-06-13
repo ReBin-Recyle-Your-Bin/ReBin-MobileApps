@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.rebinmobileapps.data.UserRepository
 import com.bangkit.rebinmobileapps.di.Injection
 import com.bangkit.rebinmobileapps.view.login.LoginViewModel
+import com.bangkit.rebinmobileapps.view.main.HomeFragment
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.signup.SignupViewModel
 
@@ -41,11 +42,12 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
         }
 
         fun getInstance(context: Context): ViewModelFactory {
-            return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: ViewModelFactory(Injection.provideRepository(context)).also {
-                    INSTANCE = it
+            if (INSTANCE == null) {
+                synchronized(ViewModelFactory::class.java) {
+                    INSTANCE = ViewModelFactory(Injection.provideRepository(context))
                 }
             }
+            return INSTANCE as ViewModelFactory
         }
 
     }

@@ -7,6 +7,7 @@ import com.bangkit.rebinmobileapps.data.dataStore
 import com.bangkit.rebinmobileapps.data.UserRepository
 import com.bangkit.rebinmobileapps.data.local.room.TrashDetectionDatabase
 import com.bangkit.rebinmobileapps.data.repository.HistoryRepository
+import com.bangkit.rebinmobileapps.view.main.HomeFragment
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import java.util.concurrent.Executors
@@ -17,7 +18,7 @@ object Injection {
         val user = runBlocking {
             pref.getSession().first()
         }
-        val apiService = ApiConfig.getApiService(user.token)
+        val apiService = ApiConfig.getDataApiService(user.token)
         return UserRepository.getInstance(apiService, pref)
     }
 

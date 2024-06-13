@@ -25,35 +25,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_margin="8dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_story_inpiration_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 tools:text="@string/name" />
 
             <TextView
                 android:id="@+id/tv_story_inpiration_description"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:textColor="#768390"
                 android:textSize="12sp"
-                android:layout_marginTop="8dp"
                 tools:text="@tools:sample/lorem/random"/>
 
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp" />
 
     </LinearLayout>
 

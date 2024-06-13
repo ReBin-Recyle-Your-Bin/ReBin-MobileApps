@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +20,8 @@ import com.bangkit.rebinmobileapps.data.dataStore
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.databinding.ActivityDetectionBinding
 import com.bangkit.rebinmobileapps.getImageUri
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
+import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

@@ -1,12 +1,14 @@
 package com.bangkit.rebinmobileapps.data.api
 
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
+import com.bangkit.rebinmobileapps.data.model.StoryInpiration
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
+import com.bangkit.rebinmobileapps.data.response.StoryResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -37,7 +39,7 @@ interface ApiService {
 
 
     @GET("stories")
-    suspend fun  getStory() : StoryInpirationAdapter
+    suspend fun getStoryInspiration() : StoryResponse
 
     @GET("points")
     suspend fun getPoint(
