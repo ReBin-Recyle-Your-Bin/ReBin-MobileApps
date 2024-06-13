@@ -41,4 +41,5 @@
     <string name="home">Home</string>
     <string name="detection">Detection</string>
     <string name="result_detection">Result Detection</string>
+    <string name="skip">Skip</string>
 </resources>
