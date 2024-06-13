@@ -19,8 +19,8 @@
         android:padding="10dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="90dp"
-            android:layout_height="110dp"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
             android:id="@+id/iv_image"
             tools:src="@drawable/sample_detect"
             android:scaleType="centerCrop"
@@ -51,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="12sp"
@@ -61,10 +60,9 @@
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textSize="12sp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_regular"
