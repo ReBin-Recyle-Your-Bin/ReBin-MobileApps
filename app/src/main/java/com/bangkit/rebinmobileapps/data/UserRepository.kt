@@ -13,6 +13,7 @@ import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.ProfileItem
 import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
+import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.data.response.StoryItem
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -88,6 +89,21 @@ class UserRepository private constructor(
             emit(ResultState.Error(e.message ?: "Unknown error occured"))
         }
     }
+
+    fun getCraft(): LiveData<ResultState<List<SearchCraftItems>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getCraft()
+            emit(ResultState.Success(response.listItemCraft))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
 
     fun getProfile(): LiveData<ResultState<ProfileItem>> = liveData {
         emit(ResultState.Loading)

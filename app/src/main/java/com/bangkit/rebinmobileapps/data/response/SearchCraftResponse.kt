@@ -4,13 +4,14 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class SearchCraftResponse(
 
 	@field:SerializedName("listItems")
-	val listItems: List<ListItemsItem> = emptyList() ,
+	val listItemCraft: List<SearchCraftItems> ,
 
-	@field:SerializedName("totalPages")
-	val totalPages: Int,
+//	@field:SerializedName("totalPages")
+//	val totalPages: Int,
 
 	@field:SerializedName("error")
 	val error: Boolean,
@@ -18,27 +19,27 @@ data class SearchCraftResponse(
 	@field:SerializedName("message")
 	val message: String,
 
-	@field:SerializedName("currentPage")
-	val currentPage: Int
-)
+//	@field:SerializedName("currentPage")
+//	val currentPage: Int
+): Parcelable
 
 @Parcelize
-data class ListItemsItem(
+data class SearchCraftItems(
 
 	@field:SerializedName("photoUrl")
-	val photoUrl: String? = null,
+	val photoUrl: String,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("description")
-	val description: String? = null,
+	val description: String,
 
 	@field:SerializedName("ingredients")
-	val ingredients: String? = null,
+	val ingredients: String,
 
 	@field:SerializedName("className")
-	val className: String? = null,
+	val className: String,
 
 	@field:SerializedName("_id")
 	val id: String,
@@ -47,6 +48,6 @@ data class ListItemsItem(
 	val customID: String,
 
 	@field:SerializedName("steps")
-	val steps: String? = null
+	val steps: String
 ): Parcelable
 

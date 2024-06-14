@@ -8,6 +8,7 @@ import com.bangkit.rebinmobileapps.di.Injection
 import com.bangkit.rebinmobileapps.view.login.LoginViewModel
 import com.bangkit.rebinmobileapps.view.main.HomeFragment
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
+import com.bangkit.rebinmobileapps.view.search.SearchViewModel
 import com.bangkit.rebinmobileapps.view.signup.SignupViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -26,6 +27,10 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
 
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
+                SearchViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

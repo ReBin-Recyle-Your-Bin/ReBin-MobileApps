@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.data.model.Craft
+import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.databinding.ItemCraftBinding
+import com.bumptech.glide.Glide
 
-class SearchCraftAdapter : ListAdapter<Craft, SearchCraftAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class SearchCraftAdapter : ListAdapter<SearchCraftItems, SearchCraftAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemCraftBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,26 +21,29 @@ class SearchCraftAdapter : ListAdapter<Craft, SearchCraftAdapter.MyViewHolder>(D
         val craft = getItem(position)
         holder.bind(craft)
     }
-    class MyViewHolder(
+    inner class MyViewHolder(
         private val binding: ItemCraftBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(craft: Craft) {
-            binding.tvTitle.text = craft.title
+        fun bind(craft: SearchCraftItems) {
+            binding.tvTitle.text = craft.name
+            binding.tvClass.text = craft.className
             binding.tvDescription.text = craft.description
-            binding.ivImage.setImageResource(craft.imageResource)
+            Glide.with(itemView.context)
+                .load(craft.photoUrl)
+                .into(binding.ivImage)
 
         }
 
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Craft>() {
-            override fun areItemsTheSame(oldItem: Craft, newItem: Craft): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SearchCraftItems>() {
+            override fun areItemsTheSame(oldItem: SearchCraftItems, newItem: SearchCraftItems): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: Craft, newItem: Craft): Boolean {
+            override fun areContentsTheSame(oldItem: SearchCraftItems, newItem: SearchCraftItems): Boolean {
                 return oldItem == newItem
             }
 
