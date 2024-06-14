@@ -39,12 +39,9 @@ class HomeFragment : Fragment() {
     private lateinit var craftAdapter: CategoryCraftAdapter
     private lateinit var storyInpirationAdapter: StoryInpirationAdapter
     private val craftList = mutableListOf<CraftCategory>()
-    private val storyList = mutableListOf<StoryInpiration>()
 
     private lateinit var bannerViewPager: ViewPager2
     private lateinit var bannerAdapter: BannerAdapter
-
-    private lateinit var apiService: ApiService
 
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
@@ -97,7 +94,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inisialisasi adapter sebelum setupRecyclerView dipanggil
         storyInpirationAdapter = StoryInpirationAdapter()
         setupRecyclerView()
         populateCraftList()

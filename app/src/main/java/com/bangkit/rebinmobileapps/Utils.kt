@@ -7,7 +7,10 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
+import com.bangkit.rebinmobileapps.data.UserPreferences
+import com.bangkit.rebinmobileapps.data.dataStore
 import de.hdodenhof.circleimageview.BuildConfig
+import kotlinx.coroutines.flow.first
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -46,5 +49,16 @@ private fun getImageUriForPreQ(context: Context): Uri {
         "${BuildConfig.APPLICATION_ID}.fileprovider",
         imageFile
     )
+}
 
+private suspend fun getToken(context: Context): String {
+    val userPreferences = UserPreferences.getInstance(context.dataStore)
+    val user = userPreferences.getSession().first()
+    return  user.token
+}
+
+private suspend fun getUserId(context: Context): String {
+    val userPreferences = UserPreferences.getInstance(context.dataStore)
+    val user = userPreferences.getSession().first()
+    return user.userId
 }

@@ -3,6 +3,7 @@ package com.bangkit.rebinmobileapps.view.detection
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -11,11 +12,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.api.ApiConfig
+import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.Recommendation
 import com.bangkit.rebinmobileapps.databinding.ActivityResultDetectionBinding
 import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.bumptech.glide.Glide
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ResultDetectionActivity : AppCompatActivity() {
 
@@ -90,6 +96,30 @@ class ResultDetectionActivity : AppCompatActivity() {
 
         llRecommendations.addView(recomendationView)
 
+    }
+
+    private fun sendDetectionResultToHistory(detectionResult: DetectionResult?, userId: String, token: String){
+        val requestBody = mapOf(
+            "userId" to userId,
+            "accuracy" to (detectionResult?.accuracy ?: "0%"),
+            "label" to (detectionResult?.label ?: "Unknown")
+        )
+
+        val apiService = ApiConfig.getDetectionApiService(token)
+        val call = apiService.sendDetectionResulToHistory(requestBody)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    showToast("Detection result sent to history successfully")
+                } else {
+                    showToast("Failed to send detection result to history")
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                showToast("Error: ${t.message}")
+            }
+        })
     }
 
     private fun showToast(message: String) {

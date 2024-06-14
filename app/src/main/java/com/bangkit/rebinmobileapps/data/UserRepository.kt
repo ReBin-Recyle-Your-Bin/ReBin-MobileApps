@@ -75,7 +75,7 @@ class UserRepository private constructor(
         emit(ResultState.Loading)
         try {
             val userId = userPreferences.getSession().first().userId
-            val response = apiService.getHistoryDetection(userId)
+            val response = apiService.getHistoryDetection()
             emit(ResultState.Success(response.listHistoryDetection))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()

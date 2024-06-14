@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_history"
@@ -9,9 +9,7 @@
     android:layout_marginTop="5dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="5dp"
-    app:cardCornerRadius="5dp"
-    app:strokeWidth="2dp"
-    app:strokeColor="@color/dark_olive_green">
+    app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,7 +28,7 @@
             tools:src="@drawable/sample_detect" />
 
         <TextView
-            android:id="@+id/tv_label_history_detection"
+            android:id="@+id/tvLabelHistoryDetection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -41,20 +39,20 @@
             android:text="Gallon" />
 
         <TextView
-            android:id="@+id/tv_accuray_history_detection"
+            android:id="@+id/tvAccurayHistoryDetection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_label_history_detection"
-            app:layout_constraintStart_toStartOf="@id/tv_label_history_detection"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelHistoryDetection"
+            app:layout_constraintStart_toStartOf="@id/tvLabelHistoryDetection"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="100 %" />
 
         <TextView
-            android:id="@+id/tv_created_at_history_detection"
+            android:id="@+id/tvCreatedAtHistoryDetection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_accuray_history_detection"
-            app:layout_constraintStart_toStartOf="@id/tv_label_history_detection"
+            app:layout_constraintTop_toBottomOf="@id/tvAccurayHistoryDetection"
+            app:layout_constraintStart_toStartOf="@id/tvLabelHistoryDetection"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="2021-08-01 12:00:00" />
 
@@ -72,4 +70,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

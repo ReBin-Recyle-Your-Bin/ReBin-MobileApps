@@ -25,7 +25,6 @@ class SearchCraftAdapter : ListAdapter<Craft, SearchCraftAdapter.MyViewHolder>(D
 
         fun bind(craft: Craft) {
             binding.tvTitle.text = craft.title
-            binding.tvWriter.text = craft.writer
             binding.tvDescription.text = craft.description
             binding.ivImage.setImageResource(craft.imageResource)
 
