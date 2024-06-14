@@ -43,8 +43,8 @@ class ResultDetectionActivity : AppCompatActivity() {
         ivResultDetection = binding.ivResultDetection
 
 
-        val detectionResult: DetectionResult? = intent.getParcelableExtra("detectionResult")
-        val imageUriString: String? = intent.getStringExtra("imageUri")
+        val detectionResult: DetectionResult? = intent.getParcelableExtra(DETECTION_RESULT)
+        val imageUriString: String? = intent.getStringExtra(IMAGE_URI)
 
         detectionResult?.let {
             tvResultWashType.text = it.label ?: "Unknown"
@@ -94,5 +94,10 @@ class ResultDetectionActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        const val DETECTION_RESULT = "detectionResult"
+        const val IMAGE_URI = "imageUri"
     }
 }

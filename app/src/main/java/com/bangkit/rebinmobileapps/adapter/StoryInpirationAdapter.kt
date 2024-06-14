@@ -1,5 +1,6 @@
 package com.bangkit.rebinmobileapps.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.data.response.StoryItem
 import com.bangkit.rebinmobileapps.databinding.ItemStoryBinding
+import com.bangkit.rebinmobileapps.view.detail.DetailStoryActivity
 import com.bumptech.glide.Glide
 
 class StoryInpirationAdapter : ListAdapter<StoryItem, StoryInpirationAdapter.MyViewHolder>(DIFF_CALLBACK){
@@ -29,6 +31,12 @@ class StoryInpirationAdapter : ListAdapter<StoryItem, StoryInpirationAdapter.MyV
             Glide.with(itemView.context)
                 .load(story.photoUrl)
                 .into(binding.ivStoryInpiration)
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailStoryActivity::class.java)
+                intent.putExtra(DetailStoryActivity.DETAIL_STORY_INSPIRATION, story)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

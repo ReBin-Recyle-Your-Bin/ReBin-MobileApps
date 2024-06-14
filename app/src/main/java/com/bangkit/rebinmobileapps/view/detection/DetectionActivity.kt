@@ -171,8 +171,8 @@ class DetectionActivity : AppCompatActivity() {
                     detectionResult?.let {
                         // Tangani hasil deteksi di sini
                         val intent = Intent(this@DetectionActivity, ResultDetectionActivity::class.java)
-                        intent.putExtra("detectionResult", detectionResult)
-                        intent.putExtra("imageUri", uri.toString())
+                        intent.putExtra(ResultDetectionActivity.DETECTION_RESULT, detectionResult)
+                        intent.putExtra(ResultDetectionActivity.IMAGE_URI, uri.toString())
                         startActivity(intent)
                     }
                 } else {
