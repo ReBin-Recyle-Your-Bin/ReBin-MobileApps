@@ -58,9 +58,10 @@ class LoginActivity : AppCompatActivity() {
                         binding.progressBar.visibility = View.INVISIBLE
                         saveSession(
                             UserModel(
+                                user.data.data.userId,
                                 user.data.data.token,
                                 user.data.data.name,
-                                user.data.data.id,
+                                password,
                                 true
                             )
                         )
