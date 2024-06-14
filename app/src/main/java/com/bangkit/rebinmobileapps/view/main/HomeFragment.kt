@@ -113,7 +113,6 @@ class HomeFragment : Fragment() {
             adapter = craftAdapter
         }
 
-        storyInpirationAdapter = StoryInpirationAdapter()
         storyRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = storyInpirationAdapter

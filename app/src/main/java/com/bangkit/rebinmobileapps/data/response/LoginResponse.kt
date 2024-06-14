@@ -22,7 +22,7 @@ data class Data(
     val name: String,
 
     @field:SerializedName("id")
-    val id: String,
+    val userId: String,
 
     @field:SerializedName("email")
     val email: String,

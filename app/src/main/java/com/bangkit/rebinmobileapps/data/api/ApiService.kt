@@ -5,6 +5,7 @@ import com.bangkit.rebinmobileapps.data.model.StoryInpiration
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
+import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
@@ -17,6 +18,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -45,4 +47,9 @@ interface ApiService {
     suspend fun getPoint(
         @Field("id") id: String,
     ) :PointResponse
+
+    @GET("detect-waste/history")
+    suspend fun getHistoryDetection(
+        @Query("id") id: String
+    ) :HistoryDetectionResponse
 }

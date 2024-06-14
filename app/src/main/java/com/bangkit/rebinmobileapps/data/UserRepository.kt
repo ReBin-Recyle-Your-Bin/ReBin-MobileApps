@@ -7,11 +7,13 @@ import com.bangkit.rebinmobileapps.data.model.UserModel
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
+import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
 import com.bangkit.rebinmobileapps.data.response.StoryItem
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 
 class UserRepository private constructor(
@@ -46,7 +48,7 @@ class UserRepository private constructor(
             val request = LoginRequest(email, password)
             val response = apiService.login(request)
             //simpan sesi user setelah login
-            saveSession(UserModel(response.data.token, email, password, true))
+            saveSession(UserModel(response.data.userId,response.data.token, email, password, true))
             emit(ResultState.Success(response))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
@@ -61,6 +63,20 @@ class UserRepository private constructor(
         try {
             val response = apiService.getStoryInspiration()
             emit(ResultState.Success(response.listStoryInpiration))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+    fun getHistoryDetection(): LiveData<ResultState<List<HistoryDetectionItem>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val userId = userPreferences.getSession().first().userId
+            val response = apiService.getHistoryDetection(userId)
+            emit(ResultState.Success(response.listHistoryDetection))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)

@@ -9,20 +9,6 @@ class DetectionResultViewModel(
     private val detectionHistoryRepository: DetectionResultRepository
 
 ): ViewModel() {
-    fun getAll(): LiveData<List<DetectionResultEntity>> {
-        return detectionHistoryRepository.getAllDetectionResults()
-    }
 
-    fun insert(detectionResult: DetectionResultEntity) {
-        detectionHistoryRepository.insertDetectionResult(detectionResult)
-    }
-
-    fun delete(detectionResult: DetectionResultEntity) {
-        detectionHistoryRepository.deleteDetectionResult(detectionResult)
-    }
-
-    fun deleteAll() {
-        detectionHistoryRepository.deleteAllDetectionResults()
-    }
 
 }

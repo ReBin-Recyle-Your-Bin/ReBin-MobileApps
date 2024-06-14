@@ -26,6 +26,11 @@ class HistoryRepository(
     companion object {
         @Volatile
         private var instance: HistoryRepository? = null
+
+        fun clearInstance() {
+            instance = null
+        }
+
         fun getInstance(
             historyDao: HistoryDao,
             executorService: ExecutorService

@@ -15,6 +15,8 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
 
     fun getStoryInspiration() = repository.getStoryInspiration()
 
+    fun getHistoryDetection() = repository.getHistoryDetection()
+
 
     fun logout() {
         viewModelScope.launch {

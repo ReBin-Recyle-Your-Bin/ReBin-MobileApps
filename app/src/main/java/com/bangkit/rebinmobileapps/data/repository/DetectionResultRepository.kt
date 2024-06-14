@@ -1,36 +1,31 @@
 package com.bangkit.rebinmobileapps.data.repository
 
+import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.local.entity.DetectionResultEntity
 import com.bangkit.rebinmobileapps.data.local.room.DetectionResultDao
 import java.util.concurrent.ExecutorService
 
-class DetectionResultRepository(
-    private val detectionResultDao: DetectionResultDao,
-    private val executorService: ExecutorService
+class DetectionResultRepository private constructor(
+    private val apiService: ApiService
 ) {
 
-    fun insertDetectionResult(detectionResultEntity: DetectionResultEntity) {
-        executorService.execute { detectionResultDao.insertDetectionResult(detectionResultEntity) }
+    fun getAllHistoryUserId() {
+
     }
 
-    fun deleteDetectionResult(detectionResultEntity: DetectionResultEntity) {
-        executorService.execute { detectionResultDao.deleteDetectionResults(detectionResultEntity) }
-    }
-
-    fun deleteAllDetectionResults() {
-        executorService.execute { detectionResultDao.deleteAllDetectionResults() }
-    }
-
-    fun getAllDetectionResults() = detectionResultDao.getAllDetectionResults()
     companion object {
         @Volatile
         private var instance: DetectionResultRepository? = null
+
+        fun clearInstance() {
+            instance = null
+        }
+
         fun getInstance(
-            detectionResultDao: DetectionResultDao,
-            executorService: ExecutorService
+            apiService: ApiService
         ): DetectionResultRepository =
             instance ?: synchronized(this) {
-                instance ?: DetectionResultRepository(detectionResultDao, executorService)
+                instance ?: DetectionResultRepository(apiService)
             }.also { instance = it }
     }
 }
