@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class PointResponse(
+data class HistoryDetectionResponse(
     @SerializedName("error")
     val error: Boolean,
 
@@ -13,26 +13,23 @@ data class PointResponse(
     val message: String,
 
     @SerializedName("data")
-    val listPoint: List<PointItem>
-): Parcelable
+    val listHistoryDetection: List<HistoryDetectionItem>
+):Parcelable
 
 @Parcelize
-data class PointItem(
+data class HistoryDetectionItem(
     @SerializedName("id")
     val id: String,
 
     @SerializedName("userId")
     val userId: String,
 
-    @SerializedName("description")
-    val description: String,
+    @SerializedName("label")
+    val label: String,
 
-    @SerializedName("point")
-    val point: String,
+    @SerializedName("accuracy")
+    val accuracy: String,
 
     @SerializedName("date")
     val date: String,
-
-    @SerializedName("status")
-    val status: String
-): Parcelable
+):Parcelable
