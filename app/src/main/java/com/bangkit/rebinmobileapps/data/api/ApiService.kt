@@ -9,6 +9,7 @@ import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
+import com.bangkit.rebinmobileapps.data.response.SearchCraftResponse
 import com.bangkit.rebinmobileapps.data.response.StoryResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -31,6 +32,13 @@ interface ApiService {
     suspend fun register(
         @Body request: RegisterRequest
     ): RegisterResponse
+
+    @GET("crafts")
+    suspend fun getCraft(
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 10
+    ): SearchCraftResponse
+
 
     @Multipart
     @POST("predict")

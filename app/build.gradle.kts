@@ -54,9 +54,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Material design
-    //implementation("com.google.android.material:material:1.3.0-alpha03")
-
     // Circle Image View
     implementation (libs.circleimageview)
 
@@ -74,11 +71,16 @@ dependencies {
 
     //Ucrop
     implementation(libs.ucrop)
+
     // Slide Image
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.fragment.ktx)
 
+    //glide
     implementation(libs.glide)
+
+    //paging
+    implementation(libs.androidx.paging.runtime.ktx)
 
     //room
     implementation(libs.androidx.room.runtime)
