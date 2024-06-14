@@ -2,6 +2,7 @@ package com.bangkit.rebinmobileapps.view.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -9,16 +10,20 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.databinding.FragmentProfileBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class ProfileFragment : Fragment() {
 
@@ -56,6 +61,8 @@ class ProfileFragment : Fragment() {
                 else -> false
             }
         }
+
+        setupAction()
     }
 
     private fun performLogout() {
@@ -68,8 +75,27 @@ class ProfileFragment : Fragment() {
         }
     }
 
-
-
+    private fun setupAction() {
+        lifecycleScope.launch {
+            viewModel.getProfile().observe(viewLifecycleOwner, Observer { resultState ->
+                when (resultState) {
+                    is ResultState.Loading -> {
+                        // Show loading indicator
+                    }
+                    is ResultState.Success -> {
+                        val profile = resultState.data// Mengakses elemen pertama dari list
+                        binding.nameEditText.setText(profile.name)
+                        binding.emailEdittext.setText(profile.email)
+                    }
+                    is ResultState.Error -> {
+                        val errorMessage = resultState.error
+                        Toast.makeText(requireContext(), resultState.error, Toast.LENGTH_SHORT).show()
+                        Log.e("ProfileFragment", errorMessage)
+                    }
+                }
+            })
+        }
+    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_profile, menu)
         super.onCreateOptionsMenu(menu, inflater)

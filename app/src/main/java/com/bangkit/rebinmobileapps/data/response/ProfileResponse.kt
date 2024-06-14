@@ -13,19 +13,20 @@ data class ProfileResponse(
     val message: String,
 
     @SerializedName("profile")
-    val profileList: ProfileItem
+    val profileList: List<ProfileItem>
 ):Parcelable
 
 @Parcelize
 data class ProfileItem(
-    @SerializedName("id")
-    val id: String,
 
     @SerializedName("name")
     val name: String,
 
     @SerializedName("email")
     val email: String,
+
+    @SerializedName("id")
+    val id: String,
 
 //    @SerializedName("phone")
 //    val phone: String,

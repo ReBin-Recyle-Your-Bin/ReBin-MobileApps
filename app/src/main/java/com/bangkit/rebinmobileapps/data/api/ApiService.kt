@@ -8,6 +8,7 @@ import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
+import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
 import com.bangkit.rebinmobileapps.data.response.SearchCraftResponse
 import com.bangkit.rebinmobileapps.data.response.StoryResponse
@@ -55,6 +56,11 @@ interface ApiService {
     suspend fun getPoint(
         @Field("id") id: String,
     ) :PointResponse
+
+    @GET("user/profile")
+    suspend fun getProfile(
+        @Query("_id") id: String,
+    ) :ProfileResponse
 
     @GET("detect-waste/history")
     suspend fun getHistoryDetection(
