@@ -1,5 +1,6 @@
 package com.bangkit.rebinmobileapps.data
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.rebinmobileapps.data.api.ApiService
@@ -48,7 +49,7 @@ class UserRepository private constructor(
             val request = LoginRequest(email, password)
             val response = apiService.login(request)
             //simpan sesi user setelah login
-            saveSession(UserModel(response.data.userId,response.data.token,  true))
+            saveSession(UserModel(response.data.userId,response.data.token,response.data.name,true))
             emit(ResultState.Success(response))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
@@ -75,7 +76,7 @@ class UserRepository private constructor(
         emit(ResultState.Loading)
         try {
             val userId = userPreferences.getSession().first().userId
-            val response = apiService.getHistoryDetection()
+            val response = apiService.getHistoryDetection(userId)
             emit(ResultState.Success(response.listHistoryDetection))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
@@ -84,6 +85,17 @@ class UserRepository private constructor(
         } catch (e: Exception) {
             emit(ResultState.Error(e.message ?: "Unknown error occured"))
         }
+    }
+    private suspend fun getToken(context: Context): String? {
+        val userPreferences = UserPreferences.getInstance(context.dataStore)
+        val user = userPreferences.getSession().first()
+        return user.token
+    }
+
+    private suspend fun getUserId(context: Context): String? {
+        val userPreferences = UserPreferences.getInstance(context.dataStore)
+        val user = userPreferences.getSession().first()
+        return user.userId
     }
 
     suspend fun saveSession(user: UserModel) {

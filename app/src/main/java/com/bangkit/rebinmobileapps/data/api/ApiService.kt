@@ -58,7 +58,7 @@ interface ApiService {
 
     @GET("detect-waste/history")
     suspend fun getHistoryDetection(
-        @Query("userId") id: String = "66659c7d4e8f8e889389d362",
+        @Query("userId") id: String,
     ) :HistoryDetectionResponse
 
 
