@@ -96,6 +96,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Inisialisasi adapter sebelum setupRecyclerView dipanggil
+        storyInpirationAdapter = StoryInpirationAdapter()
         setupRecyclerView()
         populateCraftList()
         setupAction()

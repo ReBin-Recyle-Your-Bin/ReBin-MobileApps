@@ -48,7 +48,7 @@ class UserRepository private constructor(
             val request = LoginRequest(email, password)
             val response = apiService.login(request)
             //simpan sesi user setelah login
-            saveSession(UserModel(response.data.userId,response.data.token, email, password, true))
+            saveSession(UserModel(response.data.userId,response.data.token,  true))
             emit(ResultState.Success(response))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()

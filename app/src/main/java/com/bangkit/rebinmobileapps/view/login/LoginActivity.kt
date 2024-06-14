@@ -60,8 +60,6 @@ class LoginActivity : AppCompatActivity() {
                             UserModel(
                                 user.data.data.userId,
                                 user.data.data.token,
-                                user.data.data.email,
-                                password,
                                 true
                             )
                         )
