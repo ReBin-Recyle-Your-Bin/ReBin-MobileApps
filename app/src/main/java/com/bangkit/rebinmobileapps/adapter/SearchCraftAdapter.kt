@@ -1,5 +1,6 @@
 package com.bangkit.rebinmobileapps.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.databinding.ItemCraftBinding
+import com.bangkit.rebinmobileapps.view.detail.DetailCraftActivity
 import com.bumptech.glide.Glide
 
 class SearchCraftAdapter : ListAdapter<SearchCraftItems, SearchCraftAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -32,6 +34,11 @@ class SearchCraftAdapter : ListAdapter<SearchCraftItems, SearchCraftAdapter.MyVi
                 .load(craft.photoUrl)
                 .into(binding.ivImage)
 
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailCraftActivity::class.java)
+                intent.putExtra(DetailCraftActivity.DETAIL_CRAFT, craft)
+                itemView.context.startActivity(intent)
+            }
         }
 
     }

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow"
         app:showAsAction="ifRoom"
-        app:title="Detail Story Inpiration"
+        app:title="Detail Craft"
         app:titleTextColor="@color/black" />
 
 
@@ -38,7 +38,7 @@
 
 
         <TextView
-            android:id="@+id/tv_detail_title"
+            android:id="@+id/tv_title_detail_craft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -53,14 +53,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_detail_writer"
+            android:id="@+id/tv_label_detail_craft"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_detail_craft"
             tools:text="@tools:sample/full_names"
             />
 
@@ -72,7 +72,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_writer"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_detail_craft"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_detail_description"
+            android:id="@+id/tv_description_detail_craft"
             android:layout_marginTop="12dp"
             android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"

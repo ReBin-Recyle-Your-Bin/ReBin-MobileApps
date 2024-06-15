@@ -1,11 +1,8 @@
 package com.bangkit.rebinmobileapps.view.detail
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.databinding.ActivityDetailCraftBinding
 
 class DetailCraftActivity : AppCompatActivity() {
@@ -17,8 +14,21 @@ class DetailCraftActivity : AppCompatActivity() {
         binding = ActivityDetailCraftBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val detailCraft = intent.getParcelableExtra<SearchCraftItems>(DETAIL_CRAFT) as SearchCraftItems
+        setupAction(detailCraft)
+
         binding.tblDetailCraft.setNavigationOnClickListener {
             onBackPressed()
         }
+    }
+
+    private fun setupAction(detailCraft: SearchCraftItems){
+        binding.tvTitleDetailCraft.text = detailCraft.name
+        binding.tvLabelDetailCraft.text = detailCraft.className
+        binding.tvDescriptionDetailCraft.text = detailCraft.description
+    }
+
+    companion object {
+        const val DETAIL_CRAFT = "detail_craft"
     }
 }
