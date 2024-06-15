@@ -2,7 +2,7 @@ package com.bangkit.rebinmobileapps.data.api
 
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
-import com.bangkit.rebinmobileapps.data.response.CraftsResponse
+import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
@@ -11,6 +11,7 @@ import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
 import com.bangkit.rebinmobileapps.data.response.SearchCraftResponse
 import com.bangkit.rebinmobileapps.data.response.StoryResponse
+import com.bangkit.rebinmobileapps.data.response.UpdateProfileResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -18,6 +19,7 @@ import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Query
 
@@ -64,6 +66,11 @@ interface ApiService {
     suspend fun getProfile(
         @Query("_id") id: String,
     ) :ProfileResponse
+
+    @PUT("user/profile")
+    suspend fun updateProfile(
+        @Body request: UpdateProfileRequest
+    ) : UpdateProfileResponse
 
     @GET("detect-waste/history")
     suspend fun getHistoryDetection(
