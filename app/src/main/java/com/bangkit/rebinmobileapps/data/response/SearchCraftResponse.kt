@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 data class SearchCraftResponse(
 
 	@field:SerializedName("listItems")
-	val listSearchCraft: List<SearchCraftItems>,
+	val listItemCraft: List<SearchCraftItems>,
 
 	@field:SerializedName("error")
 	val error: Boolean,
