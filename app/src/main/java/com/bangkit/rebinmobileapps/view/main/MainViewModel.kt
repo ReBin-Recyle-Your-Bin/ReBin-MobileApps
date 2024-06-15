@@ -20,6 +20,12 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
 
     fun getProfile() = repository.getProfile()
 
+    fun updateProfile(
+        newName: String,
+        email: String,
+        newPassword: String
+    ) = repository.updateProfile(newName, email, newPassword)
+
     fun getCraftByCategory(category: String) = repository.getCraftByCategory(category)
 
     fun logout() {

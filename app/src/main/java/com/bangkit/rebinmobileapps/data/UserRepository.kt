@@ -7,6 +7,7 @@ import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.model.UserModel
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
+import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
@@ -15,6 +16,7 @@ import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
 import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.data.response.StoryItem
+import com.bangkit.rebinmobileapps.data.response.UpdateProfileResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -125,6 +127,25 @@ class UserRepository private constructor(
             val userId = userPreferences.getSession().first().userId
             val response = apiService.getProfile(userId)
             emit(ResultState.Success(response.profileList.first()))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
+    fun updateProfile(
+        newName: String,
+        email: String,
+        newPassword: String
+    ): LiveData<ResultState<UpdateProfileResponse>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val request = UpdateProfileRequest(newName, email, newPassword)
+            val response = apiService.updateProfile(request)
+            emit(ResultState.Success(response))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)
