@@ -59,7 +59,7 @@ interface ApiService {
 
     @GET("points")
     suspend fun getPoint(
-        @Field("id") id: String,
+        @Query("userId") userId: String,
     ) :PointResponse
 
     @GET("user/profile")

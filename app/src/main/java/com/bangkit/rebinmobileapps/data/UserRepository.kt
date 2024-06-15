@@ -11,6 +11,8 @@ import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
+import com.bangkit.rebinmobileapps.data.response.PointItem
+import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.ProfileItem
 import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
@@ -97,6 +99,21 @@ class UserRepository private constructor(
         try {
             val response = apiService.getCraftByCategory(category)
             emit(ResultState.Success(response.listItemCraft))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
+    fun getPointHistory(): LiveData<ResultState<List<PointItem>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val userId = userPreferences.getSession().first().userId
+            val response = apiService.getPoint(userId)
+            emit(ResultState.Success(response.listPoint))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)

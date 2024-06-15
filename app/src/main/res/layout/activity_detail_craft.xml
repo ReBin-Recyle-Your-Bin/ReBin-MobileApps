@@ -91,6 +91,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_detail_craft"
+            android:gravity="start"
             android:text="Deskripsi">
 
         </TextView>
@@ -109,6 +110,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_description_detail_craft"
                 android:textAlignment="textStart"
                 android:text="Bahan-bahan"
+                android:gravity="start"
                 />
 
             <TextView
@@ -123,6 +125,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_lbl_ingredient_detail_craft"
                 android:text="Daftar bahan"
+                android:gravity="start"
                 />
 
             <TextView
@@ -138,6 +141,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_ingredient_detail_craft"
                 android:text="Langkah-langkah"
+                android:gravity="start"
                 />
 
             <TextView
@@ -152,6 +156,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_lbl_step_detail_craft"
                 android:text="Daftar Langkah-langkah"
+                android:gravity="start"
                 />
 
 

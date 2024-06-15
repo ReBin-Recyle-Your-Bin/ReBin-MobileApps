@@ -13,9 +13,8 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
-
+    fun getPointHistory() = repository.getPointHistory()
     fun getStoryInspiration() = repository.getStoryInspiration()
-
     fun getHistoryDetection() = repository.getHistoryDetection()
 
     fun getProfile() = repository.getProfile()

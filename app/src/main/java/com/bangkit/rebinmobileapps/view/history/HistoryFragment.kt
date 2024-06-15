@@ -37,8 +37,6 @@ class HistoryFragment : Fragment() {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        historyDetectionRecyclerView = binding.rvHistoryDetection
-
         return view
     }
 
@@ -50,7 +48,8 @@ class HistoryFragment : Fragment() {
 
     private fun setupRecyclerView() {
         historyDetectionResultAdapter = HistoryDetectionResultAdapter()
-        binding.rvHistoryDetection.apply {
+        historyDetectionRecyclerView = binding.rvHistoryDetection
+        historyDetectionRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = historyDetectionResultAdapter
         }
@@ -62,6 +61,8 @@ class HistoryFragment : Fragment() {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     historyDetectionResultAdapter.submitList(historyDetection.data)
+                    binding.rvHistoryDetection.adapter = historyDetectionResultAdapter
+
                     historyDetection.data.forEach { Log.d("HistoryFragment", "Data: $it") }
                 }
                 is ResultState.Error -> {
