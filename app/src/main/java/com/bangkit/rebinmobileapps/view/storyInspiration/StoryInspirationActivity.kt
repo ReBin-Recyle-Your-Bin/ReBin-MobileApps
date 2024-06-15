@@ -31,6 +31,10 @@ class StoryInspirationActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupRecyclerView()
         setupAction()
+
+        binding.tblStoryInspiration.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun setupRecyclerView() {
