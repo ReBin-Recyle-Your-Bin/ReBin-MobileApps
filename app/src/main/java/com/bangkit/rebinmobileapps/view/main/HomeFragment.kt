@@ -40,9 +40,6 @@ class HomeFragment : Fragment() {
     private lateinit var storyInpirationAdapter: StoryInpirationAdapter
     private val craftList = mutableListOf<CraftCategory>()
 
-    private lateinit var bannerViewPager: ViewPager2
-    private lateinit var bannerAdapter: BannerAdapter
-
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
@@ -58,29 +55,6 @@ class HomeFragment : Fragment() {
 
         craftRecyclerView = binding.rvVariousCrafts
         storyRecyclerView = binding.rvStoryInspiration
-        bannerViewPager = binding.vpBanner
-
-        val bannerImages = listOf(
-            R.drawable.sample_banner_1,
-            R.drawable.sample_banner_2,
-            R.drawable.sample_banner_3
-        )
-        bannerAdapter = BannerAdapter(bannerImages)
-        bannerViewPager.adapter = bannerAdapter
-
-        // Auto-scroll functionality
-        val handler = Handler()
-        val update = Runnable {
-            var currentPage = bannerViewPager.currentItem
-            currentPage = if (currentPage == bannerImages.size - 1) 0 else currentPage + 1
-            bannerViewPager.setCurrentItem(currentPage, true)
-        }
-        val timer = Timer()
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                handler.post(update)
-            }
-        }, 5000, 5000)
 
         val btnHistoryPoint = binding.pointHistoryButton
 
