@@ -21,7 +21,7 @@ data class CraftItem(
     @SerializedName("_id")
     val id: String,
 
-    @SerializedName("id")
+    @SerializedName("customID")
     val itemId: String,
 
     @SerializedName("name")
