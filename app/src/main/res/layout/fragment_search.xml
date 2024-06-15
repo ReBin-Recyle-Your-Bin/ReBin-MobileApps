@@ -17,24 +17,15 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tlb_search"
+                android:id="@+id/tbl_search"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/white"
-                app:contentInsetStart="16dp"
-                app:contentInsetEnd="16dp"
-                tools:ignore="MissingConstraints">
-
-                <ImageView
-                    android:id="@+id/historyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/toolbar_rebin"
-                    android:src="@drawable/logo_rebin_land"
-                    />
-
-            </androidx.appcompat.widget.Toolbar>
+                tools:ignore="MissingConstraints"
+                app:showAsAction="ifRoom"
+                app:title="History Detection"
+                android:background="@color/dark_olive_green"
+                android:backgroundTint="@color/dark_olive_green"
+                app:titleTextColor="@color/white" />
 
             <SearchView
                 android:layout_width="match_parent"
@@ -47,7 +38,7 @@
                 android:iconifiedByDefault="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tlb_search"
+                app:layout_constraintTop_toBottomOf="@id/tbl_search"
                 android:queryHint="@string/searchbar_hint"
                 />
 

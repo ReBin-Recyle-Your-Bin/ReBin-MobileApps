@@ -17,7 +17,8 @@
         app:navigationIcon="@drawable/ic_arrow"
         app:showAsAction="ifRoom"
         app:title="History Point"
-        app:titleTextColor="@color/black"  />
+        android:background="@color/dark_olive_green"
+        app:titleTextColor="@color/white"  />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history_point"

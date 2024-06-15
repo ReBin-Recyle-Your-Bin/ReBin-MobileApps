@@ -28,6 +28,7 @@
         android:id="@+id/rvHistoryDetection"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        tools:listitem="@layout/item_history"
         app:layout_constraintTop_toBottomOf="@id/btn_clear_all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
