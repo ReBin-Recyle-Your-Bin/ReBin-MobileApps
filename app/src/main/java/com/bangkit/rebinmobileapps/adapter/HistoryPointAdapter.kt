@@ -9,7 +9,8 @@ import com.bangkit.rebinmobileapps.databinding.ItemPointHistoryBinding
 
 class HistoryPointAdapter(private val context: Context, private val listPoint: List<PointHistory>) :
     RecyclerView.Adapter<HistoryPointAdapter.ViewHolder>() {
-
+class HistoryDetectionAdapter {
+}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemPointHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)

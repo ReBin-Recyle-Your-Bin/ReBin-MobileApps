@@ -10,28 +10,28 @@ import com.bangkit.rebinmobileapps.databinding.ItemHistoryBinding
 import com.bangkit.rebinmobileapps.util.DateFormat
 import android.util.Log
 
-class HistoryDetectionResultAdapter : ListAdapter<HistoryDetectionItem, HistoryDetectionResultAdapter.HistoryViewHolder>(DIFF_CALLBACK) {
+class HistoryDetectionResultAdapter : ListAdapter<HistoryDetectionItem, HistoryDetectionResultAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HistoryViewHolder(binding)
+        return MyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val history = getItem(position)
         holder.bind(history)
     }
 
-    inner class HistoryViewHolder(
+    inner class MyViewHolder(
         private val binding: ItemHistoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(history: HistoryDetectionItem) {
             binding.tvLabelHistoryDetection.text = history.label
             binding.tvAccurayHistoryDetection.text = history.accuracy.toString()
-            binding.tvCreatedAtHistoryDetection.text = DateFormat.getRelativeTime(history.date)
+//            binding.tvCreatedAtHistoryDetection.text = DateFormat.getRelativeTime(history.date)
 
-            Log.d("HistoryViewHolder", "Bind data: $history")
+            Log.d("MyViewHolder", "Bind data: $history")
         }
     }
 
