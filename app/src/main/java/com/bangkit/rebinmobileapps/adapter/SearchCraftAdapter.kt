@@ -20,6 +20,8 @@ class SearchCraftAdapter : ListAdapter<SearchCraftItems, SearchCraftAdapter.MyVi
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val craft = getItem(position)
+        // Log untuk memastikan data diterima
+        //Log.d("SearchCraftAdapter", "onBindViewHolder: $craft")
         holder.bind(craft)
     }
     inner class MyViewHolder(
@@ -27,6 +29,8 @@ class SearchCraftAdapter : ListAdapter<SearchCraftItems, SearchCraftAdapter.MyVi
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(craft: SearchCraftItems) {
+            // Log untuk memastikan data binding dilakukan
+            //Log.d("SearchCraftAdapter", "bind: $craft")
             binding.tvTitle.text = craft.name
             binding.tvClass.text = craft.className
             binding.tvDescription.text = craft.description

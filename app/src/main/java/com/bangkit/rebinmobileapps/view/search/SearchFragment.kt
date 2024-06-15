@@ -1,6 +1,5 @@
 package com.bangkit.rebinmobileapps.view.search
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -84,8 +83,10 @@ class SearchFragment : Fragment() {
                 when (craft) {
                     is ResultState.Success -> {
                         binding.progressBar.visibility = View.INVISIBLE
-                        val limitedData = craft.data.take(15)
-                        searchCraftAdapter.submitList(limitedData)
+                        val allData = craft.data
+                        // log melihat data
+                        //Log.d("SearchFragment", "Data: $allData")
+                        searchCraftAdapter.submitList(allData)
                     }
                     is ResultState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
