@@ -20,11 +20,11 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
 
     fun getProfile() = repository.getProfile()
 
+    fun getCraftByCategory(category: String) = repository.getCraftByCategory(category)
+
     fun logout() {
         viewModelScope.launch {
             repository.logout()
         }
     }
-
-
 }

@@ -150,15 +150,15 @@ class HomeFragment : Fragment() {
 
     private fun populateCraftList() {
         craftList.add(CraftCategory(R.drawable.craft_01, "Galon"))
-        craftList.add(CraftCategory(R.drawable.craft_02, "Botol Plastik"))
-        craftList.add(CraftCategory(R.drawable.craft_03, "Kardus"))
-        craftList.add(CraftCategory(R.drawable.craft_04, "Galon"))
-        craftList.add(CraftCategory(R.drawable.craft_05, "Botol Plastik"))
-        craftList.add(CraftCategory(R.drawable.craft_06, "Kardus"))
-        craftList.add(CraftCategory(R.drawable.craft_07, "Galon"))
-        craftList.add(CraftCategory(R.drawable.craft_08, "Botol Plastik"))
-        craftList.add(CraftCategory(R.drawable.craft_09, "Kardus"))
-        craftList.add(CraftCategory(R.drawable.craft_10, "Kardus"))
+        craftList.add(CraftCategory(R.drawable.craft_02, "Cup-Gelas"))
+        craftList.add(CraftCategory(R.drawable.craft_03, "Botol-Plastik"))
+        craftList.add(CraftCategory(R.drawable.craft_04, "Bungkus-Plastik"))
+        craftList.add(CraftCategory(R.drawable.craft_05, "Ban"))
+        craftList.add(CraftCategory(R.drawable.craft_06, "Kaleng"))
+        craftList.add(CraftCategory(R.drawable.craft_07, "Kaca"))
+        craftList.add(CraftCategory(R.drawable.craft_08, "Kardus"))
+        craftList.add(CraftCategory(R.drawable.craft_09, "Kertas"))
+        craftList.add(CraftCategory(R.drawable.craft_10, "Sampah-Organik"))
 
         craftAdapter.notifyDataSetChanged()
     }

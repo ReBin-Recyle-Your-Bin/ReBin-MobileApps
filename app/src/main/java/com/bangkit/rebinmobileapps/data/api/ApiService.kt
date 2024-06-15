@@ -39,7 +39,7 @@ interface ApiService {
     @GET("craft")
     suspend fun getCraftByCategory(
         @Query("className") category: String
-    ): CraftsResponse
+    ): SearchCraftResponse
 
     @Multipart
     @POST("predict")

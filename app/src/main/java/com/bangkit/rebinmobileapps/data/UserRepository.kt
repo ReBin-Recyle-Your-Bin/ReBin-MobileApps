@@ -90,6 +90,20 @@ class UserRepository private constructor(
         }
     }
 
+    fun getCraftByCategory(category: String): LiveData<ResultState<List<SearchCraftItems>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getCraftByCategory(category)
+            emit(ResultState.Success(response.listItemCraft))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
     fun getCraft(): LiveData<ResultState<List<SearchCraftItems>>> = liveData {
         emit(ResultState.Loading)
         try {
@@ -118,17 +132,6 @@ class UserRepository private constructor(
         } catch (e: Exception) {
             emit(ResultState.Error(e.message ?: "Unknown error occured"))
         }
-    }
-    private suspend fun getToken(context: Context): String? {
-        val userPreferences = UserPreferences.getInstance(context.dataStore)
-        val user = userPreferences.getSession().first()
-        return user.token
-    }
-
-    private suspend fun getUserId(context: Context): String? {
-        val userPreferences = UserPreferences.getInstance(context.dataStore)
-        val user = userPreferences.getSession().first()
-        return user.userId
     }
 
     suspend fun saveSession(user: UserModel) {
