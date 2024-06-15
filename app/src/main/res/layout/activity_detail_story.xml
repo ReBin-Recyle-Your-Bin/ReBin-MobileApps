@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow"
         app:showAsAction="ifRoom"
-        app:title="Detail Story Inpiration"
+        app:title="Detail Story Inspiration"
         app:titleTextColor="@color/black" />
 
 

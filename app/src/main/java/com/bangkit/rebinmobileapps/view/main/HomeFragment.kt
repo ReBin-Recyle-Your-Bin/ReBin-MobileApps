@@ -24,6 +24,7 @@ import com.bangkit.rebinmobileapps.databinding.FragmentHomeBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
 import com.bangkit.rebinmobileapps.view.search.CraftByCategoryActivity
+import com.bangkit.rebinmobileapps.view.storyInspiration.StoryInspirationActivity
 import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
@@ -85,6 +86,9 @@ class HomeFragment : Fragment() {
 
         btnHistoryPoint.setOnClickListener {
             startActivity(Intent(activity, PointHistoryActivity::class.java))
+        }
+        binding.tvSeeAllStoryInspiration.setOnClickListener {
+            startActivity(Intent(activity, StoryInspirationActivity::class.java))
         }
 
         return view
