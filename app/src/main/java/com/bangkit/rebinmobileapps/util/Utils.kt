@@ -1,4 +1,4 @@
-package com.bangkit.rebinmobileapps
+package com.bangkit.rebinmobileapps.util
 
 import android.content.ContentValues
 import android.content.Context

@@ -28,6 +28,10 @@ class CraftByCategoryActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupAction(){
+
+    }
+
     companion object{
         const val CRAFT_CATEGORY = "craft_category"
     }
