@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.databinding.ActivityDetailCraftBinding
+import com.bumptech.glide.Glide
 
 class DetailCraftActivity : AppCompatActivity() {
 
@@ -26,6 +27,12 @@ class DetailCraftActivity : AppCompatActivity() {
         binding.tvTitleDetailCraft.text = detailCraft.name
         binding.tvLabelDetailCraft.text = detailCraft.className
         binding.tvDescriptionDetailCraft.text = detailCraft.description
+        binding.tvIngredientDetailCraft.text = detailCraft.ingredients
+        binding.tvStepDetailCraft.text = detailCraft.steps
+
+        Glide.with(applicationContext)
+            .load(detailCraft.photoUrl)
+            .into(binding.ivDetailCraft)
     }
 
     companion object {

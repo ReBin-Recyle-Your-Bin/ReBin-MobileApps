@@ -91,8 +91,71 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_detail_craft"
-            tools:text="@tools:sample/lorem/random"
-            />
+            android:text="Deskripsi">
+
+        </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_lbl_ingredient_detail_craft"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:transitionName="description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_description_detail_craft"
+                android:textAlignment="textStart"
+                android:text="Bahan-bahan"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_ingredient_detail_craft"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:transitionName="description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_lbl_ingredient_detail_craft"
+                android:text="Daftar bahan"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_lbl_step_detail_craft"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:layout_marginTop="12dp"
+                android:transitionName="description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_ingredient_detail_craft"
+                android:text="Langkah-langkah"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_step_detail_craft"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:transitionName="description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_lbl_step_detail_craft"
+                android:text="Daftar Langkah-langkah"
+                />
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
