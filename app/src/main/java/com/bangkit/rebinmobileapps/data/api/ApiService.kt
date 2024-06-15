@@ -34,7 +34,7 @@ interface ApiService {
     ): RegisterResponse
 
     @GET("craft/all")
-    suspend fun getCraft(): CraftsResponse
+    suspend fun getCraft(): SearchCraftResponse
 
     @GET("craft")
     suspend fun getCraftByCategory(
@@ -48,9 +48,12 @@ interface ApiService {
 //        @Header("Authorization") token: String
     ): Call<DetectionResult>
 
-
-    @GET("stories")
+    @GET("story/all")
     suspend fun getStoryInspiration() : StoryResponse
+
+    @GET("story/all")
+    suspend fun getStory(): StoryResponse
+
 
     @GET("points")
     suspend fun getPoint(
