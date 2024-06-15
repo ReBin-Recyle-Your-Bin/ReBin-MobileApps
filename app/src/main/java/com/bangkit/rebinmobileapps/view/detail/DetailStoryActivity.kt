@@ -22,8 +22,9 @@ class DetailStoryActivity : AppCompatActivity() {
         val detailStory = intent.getParcelableExtra<StoryItem>(DETAIL_STORY_INSPIRATION) as StoryItem
         setupAction(detailStory)
 
-        supportActionBar?.show()
-        supportActionBar?.title = "Detail Story"
+        binding.tblDetailStoryInspiration.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
     }
 

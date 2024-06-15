@@ -6,16 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.databinding.ActivityDetailCraftBinding
 
 class DetailCraftActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailCraftBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail_craft)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityDetailCraftBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.tblDetailCraft.setNavigationOnClickListener {
+            onBackPressed()
         }
     }
 }
