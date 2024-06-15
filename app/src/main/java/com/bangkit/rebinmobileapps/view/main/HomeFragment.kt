@@ -19,12 +19,11 @@ import com.bangkit.rebinmobileapps.adapter.BannerAdapter
 import com.bangkit.rebinmobileapps.adapter.CategoryCraftAdapter
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
-import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.model.CraftCategory
-import com.bangkit.rebinmobileapps.data.model.StoryInpiration
 import com.bangkit.rebinmobileapps.databinding.FragmentHomeBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
+import com.bangkit.rebinmobileapps.view.search.CraftByCategoryActivity
 import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
@@ -106,7 +105,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        craftAdapter = CategoryCraftAdapter(requireContext(), craftList)
+        craftAdapter = CategoryCraftAdapter(requireContext(), craftList, this)
         craftRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = craftAdapter
@@ -116,6 +115,12 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = storyInpirationAdapter
         }
+    }
+
+    fun onItemClick(category: CraftCategory) {
+        val intent = Intent(requireContext(), CraftByCategoryActivity::class.java)
+        intent.putExtra(CraftByCategoryActivity.CRAFT_CATEGORY, category.title)
+        startActivity(intent)
     }
 
     private fun setupAction() {

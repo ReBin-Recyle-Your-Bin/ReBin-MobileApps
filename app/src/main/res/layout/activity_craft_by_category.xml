@@ -5,6 +5,26 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.search.CraftByCategoryActivity">
+    android:fillViewport="true"
+    tools:context=".view.detail.DetailStoryActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tblCraftByCategory"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow"
+        app:showAsAction="ifRoom"
+        app:titleTextColor="@color/black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvDetailStoryInspiration"
+        app:layout_constraintTop_toBottomOf="@+id/tblCraftByCategory"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

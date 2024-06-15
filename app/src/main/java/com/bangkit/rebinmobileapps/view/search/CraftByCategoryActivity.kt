@@ -16,5 +16,19 @@ class CraftByCategoryActivity : AppCompatActivity() {
         binding = ActivityCraftByCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val craftCategory = intent.getStringExtra(CRAFT_CATEGORY)
+
+        val toolbar = binding.tblCraftByCategory
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Category $craftCategory"
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    companion object{
+        const val CRAFT_CATEGORY = "craft_category"
     }
 }
