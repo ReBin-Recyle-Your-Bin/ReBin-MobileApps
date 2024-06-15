@@ -7,27 +7,21 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class SearchCraftResponse(
 
+	@field:SerializedName("listItems")
+	val listSearchCraft: List<SearchCraftItems>,
+
 	@field:SerializedName("error")
 	val error: Boolean,
 
 	@field:SerializedName("message")
-	val message: String,
-
-	@field:SerializedName("listItems")
-	val listItemCraft: List<SearchCraftItems>
+	val message: String
 ): Parcelable
 
 @Parcelize
 data class SearchCraftItems(
 
-	@field:SerializedName("_id")
-	val id: String,
-
-	@field:SerializedName("customID")
-	val customID: String,
-
-	@field:SerializedName("className")
-	val className: String,
+	@field:SerializedName("photoUrl")
+	val photoUrl: String,
 
 	@field:SerializedName("name")
 	val name: String,
@@ -38,10 +32,16 @@ data class SearchCraftItems(
 	@field:SerializedName("ingredients")
 	val ingredients: String,
 
-	@field:SerializedName("steps")
-	val steps: String,
+	@field:SerializedName("className")
+	val className: String,
 
-	@field:SerializedName("photoUrl")
-	val photoUrl: String
-): Parcelable
+	@field:SerializedName("_id")
+	val id: String,
+
+	@field:SerializedName("customID")
+	val customID: String,
+
+	@field:SerializedName("steps")
+	val steps: String
+):Parcelable
 
