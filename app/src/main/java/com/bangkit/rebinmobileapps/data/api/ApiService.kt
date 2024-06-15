@@ -1,7 +1,5 @@
 package com.bangkit.rebinmobileapps.data.api
 
-import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
-import com.bangkit.rebinmobileapps.data.model.StoryInpiration
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
@@ -35,10 +33,7 @@ interface ApiService {
     ): RegisterResponse
 
     @GET("crafts")
-    suspend fun getCraft(
-//        @Query("page") page: Int = 1,
-//        @Query("size") size: Int = 10
-    ): SearchCraftResponse
+    suspend fun getCraft(): SearchCraftResponse
 
 
     @Multipart
