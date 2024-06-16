@@ -2,6 +2,8 @@ package com.bangkit.rebinmobileapps.view.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.rebinmobileapps.R
+import com.bangkit.rebinmobileapps.data.response.Recommendation
 import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.databinding.ActivityDetailCraftBinding
 import com.bumptech.glide.Glide
@@ -15,15 +17,21 @@ class DetailCraftActivity : AppCompatActivity() {
         binding = ActivityDetailCraftBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val detailCraft = intent.getParcelableExtra<SearchCraftItems>(DETAIL_CRAFT) as SearchCraftItems
-        setupAction(detailCraft)
+        val detailCraft = intent.getParcelableExtra<SearchCraftItems>(DETAIL_CRAFT)
+        val recommendation = intent.getParcelableExtra<Recommendation>(DETAIL_CRAFT_RECOMMENDATION)
+
+        if (detailCraft != null) {
+            setupCraftDetail(detailCraft)
+        } else if (recommendation != null) {
+            setupRecommendationDetail(recommendation)
+        }
 
         binding.tblDetailCraft.setNavigationOnClickListener {
             onBackPressed()
         }
     }
 
-    private fun setupAction(detailCraft: SearchCraftItems){
+    private fun setupCraftDetail(detailCraft: SearchCraftItems) {
         binding.tvTitleDetailCraft.text = detailCraft.name
         binding.tvLabelDetailCraft.text = detailCraft.className
         binding.tvDescriptionDetailCraft.text = detailCraft.description
@@ -35,7 +43,21 @@ class DetailCraftActivity : AppCompatActivity() {
             .into(binding.ivDetailCraft)
     }
 
+    private fun setupRecommendationDetail(recommendation: Recommendation) {
+        binding.tvTitleDetailCraft.text = recommendation.name
+        binding.tvLabelDetailCraft.text = recommendation.classItem
+        binding.tvDescriptionDetailCraft.text = recommendation.description
+        binding.tvIngredientDetailCraft.text = recommendation.ingredients
+        binding.tvStepDetailCraft.text = recommendation.steps
+
+        Glide.with(this)
+            .load(recommendation.pics_url)
+            .placeholder(R.drawable.ic_place_holder)
+            .into(binding.ivDetailCraft)
+    }
+
     companion object {
         const val DETAIL_CRAFT = "detail_craft"
+        const val DETAIL_CRAFT_RECOMMENDATION = "detail_craft_recommendation"
     }
 }
