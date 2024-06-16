@@ -1,20 +1,22 @@
 package com.bangkit.rebinmobileapps.data
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.model.UserModel
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
+import com.bangkit.rebinmobileapps.data.response.CraftPagingItems
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointItem
-import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.ProfileItem
-import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
 import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.data.response.StoryItem
@@ -123,11 +125,11 @@ class UserRepository private constructor(
         }
     }
 
-    fun getCraft(): LiveData<ResultState<List<SearchCraftItems>>> = liveData {
+    fun getCraft(): LiveData<ResultState<List<CraftPagingItems>>> = liveData {
         emit(ResultState.Loading)
         try {
             val response = apiService.getCraft()
-            emit(ResultState.Success(response.listItemCraft))
+            emit(ResultState.Success(response.listItemCraftPaging))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)
@@ -137,6 +139,16 @@ class UserRepository private constructor(
         }
     }
 
+    fun getCrafties() : LiveData<PagingData<CraftPagingItems>>{
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                CraftPagingSource(apiService)
+            }
+        ).liveData
+    }
 
     fun getProfile(): LiveData<ResultState<ProfileItem>> = liveData {
         emit(ResultState.Loading)
