@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,9 +9,8 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
-    app:cardCornerRadius="10dp"
-    app:strokeWidth="2dp"
-    app:strokeColor="@color/dark_olive_green">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -74,4 +73,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

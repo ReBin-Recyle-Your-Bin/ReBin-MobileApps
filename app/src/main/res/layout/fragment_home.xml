@@ -132,7 +132,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Kategori"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PointInfoHome" />
 
@@ -163,7 +163,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Kisah Inspirasi"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rlVariousCrafts" />
 
