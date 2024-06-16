@@ -3,6 +3,7 @@ package com.bangkit.rebinmobileapps.data.api
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
+import com.bangkit.rebinmobileapps.data.response.CraftPagingResponse
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
@@ -35,8 +36,11 @@ interface ApiService {
         @Body request: RegisterRequest
     ): RegisterResponse
 
-    @GET("craft/all")
-    suspend fun getCraft(): SearchCraftResponse
+    @GET("crafts")
+    suspend fun getCraft(
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 10
+    ): CraftPagingResponse
 
     @GET("craft")
     suspend fun getCraftByCategory(
