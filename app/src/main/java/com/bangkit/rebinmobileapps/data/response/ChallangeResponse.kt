@@ -29,6 +29,9 @@ data class ChallengeItem(
     @SerializedName("description")
     val description: String,
 
+    @SerializedName("point")
+    val point: String,
+
     @SerializedName("photoUrl")
     val photoUrl: String,
 
