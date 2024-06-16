@@ -11,6 +11,7 @@ import com.bangkit.rebinmobileapps.data.model.UserModel
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
+import com.bangkit.rebinmobileapps.data.response.ChallengeItem
 import com.bangkit.rebinmobileapps.data.response.CraftPagingItems
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
@@ -156,6 +157,20 @@ class UserRepository private constructor(
             val userId = userPreferences.getSession().first().userId
             val response = apiService.getProfile(userId)
             emit(ResultState.Success(response.profileList.first()))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
+    fun getChallenge(): LiveData<ResultState<List<ChallengeItem>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getChallenge()
+            emit(ResultState.Success(response.challengeList))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)

@@ -3,6 +3,7 @@ package com.bangkit.rebinmobileapps.data.api
 import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
+import com.bangkit.rebinmobileapps.data.response.ChallangeResponse
 import com.bangkit.rebinmobileapps.data.response.CraftPagingResponse
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
@@ -57,8 +58,8 @@ interface ApiService {
     @GET("story/all")
     suspend fun getStoryInspiration() : StoryResponse
 
-    @GET("story/all")
-    suspend fun getStory(): StoryResponse
+    @GET("challenge")
+    suspend fun getChallenge() : ChallangeResponse
 
 
     @GET("points")

@@ -19,6 +19,8 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
 
     fun getProfile() = repository.getProfile()
 
+    fun getChallenge() = repository.getChallenge()
+
     fun updateProfile(
         newName: String,
         email: String,
