@@ -17,6 +17,8 @@ import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.Recommendation
 import com.bangkit.rebinmobileapps.databinding.ActivityResultDetectionBinding
+import com.bangkit.rebinmobileapps.view.detail.DetailCraftActivity
+import com.bangkit.rebinmobileapps.view.detail.DetailCraftActivity.Companion.DETAIL_CRAFT_RECOMMENDATION
 import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.bumptech.glide.Glide
 import retrofit2.Call
@@ -29,7 +31,6 @@ class ResultDetectionActivity : AppCompatActivity() {
     private lateinit var tvResultWashType: TextView
     private lateinit var tvResultConfidence: TextView
     private lateinit var tvRecomendation: TextView
-    private lateinit var tvRecomendationContent: TextView
     private lateinit var llRecommendations : LinearLayout
     private lateinit var ivResultDetection : ImageView
 
@@ -44,7 +45,6 @@ class ResultDetectionActivity : AppCompatActivity() {
         tvResultWashType = binding.tvResultWashType
         tvResultConfidence = binding.tvResultConfidence
         tvRecomendation = binding.tvRecomendation
-//        tvRecomendationContent = binding.tvRecomendationContent
         llRecommendations = binding.llRecommendations
         ivResultDetection = binding.ivResultDetection
 
@@ -93,6 +93,13 @@ class ResultDetectionActivity : AppCompatActivity() {
             .load(recommendation.pics_url)
             .placeholder(R.drawable.ic_place_holder)
             .into(recomendationView.findViewById(R.id.iv_image_recomendation))
+
+        recomendationView.setOnClickListener {
+            val intent = Intent(this, DetailCraftActivity::class.java).apply {
+                putExtra(DETAIL_CRAFT_RECOMMENDATION, recommendation)
+            }
+            startActivity(intent)
+        }
 
         llRecommendations.addView(recomendationView)
 
