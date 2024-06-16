@@ -7,4 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".view.fitur.challage.ChallangeActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tlbChallange"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow"
+        app:showAsAction="ifRoom"
+        app:title="Challange"
+        android:background="@color/dark_olive_green"
+        app:titleTextColor="@color/white"  />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_history_point"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_challenge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tlbChallange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

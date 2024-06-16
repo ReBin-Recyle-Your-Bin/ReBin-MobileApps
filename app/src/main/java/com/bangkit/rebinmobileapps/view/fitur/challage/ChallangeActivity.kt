@@ -10,5 +10,9 @@ class ChallangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChallangeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.tlbChallange.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }
