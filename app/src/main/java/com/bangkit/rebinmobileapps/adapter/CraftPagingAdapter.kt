@@ -8,12 +8,12 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.rebinmobileapps.data.response.CraftPagingItems
+import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 import com.bangkit.rebinmobileapps.databinding.ItemCraftBinding
 import com.bangkit.rebinmobileapps.view.detail.DetailCraftActivity
 import com.bumptech.glide.Glide
 
-class CraftPagingAdapter : PagingDataAdapter<CraftPagingItems, CraftPagingAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class CraftPagingAdapter : PagingDataAdapter<SearchCraftItems, CraftPagingAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val craft = getItem(position)
@@ -30,7 +30,7 @@ class CraftPagingAdapter : PagingDataAdapter<CraftPagingItems, CraftPagingAdapte
         private val binding: ItemCraftBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(craft: CraftPagingItems) {
+        fun bind(craft: SearchCraftItems) {
             binding.tvTitle.text = craft.name
             binding.tvClass.text = craft.className
             binding.tvDescription.text = craft.description
@@ -50,12 +50,12 @@ class CraftPagingAdapter : PagingDataAdapter<CraftPagingItems, CraftPagingAdapte
 
     }
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CraftPagingItems>() {
-            override fun areItemsTheSame(oldItem: CraftPagingItems, newItem: CraftPagingItems): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SearchCraftItems>() {
+            override fun areItemsTheSame(oldItem: SearchCraftItems, newItem: SearchCraftItems): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: CraftPagingItems, newItem: CraftPagingItems): Boolean {
+            override fun areContentsTheSame(oldItem: SearchCraftItems, newItem: SearchCraftItems): Boolean {
                 return oldItem == newItem
             }
 

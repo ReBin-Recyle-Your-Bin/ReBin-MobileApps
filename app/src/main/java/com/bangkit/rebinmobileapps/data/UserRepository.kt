@@ -12,7 +12,6 @@ import com.bangkit.rebinmobileapps.data.request.LoginRequest
 import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.ChallengeItem
-import com.bangkit.rebinmobileapps.data.response.CraftPagingItems
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
@@ -126,7 +125,7 @@ class UserRepository private constructor(
         }
     }
 
-    fun getCraft(): LiveData<ResultState<List<CraftPagingItems>>> = liveData {
+    fun getCraft(): LiveData<ResultState<List<SearchCraftItems>>> = liveData {
         emit(ResultState.Loading)
         try {
             val response = apiService.getCraft()
@@ -140,7 +139,7 @@ class UserRepository private constructor(
         }
     }
 
-    fun getCrafties() : LiveData<PagingData<CraftPagingItems>>{
+    fun getCrafties() : LiveData<PagingData<SearchCraftItems>>{
         return Pager(
             config = PagingConfig(
                 pageSize = 5

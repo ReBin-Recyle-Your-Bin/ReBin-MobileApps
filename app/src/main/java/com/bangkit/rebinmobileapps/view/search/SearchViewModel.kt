@@ -6,11 +6,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.bangkit.rebinmobileapps.data.UserRepository
-import com.bangkit.rebinmobileapps.data.response.CraftPagingItems
+import com.bangkit.rebinmobileapps.data.response.SearchCraftItems
 
 class SearchViewModel(private val repository: UserRepository) : ViewModel() {
 
-    val craft: LiveData<PagingData<CraftPagingItems>> =
+    val craft: LiveData<PagingData<SearchCraftItems>> =
         repository.getCrafties().cachedIn(viewModelScope)
 
     fun getCraftState() = repository.getCraft()
