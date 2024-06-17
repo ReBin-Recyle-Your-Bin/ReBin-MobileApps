@@ -3,19 +3,17 @@ package com.bangkit.rebinmobileapps.view.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.rebinmobileapps.R
-import com.bangkit.rebinmobileapps.adapter.BannerAdapter
 import com.bangkit.rebinmobileapps.adapter.CategoryCraftAdapter
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
@@ -26,8 +24,6 @@ import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
 import com.bangkit.rebinmobileapps.view.search.CraftByCategoryActivity
 import com.bangkit.rebinmobileapps.view.storyInspiration.StoryInspirationActivity
 import kotlinx.coroutines.launch
-import java.util.Timer
-import java.util.TimerTask
 
 class HomeFragment : Fragment() {
 
@@ -75,6 +71,12 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         populateCraftList()
         setupAction()
+
+        //menampilkan nama pengguna
+        viewModel.getSession().observe(viewLifecycleOwner, Observer { user ->
+            val username = user.name
+            binding.welcomeTextView.text = "Selamat Datang,\n$username"
+        })
     }
 
     override fun onDestroyView() {
