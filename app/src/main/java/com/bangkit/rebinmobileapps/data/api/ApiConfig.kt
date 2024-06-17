@@ -43,7 +43,7 @@ object ApiConfig {
     }
 
     fun getDetectionApiService(token: String): ApiService {
-        return createRetrofit("https://rebin-mlapi-kbd6pi6apq-et.a.run.app/EN/", token).create(ApiService::class.java)
+        return createRetrofit("https://rebin-ml-kbd6pi6apq-et.a.run.app/ID/", token).create(ApiService::class.java)
     }
 }
 
