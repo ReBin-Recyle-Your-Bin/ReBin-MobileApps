@@ -61,7 +61,7 @@ class HistoryFragment : Fragment() {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     historyDetectionResultAdapter.submitList(historyDetection.data)
-                    binding.rvHistoryDetection.adapter = historyDetectionResultAdapter
+                    binding.historyRecycleView.adapter = historyDetectionResultAdapter
 
                     historyDetection.data.forEach { Log.d("HistoryFragment", "Data: $it") }
                 }
