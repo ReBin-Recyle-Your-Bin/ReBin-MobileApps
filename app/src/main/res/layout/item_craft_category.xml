@@ -10,14 +10,14 @@
 
         <ImageView
             android:id="@+id/iv_craft_category"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/craft_01"
             />
 
         <TextView
             android:id="@+id/tv_craft_category"
-            android:layout_width="65dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:layout_weight="1"
