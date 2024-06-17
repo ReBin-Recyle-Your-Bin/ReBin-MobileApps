@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.rebinmobileapps.adapter.CraftPagingAdapter
 import com.bangkit.rebinmobileapps.adapter.SearchCraftAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.databinding.FragmentSearchBinding
@@ -23,7 +24,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var searchCraftRecyclerView: RecyclerView
-    private lateinit var searchCraftAdapter: SearchCraftAdapter
+    private lateinit var craftPagingAdapter: CraftPagingAdapter
 
     private val viewModel by viewModels<SearchViewModel> {
         ViewModelFactory.getInstance(requireContext())
@@ -60,8 +61,9 @@ class SearchFragment : Fragment() {
 
         })
 
-        searchCraftAdapter = SearchCraftAdapter()
+        craftPagingAdapter = CraftPagingAdapter()
         setupRecyclerView()
+        getPagingCraft()
         setupAction()
     }
 
@@ -73,20 +75,22 @@ class SearchFragment : Fragment() {
     private fun setupRecyclerView() {
         searchCraftRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = searchCraftAdapter
+            adapter = craftPagingAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter { craftPagingAdapter.retry()}
+            )
         }
     }
 
     private fun setupAction() {
         lifecycleScope.launch {
-            viewModel.getCraft().observe(viewLifecycleOwner) { craft ->
+            viewModel.getCraftState().observe(viewLifecycleOwner) { craft ->
                 when (craft) {
                     is ResultState.Success -> {
                         binding.progressBar.visibility = View.INVISIBLE
-                        val allData = craft.data
+                        //val allData = craft.data
                         // log melihat data
                         //Log.d("SearchFragment", "Data: $allData")
-//                        searchCraftAdapter.submitList(allData)
+                        //searchCraftAdapter.submitList(allData)
                     }
                     is ResultState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
@@ -96,6 +100,14 @@ class SearchFragment : Fragment() {
                         Toast.makeText(requireContext(), "Error: ${craft.error}", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
+        }
+    }
+
+    private fun getPagingCraft() {
+        lifecycleScope.launch {
+            viewModel.craft.observe(viewLifecycleOwner) { pagingData ->
+                craftPagingAdapter.submitData(lifecycle, pagingData)
             }
         }
     }

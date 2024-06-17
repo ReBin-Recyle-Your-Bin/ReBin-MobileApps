@@ -10,8 +10,8 @@ import com.bangkit.rebinmobileapps.data.response.CraftPagingItems
 
 class SearchViewModel(private val repository: UserRepository) : ViewModel() {
 
-//    val craft: LiveData<PagingData<CraftPagingItems>> =
-//        repository.getCrafties().cachedIn(viewModelScope)
+    val craft: LiveData<PagingData<CraftPagingItems>> =
+        repository.getCrafties().cachedIn(viewModelScope)
 
-    fun getCraft() = repository.getCraft()
+    fun getCraftState() = repository.getCraft()
 }
