@@ -37,10 +37,10 @@ interface ApiService {
         @Body request: RegisterRequest
     ): RegisterResponse
 
-    @GET("crafts")
+    @GET("crafting")
     suspend fun getCraft(
         @Query("page") page: Int = 1,
-        @Query("size") size: Int = 10
+        @Query("limit") size: Int = 15
     ): CraftPagingResponse
 
     @GET("craft")
