@@ -60,6 +60,7 @@ class HistoryFragment : Fragment() {
             when(historyDetection) {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.tvHistoryDetectionEmpty.visibility = View.GONE
                     historyDetectionResultAdapter.submitList(historyDetection.data)
                     binding.historyRecycleView.adapter = historyDetectionResultAdapter
 
@@ -67,6 +68,7 @@ class HistoryFragment : Fragment() {
                 }
                 is ResultState.Error -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.tvHistoryDetectionEmpty.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), historyDetection.error, Toast.LENGTH_SHORT).show()
                 }
                 is ResultState.Loading -> {

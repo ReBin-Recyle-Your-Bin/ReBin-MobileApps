@@ -38,26 +38,6 @@ class PointHistoryActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-//        val historyPointRV : RecyclerView = binding.rvHistoryPoint
-//        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//        historyPointRV.layoutManager = layoutManager
-//
-//        val listPoint = ArrayList<PointHistory>(
-//            listOf(
-//                PointHistory(10, "10/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(20, "11/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(30, "12/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(40, "13/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(50, "14/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(60, "15/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(70, "16/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(80, "17/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(90, "18/10/2021", "Poin didapat dari membagikan cerita"),
-//                PointHistory(100, "19/10/2021", "Poin didapat dari membagikan cerita"),
-//            )
-//        )
-//        val adapter = HistoryPointAdapter(this, listPoint)
-//        historyPointRV.adapter = adapter
     }
 
     private fun setupRecyclerView() {
@@ -73,6 +53,7 @@ class PointHistoryActivity : AppCompatActivity() {
             when (pointHistory) {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.INVISIBLE
+                    binding.tvPointHistoryEmpty.visibility = View.GONE
                     historyPointAdapter.submitList(pointHistory.data)
                     binding.rvHistoryPoint.adapter = historyPointAdapter
                 }
@@ -81,6 +62,7 @@ class PointHistoryActivity : AppCompatActivity() {
                 }
                 is ResultState.Error -> {
                     binding.progressBar.visibility = View.INVISIBLE
+                    binding.tvPointHistoryEmpty.visibility = View.VISIBLE
                     Toast.makeText(this, "Error: ${pointHistory.error}", Toast.LENGTH_SHORT).show()
                 }
             }
