@@ -86,7 +86,7 @@ class SearchFragment : Fragment() {
                         val allData = craft.data
                         // log melihat data
                         //Log.d("SearchFragment", "Data: $allData")
-                        searchCraftAdapter.submitList(allData)
+//                        searchCraftAdapter.submitList(allData)
                     }
                     is ResultState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE

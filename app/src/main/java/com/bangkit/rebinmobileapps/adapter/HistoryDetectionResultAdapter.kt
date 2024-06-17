@@ -12,10 +12,6 @@ import android.util.Log
 
 class HistoryDetectionResultAdapter : ListAdapter<HistoryDetectionItem, HistoryDetectionResultAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
-//    init {
-//        Log.d("Adapter", "Adapter dibuat")
-//    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
@@ -23,7 +19,6 @@ class HistoryDetectionResultAdapter : ListAdapter<HistoryDetectionItem, HistoryD
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val history = getItem(position)
-        //Log.d("Adapter", "onBindViewHolder dipanggil untuk posisi $position dengan data $history")
         holder.bind(history)
     }
 
@@ -32,11 +27,10 @@ class HistoryDetectionResultAdapter : ListAdapter<HistoryDetectionItem, HistoryD
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(history: HistoryDetectionItem) {
-            binding.tvLabelHistoryDetection.text = history.label
-            binding.tvAccurayHistoryDetection.text = history.accuracy.toString()
+            binding.tvHistoryDetectionLabel.text = history.label
+            binding.tvHistoryDetectionAccuracy.text = history.accuracy.toString()
 //            binding.tvCreatedAtHistoryDetection.text = DateFormat.getRelativeTime(history.date)
 
-            Log.d("MyViewHolder", "Bind data: $history")
         }
     }
 

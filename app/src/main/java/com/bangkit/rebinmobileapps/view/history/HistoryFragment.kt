@@ -48,9 +48,9 @@ class HistoryFragment : Fragment() {
 
     private fun setupRecyclerView() {
         historyDetectionResultAdapter = HistoryDetectionResultAdapter()
-        historyDetectionRecyclerView = binding.rvHistoryDetection
+        historyDetectionRecyclerView = binding.historyRecycleView
         historyDetectionRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = historyDetectionResultAdapter
         }
     }

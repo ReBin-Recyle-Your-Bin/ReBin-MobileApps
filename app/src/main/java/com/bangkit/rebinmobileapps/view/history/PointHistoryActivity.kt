@@ -73,17 +73,14 @@ class PointHistoryActivity : AppCompatActivity() {
             when (pointHistory) {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.INVISIBLE
-                    binding.tvPointHistoryEmpty.visibility = View.GONE
                     historyPointAdapter.submitList(pointHistory.data)
                     binding.rvHistoryPoint.adapter = historyPointAdapter
                 }
                 is ResultState.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
-                    binding.tvPointHistoryEmpty.visibility = View.GONE
                 }
                 is ResultState.Error -> {
                     binding.progressBar.visibility = View.INVISIBLE
-                    binding.tvPointHistoryEmpty.visibility = View.VISIBLE
                     Toast.makeText(this, "Error: ${pointHistory.error}", Toast.LENGTH_SHORT).show()
                 }
             }
