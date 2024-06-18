@@ -125,6 +125,37 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/tvVariousFitur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Fitur"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/PointInfoHome" />
+            <RelativeLayout
+                android:id="@+id/rlVariousFitur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvVariousFitur"
+                tools:layout_editor_absoluteX="-16dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvVariousFitur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints" />
+            </RelativeLayout>
+
+            <TextView
                 android:id="@+id/tvVariousCrafts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,7 +166,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/PointInfoHome" />
+                app:layout_constraintTop_toBottomOf="@id/rlVariousFitur" />
 
             <RelativeLayout
                 android:id="@+id/rlVariousCrafts"

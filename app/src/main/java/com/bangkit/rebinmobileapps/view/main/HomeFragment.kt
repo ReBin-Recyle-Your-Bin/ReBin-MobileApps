@@ -15,9 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.adapter.CategoryCraftAdapter
+import com.bangkit.rebinmobileapps.adapter.FeatureHomeAdapter
 import com.bangkit.rebinmobileapps.adapter.StoryInpirationAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.data.model.CraftCategory
+import com.bangkit.rebinmobileapps.data.model.FeatureHome
 import com.bangkit.rebinmobileapps.databinding.FragmentHomeBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
@@ -33,8 +35,10 @@ class HomeFragment : Fragment() {
     private lateinit var craftRecyclerView: RecyclerView
     private lateinit var storyRecyclerView: RecyclerView
     private lateinit var craftAdapter: CategoryCraftAdapter
+    private lateinit var featureHomeAdapter : FeatureHomeAdapter
     private lateinit var storyInpirationAdapter: StoryInpirationAdapter
     private val craftList = mutableListOf<CraftCategory>()
+    private val featureHomeList = mutableListOf<FeatureHome>()
 
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
@@ -173,5 +177,18 @@ class HomeFragment : Fragment() {
         craftList.add(CraftCategory(R.drawable.craft_10, "Sampah-Organik"))
 
         craftAdapter.notifyDataSetChanged()
+    }
+
+    private fun featureHomeList(){
+        featureHomeList.add(FeatureHome(R.drawable.ftr_challange, "Misi"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_tukar_point, "Tukar Point"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_jual_craft, "Jual Karya"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_jual_sampah, "Jual Sampah"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_komunitas, "Komunitas"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_event, "Event"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_course, "Pelatihan"))
+        featureHomeList.add(FeatureHome(R.drawable.ftr_kerjasama, "Kerjasama"))
+
+//        featureHomeAdapter.notifyDataSetChanged()
     }
 }
