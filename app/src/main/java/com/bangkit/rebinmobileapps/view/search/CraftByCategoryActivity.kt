@@ -43,7 +43,9 @@ class CraftByCategoryActivity : AppCompatActivity() {
         val toolbar = binding.tblCraftByCategory
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Category $craftCategory"
+        // Mengganti tanda "-" dengan spasi sebelum mengatur judul toolbar
+        val formattedTitle = craftCategory?.replace("-", " ") ?: " "
+        supportActionBar?.title = "Kategori $formattedTitle"
 
         toolbar.setNavigationOnClickListener {
             onBackPressed()

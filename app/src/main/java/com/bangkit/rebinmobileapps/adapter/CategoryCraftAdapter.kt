@@ -33,7 +33,10 @@ class CategoryCraftAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val craftCategory = craftList[position]
         holder.imageView.setImageResource(craftCategory.imageResource)
-        holder.titleTextView.text = craftCategory.title
+
+        // Ganti tanda "-" dengan spasi pada saat menampilkan
+        val formattedTitle = craftCategory.title.replace("-", " ")
+        holder.titleTextView.text = formattedTitle
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(craftCategory)
@@ -43,6 +46,4 @@ class CategoryCraftAdapter(
     override fun getItemCount(): Int {
         return craftList.size
     }
-
-
 }

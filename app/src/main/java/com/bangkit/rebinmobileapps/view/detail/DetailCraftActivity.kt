@@ -33,7 +33,8 @@ class DetailCraftActivity : AppCompatActivity() {
 
     private fun setupCraftDetail(detailCraft: SearchCraftItems) {
         binding.tvTitleDetailCraft.text = detailCraft.name
-        binding.tvLabelDetailCraft.text = detailCraft.className
+        val formattedClassName = detailCraft.className.replace("-", " ")
+        binding.tvLabelDetailCraft.text = formattedClassName
         binding.tvDescriptionDetailCraft.text = detailCraft.description
         binding.tvIngredientDetailCraft.text = detailCraft.ingredients
         binding.tvStepDetailCraft.text = detailCraft.steps
