@@ -6,6 +6,7 @@ import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.ChallangeResponse
 import com.bangkit.rebinmobileapps.data.response.CraftPagingResponse
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
+import com.bangkit.rebinmobileapps.data.response.GiftPointResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
@@ -60,6 +61,9 @@ interface ApiService {
 
     @GET("challenge")
     suspend fun getChallenge() : ChallangeResponse
+
+    @GET("giftpoint")
+    suspend fun getGiftPoint() : GiftPointResponse
 
 
     @GET("points")

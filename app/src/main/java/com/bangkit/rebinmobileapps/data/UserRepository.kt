@@ -13,6 +13,7 @@ import com.bangkit.rebinmobileapps.data.request.RegisterRequest
 import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.ChallengeItem
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
+import com.bangkit.rebinmobileapps.data.response.GiftPointItem
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
 import com.bangkit.rebinmobileapps.data.response.PointItem
@@ -170,6 +171,20 @@ class UserRepository private constructor(
         try {
             val response = apiService.getChallenge()
             emit(ResultState.Success(response.challengeList))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
+    fun getGiftPoint(): LiveData<ResultState<List<GiftPointItem>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getGiftPoint()
+            emit(ResultState.Success(response.giftPointList))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)

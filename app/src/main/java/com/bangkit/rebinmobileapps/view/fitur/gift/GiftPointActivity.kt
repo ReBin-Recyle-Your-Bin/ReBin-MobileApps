@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.rebinmobileapps.adapter.GiftPointAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.databinding.ActivityGiftPointBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
@@ -14,6 +15,8 @@ class GiftPointActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGiftPointBinding
 
+    private val giftPointAdapter = GiftPointAdapter()
+
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
@@ -21,6 +24,8 @@ class GiftPointActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGiftPointBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupRecyclerView()
+        setupAction()
 
         binding.tlbGiftPoint.setNavigationOnClickListener {
             onBackPressed()
@@ -31,28 +36,27 @@ class GiftPointActivity : AppCompatActivity() {
         val giftPointRV = binding.rvGiftPoint
         giftPointRV.apply {
             layoutManager = LinearLayoutManager(this@GiftPointActivity)
-//            adapter = giftPointAdapter
+            adapter = giftPointAdapter
         }
     }
 
     private fun setupAction() {
-        // Setup action
-//        viewModel.getGiftPoint().observe(this@GiftPointActivity) { giftPoint ->
-//            when (giftPoint) {
-//                is ResultState.Success -> {
-//                    binding.progressBar.visibility = View.INVISIBLE
-//                    binding.tvGiftPointEmpty.visibility = View.GONE
-//                    giftPointAdapter.submitList(giftPoint.data)
-//                    binding.rvGiftPoint.adapter = giftPointAdapter
-//                }
-//                is ResultState.Loading -> {
-//                    binding.progressBar.visibility = View.VISIBLE
-//                }
-//                is ResultState.Error -> {
-//                    binding.progressBar.visibility = View.INVISIBLE
-//                    binding.tvGiftPointEmpty.visibility = View.VISIBLE
-//                }
-//            }
-//        }
+        viewModel.getGiftPoint().observe(this@GiftPointActivity) { giftPoint ->
+            when (giftPoint) {
+                is ResultState.Success -> {
+                    binding.progressBar.visibility = View.INVISIBLE
+                    binding.tvGiftPointEmpty.visibility = View.GONE
+                    giftPointAdapter.submitList(giftPoint.data)
+                    binding.rvGiftPoint.adapter = giftPointAdapter
+                }
+                is ResultState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is ResultState.Error -> {
+                    binding.progressBar.visibility = View.INVISIBLE
+                    binding.tvGiftPointEmpty.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 }

@@ -46,7 +46,7 @@
         />
 
     <TextView
-        android:id="@+id/tvChallengeEmpty"
+        android:id="@+id/tv_gift_point_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hadiah untuk tukar point belum tersedia"
