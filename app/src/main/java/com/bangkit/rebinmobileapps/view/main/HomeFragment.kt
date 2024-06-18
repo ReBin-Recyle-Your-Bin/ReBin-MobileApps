@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         populateCraftList()
         setupAction()
+        setupPoint()
 
         //menampilkan nama pengguna
         viewModel.getSession().observe(viewLifecycleOwner, Observer { user ->
@@ -118,6 +119,26 @@ class HomeFragment : Fragment() {
                     is ResultState.Error -> {
                         binding.progressBar.visibility = View.INVISIBLE
                         Toast.makeText(requireContext(), "Error: ${story.error}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupPoint() {
+        lifecycleScope.launch {
+            viewModel.getPointHistory().observe(viewLifecycleOwner) { pointHistory ->
+                when (pointHistory) {
+                    is ResultState.Success -> {
+                        val totalPoints = pointHistory.data
+                            .filter { it.status == "entry" }
+                            .sumBy { it.point.toIntOrNull() ?: 0 }
+                        binding.tvTotalPoint.text = totalPoints.toString()
+                    }
+                    is ResultState.Loading -> {
+                    }
+                    is ResultState.Error -> {
+                        Toast.makeText(requireContext(), "Error: ${pointHistory.error}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
