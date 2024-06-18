@@ -22,7 +22,7 @@
                 android:layout_height="?attr/actionBarSize"
                 tools:ignore="MissingConstraints"
                 app:showAsAction="ifRoom"
-                app:title="History Detection"
+                app:title="Pencarian"
                 android:background="@color/dark_olive_green"
                 android:backgroundTint="@color/dark_olive_green"
                 app:titleTextColor="@color/white" />

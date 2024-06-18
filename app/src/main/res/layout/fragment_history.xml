@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/dark_olive_green"
         app:showAsAction="ifRoom"
-        app:title="History Detection"
+        app:title="Riwayat Deteksi"
         app:titleTextColor="@color/white"
         />
 

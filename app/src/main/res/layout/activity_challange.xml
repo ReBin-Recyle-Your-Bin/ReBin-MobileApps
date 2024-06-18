@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow"
         app:showAsAction="ifRoom"
-        app:title="Challange"
+        app:title="Misi"
         android:background="@color/dark_olive_green"
         app:titleTextColor="@color/white"  />
 

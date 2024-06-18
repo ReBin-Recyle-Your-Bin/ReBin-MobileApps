@@ -19,7 +19,7 @@
         android:backgroundTint="@color/dark_olive_green"
         android:background="@color/dark_olive_green"
         app:showAsAction="ifRoom"
-        app:title="Detail Story Inspiration"
+        app:title="Detail Kisah Inspirasi"
         app:titleTextColor="@color/white" />
 
 
