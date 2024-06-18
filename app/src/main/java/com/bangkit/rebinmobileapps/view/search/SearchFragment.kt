@@ -45,12 +45,14 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val searchView =  binding.searchView
-
         searchView.setIconifiedByDefault(false)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(context, "Search for $query", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "Search for $query", Toast.LENGTH_SHORT).show()
+                if (!query.isNullOrEmpty()) {
+                    viewModel.searchCraft(query)
+                }
                 return true
             }
 
@@ -64,6 +66,7 @@ class SearchFragment : Fragment() {
         setupRecyclerView()
         getPagingCraft()
         setupAction()
+        setupObservers()
     }
 
     override fun onDestroyView() {
@@ -80,16 +83,20 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun setupObservers() {
+        lifecycleScope.launch {
+            viewModel.craftCari.observe(viewLifecycleOwner) { pagingData ->
+                craftPagingAdapter.submitData(lifecycle, pagingData)
+            }
+        }
+    }
+
     private fun setupAction() {
         lifecycleScope.launch {
             viewModel.getCraftState().observe(viewLifecycleOwner) { craft ->
                 when (craft) {
                     is ResultState.Success -> {
                         binding.progressBar.visibility = View.INVISIBLE
-                        //val allData = craft.data
-                        // log melihat data
-                        //Log.d("SearchFragment", "Data: $allData")
-                        //searchCraftAdapter.submitList(allData)
                     }
                     is ResultState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE

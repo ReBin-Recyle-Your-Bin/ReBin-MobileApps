@@ -151,6 +151,16 @@ class UserRepository private constructor(
         ).liveData
     }
 
+    //function untuk mengambil satu halaman data kerajinan
+    suspend fun getCraftPage(page: Int): List<SearchCraftItems> {
+        return try {
+            val response = apiService.getCraft(page)
+            response.listItemCraftPaging
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
     fun getProfile(): LiveData<ResultState<ProfileItem>> = liveData {
         emit(ResultState.Loading)
         try {
