@@ -67,6 +67,7 @@ interface ApiService {
         @Query("userId") userId: String,
     ) :PointResponse
 
+
     @GET("user/profile")
     suspend fun getProfile(
         @Query("_id") id: String,
@@ -81,7 +82,6 @@ interface ApiService {
     suspend fun getHistoryDetection(
         @Query("userId") id: String,
     ) :HistoryDetectionResponse
-
 
     @POST("detect-waste/history")
     fun sendDetectionResulToHistory(

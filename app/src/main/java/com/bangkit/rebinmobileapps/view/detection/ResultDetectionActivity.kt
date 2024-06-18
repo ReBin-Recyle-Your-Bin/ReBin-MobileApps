@@ -3,23 +3,25 @@ package com.bangkit.rebinmobileapps.view.detection
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.api.ApiConfig
-import com.bangkit.rebinmobileapps.data.api.ApiService
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.Recommendation
 import com.bangkit.rebinmobileapps.databinding.ActivityResultDetectionBinding
+import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.detail.DetailCraftActivity
 import com.bangkit.rebinmobileapps.view.detail.DetailCraftActivity.Companion.DETAIL_CRAFT_RECOMMENDATION
 import com.bangkit.rebinmobileapps.view.main.MainActivity
+import com.bangkit.rebinmobileapps.view.main.MainViewModel
+import com.bangkit.rebinmobileapps.view.search.SearchFragment
 import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +36,10 @@ class ResultDetectionActivity : AppCompatActivity() {
     private lateinit var llRecommendations : LinearLayout
     private lateinit var ivResultDetection : ImageView
 
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultDetectionBinding.inflate(layoutInflater)
@@ -42,40 +48,52 @@ class ResultDetectionActivity : AppCompatActivity() {
         binding.tlbResultDetection.setNavigationOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        binding.seeMoreButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+
+
         tvResultWashType = binding.tvResultWashType
         tvResultConfidence = binding.tvResultConfidence
         tvRecomendation = binding.tvRecomendation
         llRecommendations = binding.llRecommendations
         ivResultDetection = binding.ivResultDetection
 
+        viewModel.getSession().observe(this, { session ->
+            val userId = session.userId
+            val token = session.token
 
-        val detectionResult: DetectionResult? = intent.getParcelableExtra(DETECTION_RESULT)
-        val imageUriString: String? = intent.getStringExtra(IMAGE_URI)
+            val detectionResult: DetectionResult? = intent.getParcelableExtra(DETECTION_RESULT)
+            val imageUriString: String? = intent.getStringExtra(IMAGE_URI)
 
-        detectionResult?.let {
-            tvResultWashType.text = it.label ?: "Unknown"
-            tvResultConfidence.text = "${it.accuracy} %" ?: "Unknown"
-            tvRecomendation.text = "Recommendation:"
-            if (it.recommendation.isNotEmpty()) {
-                val recommendationsToShow = it.recommendation.take(3)
-                for(recomendation in recommendationsToShow){
-                    addRecomendationView(recomendation)
+            detectionResult?.let {
+                tvResultWashType.text = it.label ?: "Unknown"
+                tvResultConfidence.text = "${it.accuracy} %" ?: "Unknown"
+                tvRecomendation.text = "Recommendation:"
+                if (it.recommendation.isNotEmpty()) {
+                    val recommendationsToShow = it.recommendation.take(3)
+                    for (recommendation in recommendationsToShow) {
+                        addRecomendationView(recommendation)
+                    }
+                } else {
+                    val noRecommendation = TextView(this)
+                    noRecommendation.text = "No recommendation available"
+                    llRecommendations.addView(noRecommendation)
                 }
-            } else {
-                val noRecommendation = TextView(this)
-                noRecommendation.text = "No recommendation available"
-                llRecommendations.addView(noRecommendation)
-            }
-            showToast("Detection success")
-        } ?: showToast("No detection result found")
+                showToast("Detection success")
+                sendDetectionResultToHistory(detectionResult, userId, token)
+            } ?: showToast("No detection result found")
 
-        imageUriString?.let {
-            val imageUri = Uri.parse(it)
-            Glide.with(this)
-                .load(imageUri)
-                .placeholder(R.drawable.ic_place_holder)
-                .into(ivResultDetection)
-        }
+            imageUriString?.let {
+                val imageUri = Uri.parse(it)
+                Glide.with(this)
+                    .load(imageUri)
+                    .placeholder(R.drawable.ic_place_holder)
+                    .into(ivResultDetection)
+            }
+        })
     }
 
     private fun addRecomendationView(recommendation: Recommendation) {
@@ -112,7 +130,7 @@ class ResultDetectionActivity : AppCompatActivity() {
             "label" to (detectionResult?.label ?: "Unknown")
         )
 
-        val apiService = ApiConfig.getDetectionApiService(token)
+        val apiService = ApiConfig.getDataApiService(token)
         val call = apiService.sendDetectionResulToHistory(requestBody)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
