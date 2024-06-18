@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_feature_home"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:paddingEnd="4dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_feature_home"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ftr_challange"
+        />
+
+    <TextView
+        android:id="@+id/tv_feature_home"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        tools:text="Galon" />
+
+</LinearLayout>

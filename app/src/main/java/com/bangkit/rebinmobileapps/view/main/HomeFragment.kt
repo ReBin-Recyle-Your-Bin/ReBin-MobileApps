@@ -74,6 +74,7 @@ class HomeFragment : Fragment() {
         storyInpirationAdapter = StoryInpirationAdapter()
         setupRecyclerView()
         populateCraftList()
+        featureHomeList()
         setupAction()
         setupPoint()
         setupUserName()
@@ -97,12 +98,22 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = storyInpirationAdapter
         }
+
+        featureHomeAdapter = FeatureHomeAdapter(requireContext(), featureHomeList, this)
+        binding.rvFeatureHome.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = featureHomeAdapter
+        }
     }
 
     fun onItemClick(category: CraftCategory) {
         val intent = Intent(requireContext(), CraftByCategoryActivity::class.java)
         intent.putExtra(CraftByCategoryActivity.CRAFT_CATEGORY, category.title)
         startActivity(intent)
+    }
+
+    fun onItemFeatureClick(featureHome: FeatureHome) {
+
     }
 
     private fun setupAction() {
@@ -189,6 +200,6 @@ class HomeFragment : Fragment() {
         featureHomeList.add(FeatureHome(R.drawable.ftr_course, "Pelatihan"))
         featureHomeList.add(FeatureHome(R.drawable.ftr_kerjasama, "Kerjasama"))
 
-//        featureHomeAdapter.notifyDataSetChanged()
+        featureHomeAdapter.notifyDataSetChanged()
     }
 }
