@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/tvHistoryDetectionLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ibHistoryDetectionDelete"
+            android:text="Saldo Dana Rp. 20.000" />
+
+        <TextView
+            android:id="@+id/tvHistoryDetectionAccuracy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvHistoryDetectionLabel"
+            app:layout_constraintStart_toStartOf="@id/tvHistoryDetectionLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="200.000 Point" />
+
+        <TextView
+            android:id="@+id/tvHistoryDetectionDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvHistoryDetectionAccuracy"
+            app:layout_constraintStart_toStartOf="@id/tvHistoryDetectionLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="penjelasan singkat ini" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ibHistoryDetectionDelete"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_person"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete"
+            android:padding="8dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
