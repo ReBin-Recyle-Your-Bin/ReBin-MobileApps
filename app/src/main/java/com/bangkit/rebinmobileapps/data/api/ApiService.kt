@@ -62,7 +62,7 @@ interface ApiService {
     @GET("challenge")
     suspend fun getChallenge() : ChallangeResponse
 
-    @GET("giftpoint")
+    @GET("tukar-point")
     suspend fun getGiftPoint() : GiftPointResponse
 
 

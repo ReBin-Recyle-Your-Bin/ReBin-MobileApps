@@ -12,22 +12,22 @@ class GiftPointResponse(
     @SerializedName("message")
     val message: String,
 
-    @SerializedName("data")
+    @SerializedName("tukarpoint")
     val giftPointList: List<GiftPointItem>
 ): Parcelable
 
 @Parcelize
 data class GiftPointItem(
-    @SerializedName("id")
+    @SerializedName("_id")
     val id: String,
 
-    @SerializedName("title")
+    @SerializedName("Title")
     val title: String,
 
     @SerializedName("point")
     val point: String,
 
-    @SerializedName("description")
+    @SerializedName("decription")
     val description: String,
 
     @SerializedName("photoUrl")

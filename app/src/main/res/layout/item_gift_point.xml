@@ -34,18 +34,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="200.000 Point" />
 
-        <TextView
-            android:id="@+id/tv_decs_gift_point"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_point_gift"
-            app:layout_constraintStart_toStartOf="@id/tv_title_gift_point"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="penjelasan singkat ini" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_gift_point"
-            android:layout_width="60dp"
+            android:layout_width="70dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_person"
             android:scaleType="centerCrop"
@@ -54,6 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Delete"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
             android:padding="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
