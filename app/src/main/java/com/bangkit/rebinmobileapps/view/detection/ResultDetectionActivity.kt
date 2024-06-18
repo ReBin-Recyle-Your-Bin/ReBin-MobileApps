@@ -53,7 +53,9 @@ class ResultDetectionActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-
+        binding.btnToHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         tvResultWashType = binding.tvResultWashType
         tvResultConfidence = binding.tvResultConfidence
