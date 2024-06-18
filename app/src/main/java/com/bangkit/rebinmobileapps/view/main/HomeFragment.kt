@@ -122,22 +122,22 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Fitur Tukar Point belum tersedia", Toast.LENGTH_SHORT).show()
             }
             "Jual Karya" -> {
-                Toast.makeText(requireContext(), "Fitur Jual Karya belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fitur Jual Karya akan segera hadir", Toast.LENGTH_SHORT).show()
             }
             "Jual Sampah" -> {
-                Toast.makeText(requireContext(), "Fitur Jual Sampah belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fitur Jual Sampah akan segera hadir", Toast.LENGTH_SHORT).show()
             }
             "Komunitas" -> {
-                Toast.makeText(requireContext(), "Fitur Komunitas belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fitur Komunitas akan segera hadir", Toast.LENGTH_SHORT).show()
             }
             "Event" -> {
-                Toast.makeText(requireContext(), "Fitur Event belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fitur Event akan segera hadir", Toast.LENGTH_SHORT).show()
             }
             "Pelatihan" -> {
-                Toast.makeText(requireContext(), "Fitur Pelatihan belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fitur Pelatihan akan segera hadir", Toast.LENGTH_SHORT).show()
             }
             "Kerjasama" -> {
-                Toast.makeText(requireContext(), "Fitur Kerjasama belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fitur Kerjasama akan segera hadir", Toast.LENGTH_SHORT).show()
             }
         }
     }
