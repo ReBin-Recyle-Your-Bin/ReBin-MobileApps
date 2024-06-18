@@ -20,7 +20,7 @@
         android:id="@+id/tv_feature_home"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
+        android:fontFamily="@font/poppins_semibold"
         android:layout_weight="1"
         android:layout_marginTop="4dp"
         android:textColor="@color/black"
