@@ -74,6 +74,7 @@ class HomeFragment : Fragment() {
         setupPoint()
         setupUserName()
 
+
     }
 
     override fun onDestroyView() {
