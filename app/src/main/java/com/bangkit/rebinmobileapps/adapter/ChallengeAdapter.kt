@@ -1,5 +1,6 @@
 package com.bangkit.rebinmobileapps.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.data.response.ChallengeItem
 import com.bangkit.rebinmobileapps.databinding.ItemChallengeBinding
 import com.bangkit.rebinmobileapps.util.DateFormat
+import com.bangkit.rebinmobileapps.view.fitur.challage.DetailChallangeActivity
 import com.bumptech.glide.Glide
 
 class ChallengeAdapter : ListAdapter<ChallengeItem, ChallengeAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -31,6 +33,12 @@ class ChallengeAdapter : ListAdapter<ChallengeItem, ChallengeAdapter.MyViewHolde
             Glide.with(itemView.context)
                 .load(challenge.photoUrl)
                 .into(binding.ivChallenge)
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailChallangeActivity::class.java)
+                intent.putExtra(DetailChallangeActivity.EXTRA_CHALLANGE, challenge)
+                itemView.context.startActivity(intent)
+            }
         }
     }
     companion object{
