@@ -1,5 +1,6 @@
 package com.bangkit.rebinmobileapps.view.profile
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,7 +21,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.ResultState
+import com.bangkit.rebinmobileapps.data.UserPreferences
 import com.bangkit.rebinmobileapps.data.api.ApiConfig
+import com.bangkit.rebinmobileapps.data.dataStore
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
 import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.databinding.FragmentProfileBinding
@@ -32,6 +35,7 @@ import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 import com.google.android.material.snackbar.Snackbar
 import com.yalantis.ucrop.UCrop
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -181,6 +185,15 @@ class ProfileFragment : Fragment() {
             val password = binding.passwordEditText.text.toString().trim()
 
             lifecycleScope.launch {
+                val token = getToken(requireContext())
+                val userID = getUserID(requireContext())
+                if (token != null && userID != null) {
+                    croppedImageUri?.let { uri ->
+                        showLoading(true)
+                        uploadProfilePhoto(uri, userID, token)
+                    }
+                }
+
                 viewModel.updateProfile(name, email, password).observe(viewLifecycleOwner, Observer { user ->
                     when (user) {
                         is ResultState.Loading -> {
@@ -219,17 +232,20 @@ class ProfileFragment : Fragment() {
         call.enqueue(object : Callback<ErrorResponse> {
             override fun onResponse(call: Call<ErrorResponse>, response: Response<ErrorResponse>) {
                 if (response.isSuccessful) {
-                    val detectionResult = response.body()
-                    detectionResult?.let {
-                        Toast.makeText(context, "Upload berhasil", Toast.LENGTH_SHORT).show()
+                    val uploadResponse = response.body()
+                    uploadResponse?.let {
+                        // Menggunakan requireContext() atau context yang valid dari fragment
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    showToast("Gagal upload foto")
+                    // Menggunakan requireContext() atau context yang valid dari fragment
+                    Toast.makeText(requireContext(), "Gagal upload foto", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(p0: Call<ErrorResponse>, p1: Throwable) {
-                TODO("Not yet implemented")
+            override fun onFailure(call: Call<ErrorResponse>, t: Throwable) {
+                // Menggunakan requireContext() atau context yang valid dari fragment
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -253,5 +269,22 @@ class ProfileFragment : Fragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private suspend fun getUserID(context: Context): String? {
+        val userPreferences = UserPreferences.getInstance(context.dataStore)
+        val user = userPreferences.getSession().first()
+        return user.userId
+    }
+
+    private suspend fun getToken(context: Context): String? {
+        val userPreferences = UserPreferences.getInstance(context.dataStore)
+        val user = userPreferences.getSession().first()
+        return user.token
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if(isLoading) View.VISIBLE else View.GONE
+        binding.updateButton.isEnabled = isLoading
     }
 }
