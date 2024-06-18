@@ -61,7 +61,7 @@ class ResultDetectionActivity : AppCompatActivity() {
         llRecommendations = binding.llRecommendations
         ivResultDetection = binding.ivResultDetection
 
-        viewModel.getSession().observe(this, { session ->
+        viewModel.getSession().observe(this) { session ->
             val userId = session.userId
             val token = session.token
 
@@ -71,7 +71,7 @@ class ResultDetectionActivity : AppCompatActivity() {
             detectionResult?.let {
                 tvResultWashType.text = it.label ?: "Unknown"
                 tvResultConfidence.text = "${it.accuracy} %" ?: "Unknown"
-                tvRecomendation.text = "Recommendation:"
+                tvRecomendation.text = "Rekomendasi :"
                 if (it.recommendation.isNotEmpty()) {
                     val recommendationsToShow = it.recommendation.take(3)
                     for (recommendation in recommendationsToShow) {
@@ -79,12 +79,13 @@ class ResultDetectionActivity : AppCompatActivity() {
                     }
                 } else {
                     val noRecommendation = TextView(this)
-                    noRecommendation.text = "No recommendation available"
+                    noRecommendation.text = "Tidak ada rekomendasi yang tersedia"
                     llRecommendations.addView(noRecommendation)
                 }
-                showToast("Detection success")
+                showToast("Detecksi Berhasil")
                 sendDetectionResultToHistory(detectionResult, userId, token)
-            } ?: showToast("No detection result found")
+                sendPointToUser(userId, token)
+            } ?: showToast("Tidak ditemukan hasil deteksi")
 
             imageUriString?.let {
                 val imageUri = Uri.parse(it)
@@ -93,7 +94,7 @@ class ResultDetectionActivity : AppCompatActivity() {
                     .placeholder(R.drawable.ic_place_holder)
                     .into(ivResultDetection)
             }
-        })
+        }
     }
 
     private fun addRecomendationView(recommendation: Recommendation) {
@@ -135,9 +136,33 @@ class ResultDetectionActivity : AppCompatActivity() {
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    showToast("Detection result sent to history successfully")
+                    showToast("Hasil deteksi berhasil dikirim ke riwayat")
                 } else {
-                    showToast("Failed to send detection result to history")
+                    showToast("Gagal mengirimkan hasil deteksi ke riwayat")
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                showToast("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun sendPointToUser(userId: String, token: String){
+        val requestBody = mapOf(
+            "userId" to userId,
+            "description" to "Mendapatkan point dari check in hasil deteksi sampah",
+            "point" to "100",
+            "status" to "entry"
+        )
+        val apiService = ApiConfig.getDataApiService(token)
+        val call = apiService.postPoint(requestBody)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    showToast("Point berhasil ditambahkan")
+                } else {
+                    showToast("Gagal menambahkan point")
                 }
             }
 

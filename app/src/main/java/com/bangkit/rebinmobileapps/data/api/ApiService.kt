@@ -67,6 +67,10 @@ interface ApiService {
         @Query("userId") userId: String,
     ) :PointResponse
 
+    @POST("points")
+    fun postPoint(
+        @Body requestBody: Map<String, String>
+    ): Call<Void>
 
     @GET("user/profile")
     suspend fun getProfile(
