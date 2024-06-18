@@ -72,12 +72,8 @@ class HomeFragment : Fragment() {
         populateCraftList()
         setupAction()
         setupPoint()
+        setupUserName()
 
-        //menampilkan nama pengguna
-        viewModel.getSession().observe(viewLifecycleOwner, Observer { user ->
-            val username = user.name
-            binding.welcomeTextView.text = "Selamat Datang,\n$username"
-        })
     }
 
     override fun onDestroyView() {
@@ -139,6 +135,24 @@ class HomeFragment : Fragment() {
                     }
                     is ResultState.Error -> {
                         Toast.makeText(requireContext(), "Error: ${pointHistory.error}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupUserName() {
+
+        lifecycleScope.launch {
+            viewModel.getProfile().observe(viewLifecycleOwner) { user ->
+                when (user) {
+                    is ResultState.Success -> {
+                        val username = user.data.name
+                        binding.welcomeTextView.text = "Selamat Datang,\n$username"
+                    }
+                    is ResultState.Loading -> {
+                    }
+                    is ResultState.Error -> {
                     }
                 }
             }
