@@ -22,6 +22,7 @@ import com.bangkit.rebinmobileapps.data.model.CraftCategory
 import com.bangkit.rebinmobileapps.data.model.FeatureHome
 import com.bangkit.rebinmobileapps.databinding.FragmentHomeBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
+import com.bangkit.rebinmobileapps.view.fitur.challage.ChallangeActivity
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
 import com.bangkit.rebinmobileapps.view.search.CraftByCategoryActivity
 import com.bangkit.rebinmobileapps.view.storyInspiration.StoryInspirationActivity
@@ -113,7 +114,32 @@ class HomeFragment : Fragment() {
     }
 
     fun onItemFeatureClick(featureHome: FeatureHome) {
-
+        when (featureHome.title) {
+            "Misi" -> {
+                startActivity(Intent(requireContext(), ChallangeActivity::class.java))
+            }
+            "Tukar Point" -> {
+                Toast.makeText(requireContext(), "Fitur Tukar Point belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+            "Jual Karya" -> {
+                Toast.makeText(requireContext(), "Fitur Jual Karya belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+            "Jual Sampah" -> {
+                Toast.makeText(requireContext(), "Fitur Jual Sampah belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+            "Komunitas" -> {
+                Toast.makeText(requireContext(), "Fitur Komunitas belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+            "Event" -> {
+                Toast.makeText(requireContext(), "Fitur Event belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+            "Pelatihan" -> {
+                Toast.makeText(requireContext(), "Fitur Pelatihan belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+            "Kerjasama" -> {
+                Toast.makeText(requireContext(), "Fitur Kerjasama belum tersedia", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun setupAction() {
