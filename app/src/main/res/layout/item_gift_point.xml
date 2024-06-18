@@ -44,7 +44,7 @@
             android:text="penjelasan singkat ini" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ibHistoryDetectionDelete"
+            android:id="@+id/img_gift_point"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_person"
