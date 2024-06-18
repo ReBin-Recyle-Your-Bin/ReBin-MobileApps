@@ -23,6 +23,15 @@
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="31">
         <activity
+            android:name=".view.fitur.gift.DetailGiftPointActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.fitur.gift.GiftPointActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.fitur.challage.DetailChallangeActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.fitur.challage.ChallangeActivity"
             android:exported="false" />
         <activity
