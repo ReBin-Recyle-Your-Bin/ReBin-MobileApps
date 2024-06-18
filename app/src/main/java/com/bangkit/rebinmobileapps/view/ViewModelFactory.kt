@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.rebinmobileapps.data.UserRepository
 import com.bangkit.rebinmobileapps.di.Injection
 import com.bangkit.rebinmobileapps.view.login.LoginViewModel
-import com.bangkit.rebinmobileapps.view.main.HomeFragment
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.search.SearchViewModel
 import com.bangkit.rebinmobileapps.view.signup.SignupViewModel

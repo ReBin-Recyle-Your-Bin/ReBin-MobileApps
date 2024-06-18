@@ -7,7 +7,6 @@ import com.bangkit.rebinmobileapps.data.dataStore
 import com.bangkit.rebinmobileapps.data.UserRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import java.util.concurrent.Executors
 
 object Injection {
     fun provideRepository(context: Context): UserRepository {

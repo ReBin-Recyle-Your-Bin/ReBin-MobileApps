@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.rebinmobileapps.adapter.HistoryDetectionResultAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.databinding.FragmentHistoryBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
-import kotlinx.coroutines.launch
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 

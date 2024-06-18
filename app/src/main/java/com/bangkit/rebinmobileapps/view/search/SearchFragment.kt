@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.adapter.CraftPagingAdapter
-import com.bangkit.rebinmobileapps.adapter.SearchCraftAdapter
 import com.bangkit.rebinmobileapps.data.ResultState
 import com.bangkit.rebinmobileapps.databinding.FragmentSearchBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory

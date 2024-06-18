@@ -1,9 +1,7 @@
 package com.bangkit.rebinmobileapps.util
 
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
-import java.util.concurrent.TimeUnit
 
 object DateFormat {
     fun getRelativeTime(dateString: String): String? {

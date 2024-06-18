@@ -1,14 +1,9 @@
 package com.bangkit.rebinmobileapps.view.detail
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.response.StoryItem
 import com.bangkit.rebinmobileapps.databinding.ActivityDetailStoryBinding
-import com.bangkit.rebinmobileapps.databinding.FragmentProfileBinding
 import com.bumptech.glide.Glide
 
 class DetailStoryActivity : AppCompatActivity() {
