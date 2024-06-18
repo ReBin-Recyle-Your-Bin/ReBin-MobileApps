@@ -6,6 +6,7 @@ import com.bangkit.rebinmobileapps.data.request.UpdateProfileRequest
 import com.bangkit.rebinmobileapps.data.response.ChallangeResponse
 import com.bangkit.rebinmobileapps.data.response.CraftPagingResponse
 import com.bangkit.rebinmobileapps.data.response.DetectionResult
+import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.GiftPointResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
@@ -16,6 +17,7 @@ import com.bangkit.rebinmobileapps.data.response.SearchCraftResponse
 import com.bangkit.rebinmobileapps.data.response.StoryResponse
 import com.bangkit.rebinmobileapps.data.response.UpdateProfileResponse
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -85,6 +87,14 @@ interface ApiService {
     suspend fun updateProfile(
         @Body request: UpdateProfileRequest
     ) : UpdateProfileResponse
+
+    @Multipart
+    @POST("upload")
+    fun uploadProfilePhoto(
+        @Part photo: MultipartBody.Part,
+        @Part("userID") userID: RequestBody
+//        @Header("Authorization") token: String
+    ): Call<ErrorResponse>
 
     @GET("detect-waste/history")
     suspend fun getHistoryDetection(

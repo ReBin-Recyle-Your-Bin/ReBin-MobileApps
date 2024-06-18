@@ -38,7 +38,7 @@
                     android:id="@+id/profileIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_profile" />
+                    android:src="@drawable/ic_user" />
 
                 <TextView
                     android:id="@+id/welcomeTextView"

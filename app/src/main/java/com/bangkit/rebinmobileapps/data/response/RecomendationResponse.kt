@@ -5,6 +5,24 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+data class DetectionResult(
+//    @SerializedName("error")
+//    val error: Boolean,
+//
+//    @SerializedName("message")
+//    val message: String,
+
+    @SerializedName("accuracy")
+    val accuracy: String,
+
+    @SerializedName("label")
+    val label: String,
+
+    @SerializedName("recommendation")
+    val recommendation: List<Recommendation>
+) : Parcelable
+
+@Parcelize
 data class Recommendation(
     @SerializedName("Description")
     val description: String,
@@ -35,22 +53,4 @@ data class Recommendation(
 
     @SerializedName("steps")
     val steps: String
-) : Parcelable
-
-@Parcelize
-data class DetectionResult(
-//    @SerializedName("error")
-//    val error: Boolean,
-//
-//    @SerializedName("message")
-//    val message: String,
-
-    @SerializedName("accuracy")
-    val accuracy: String,
-
-    @SerializedName("label")
-    val label: String,
-
-    @SerializedName("recommendation")
-    val recommendation: List<Recommendation>
 ) : Parcelable

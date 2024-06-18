@@ -1,6 +1,7 @@
 package com.bangkit.rebinmobileapps.view.profile
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,12 +12,17 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.ResultState
+import com.bangkit.rebinmobileapps.data.api.ApiConfig
+import com.bangkit.rebinmobileapps.data.response.DetectionResult
+import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.databinding.FragmentProfileBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.customView.CustomTextEmail
@@ -25,13 +31,24 @@ import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bangkit.rebinmobileapps.view.welcome.WelcomeActivity
 import com.google.android.material.snackbar.Snackbar
+import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var customTextEmail: CustomTextEmail
     private lateinit var customTextPassword: CustomTextPassword
+
+    private var currentImageUri: Uri? = null
+    private var croppedImageUri: Uri? = null
 
     private val viewModel: MainViewModel by viewModels {
         ViewModelFactory.getInstance(requireActivity())
@@ -67,8 +84,62 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        // Setup image selection
+        binding.ivProfile.setOnClickListener { startGallery() }
+
         setupAction()
         setupUpdateProfile()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == UCrop.REQUEST_CROP && resultCode == AppCompatActivity.RESULT_OK) {
+            val resultUri = UCrop.getOutput(data!!)
+            resultUri?.let {
+                binding.ivProfile.setImageURI(resultUri)
+                croppedImageUri = resultUri
+            } ?: showToast("Error crop image")
+        } else if (resultCode == UCrop.RESULT_ERROR) {
+            val cropError = UCrop.getError(data!!)
+            showToast("Crop error: ${cropError?.message}")
+        }
+    }
+
+    private fun startGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherGallery.launch(chooser)
+    }
+
+    private val launcherGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
+            val selectedImg = result.data?.data
+            selectedImg?.let { uri ->
+                currentImageUri = uri
+                showImage()
+                startUCrop(uri)
+            } ?: showToast("Error image selected")
+        }
+    }
+
+    private fun showImage() {
+        currentImageUri?.let {
+            Log.d("Image URI", "showImage: $it")
+            binding.ivProfile.setImageURI(it)
+        }
+    }
+
+    private fun startUCrop(sourceUri: Uri) {
+        val fileName = "cropped_image_${System.currentTimeMillis()}.jpg"
+        val destinationUri = Uri.fromFile(File(requireContext().cacheDir, fileName))
+        UCrop.of(sourceUri, destinationUri)
+            .withAspectRatio(1f, 1f)
+            .withMaxResultSize(1000, 1000)
+            .start(requireContext(), this)
     }
 
     private fun performLogout() {
@@ -136,6 +207,35 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
+    private fun uploadProfilePhoto(uri: Uri, userID: String, token: String) {
+        val file = File(uri.path!!)
+        val requestFile = RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
+        val photoPart = MultipartBody.Part.createFormData("file", file.name, requestFile)
+        val userIDPart = RequestBody.create("text/plain".toMediaTypeOrNull(), userID)
+
+        val apiService = ApiConfig.getDataApiService(token)
+        val call = apiService.uploadProfilePhoto(photoPart, userIDPart)
+        call.enqueue(object : Callback<ErrorResponse> {
+            override fun onResponse(call: Call<ErrorResponse>, response: Response<ErrorResponse>) {
+                if (response.isSuccessful) {
+                    val detectionResult = response.body()
+                    detectionResult?.let {
+                        Toast.makeText(context, "Upload berhasil", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    showToast("Gagal upload foto")
+                }
+            }
+
+            override fun onFailure(p0: Call<ErrorResponse>, p1: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_profile, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -149,5 +249,9 @@ class ProfileFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
