@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
-
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
@@ -15,7 +14,7 @@
         android:layout_margin="8dp">
 
         <TextView
-            android:id="@+id/tvHistoryDetectionLabel"
+            android:id="@+id/tv_title_gift_point"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -27,20 +26,20 @@
             android:text="Saldo Dana Rp. 20.000" />
 
         <TextView
-            android:id="@+id/tvHistoryDetectionAccuracy"
+            android:id="@+id/tv_point_gift"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvHistoryDetectionLabel"
-            app:layout_constraintStart_toStartOf="@id/tvHistoryDetectionLabel"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_gift_point"
+            app:layout_constraintStart_toStartOf="@id/tv_title_gift_point"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="200.000 Point" />
 
         <TextView
-            android:id="@+id/tvHistoryDetectionDate"
+            android:id="@+id/tv_decs_gift_point"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvHistoryDetectionAccuracy"
-            app:layout_constraintStart_toStartOf="@id/tvHistoryDetectionLabel"
+            app:layout_constraintTop_toBottomOf="@id/tv_point_gift"
+            app:layout_constraintStart_toStartOf="@id/tv_title_gift_point"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="penjelasan singkat ini" />
 

@@ -22,6 +22,7 @@ import com.bangkit.rebinmobileapps.data.model.FeatureHome
 import com.bangkit.rebinmobileapps.databinding.FragmentHomeBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.fitur.challage.ChallangeActivity
+import com.bangkit.rebinmobileapps.view.fitur.gift.GiftPointActivity
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
 import com.bangkit.rebinmobileapps.view.search.CraftByCategoryActivity
 import com.bangkit.rebinmobileapps.view.storyInspiration.StoryInspirationActivity
@@ -118,7 +119,7 @@ class HomeFragment : Fragment() {
                 startActivity(Intent(requireContext(), ChallangeActivity::class.java))
             }
             "Tukar Point" -> {
-                Toast.makeText(requireContext(), "Fitur Tukar Point belum tersedia", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(requireContext(), GiftPointActivity::class.java))
             }
             "Jual Karya" -> {
                 Toast.makeText(requireContext(), "Fitur Jual Karya akan segera hadir", Toast.LENGTH_SHORT).show()
