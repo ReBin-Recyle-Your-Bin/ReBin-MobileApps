@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
         setupAction()
         setupPoint()
         setupUserName()
-        setupPhotoProfile()
+//        setupPhotoProfile()
     }
 
     override fun onDestroyView() {
