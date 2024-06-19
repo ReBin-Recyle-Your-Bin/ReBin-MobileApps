@@ -3,6 +3,7 @@ package com.bangkit.rebinmobileapps.view.detection
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -107,6 +108,7 @@ class ResultDetectionActivity : AppCompatActivity() {
         val tvName: TextView = recomendationView.findViewById(R.id.tv_title_recommendation)
         val tvClass: TextView = recomendationView.findViewById(R.id.tv_class_recommendation)
         val tvDesc: TextView = recomendationView.findViewById(R.id.tv_desc_recomendation)
+        val ivRecommendation: ImageView = recomendationView.findViewById(R.id.iv_image_recomendation)
 
         tvName.text = "${recommendation.name}"
         tvClass.text = "${recommendation.classItem}"
@@ -116,7 +118,8 @@ class ResultDetectionActivity : AppCompatActivity() {
         Glide.with(this)
             .load(recommendation.pics_url)
             .placeholder(R.drawable.ic_place_holder)
-            .into(recomendationView.findViewById(R.id.iv_image_recomendation))
+            .into(ivRecommendation)
+
 
         recomendationView.setOnClickListener {
             val intent = Intent(this, DetailCraftActivity::class.java).apply {
@@ -125,6 +128,7 @@ class ResultDetectionActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        Log.d("Recommendation", "Recommendation: ${recommendation}")
         llRecommendations.addView(recomendationView)
 
     }

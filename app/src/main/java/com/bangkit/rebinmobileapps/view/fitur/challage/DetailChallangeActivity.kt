@@ -1,9 +1,12 @@
 package com.bangkit.rebinmobileapps.view.fitur.challage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rebinmobileapps.data.response.ChallengeItem
 import com.bangkit.rebinmobileapps.databinding.ActivityDetailChallangeBinding
+import com.bangkit.rebinmobileapps.view.detection.DetectionActivity
+import com.bangkit.rebinmobileapps.view.main.MainActivity
 import com.bumptech.glide.Glide
 
 class DetailChallangeActivity : AppCompatActivity() {
@@ -19,6 +22,10 @@ class DetailChallangeActivity : AppCompatActivity() {
 
         binding.tblDetailChallange.setNavigationOnClickListener {
             onBackPressed()
+        }
+
+        binding.btnStartChallange.setOnClickListener {
+            startActivity(Intent(this, DetectionActivity::class.java))
         }
     }
 
