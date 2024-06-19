@@ -110,16 +110,19 @@ class ResultDetectionActivity : AppCompatActivity() {
         val tvDesc: TextView = recomendationView.findViewById(R.id.tv_desc_recomendation)
         val ivRecommendation: ImageView = recomendationView.findViewById(R.id.iv_image_recomendation)
 
-        tvName.text = "${recommendation.name}"
-        tvClass.text = "${recommendation.classItem}"
-        tvDesc.text = "${recommendation.description}"
+        tvName.text = recommendation.name
+        tvClass.text = recommendation.classItem
+        tvDesc.text = recommendation.description
 
-
-        Glide.with(this)
-            .load(recommendation.pics_url)
-            .placeholder(R.drawable.ic_place_holder)
-            .into(ivRecommendation)
-
+        val imageUrl = recommendation.pics_url.trim()
+        if (imageUrl.isNotEmpty()) {
+            Glide.with(this)
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_place_holder)
+                .into(ivRecommendation)
+        } else {
+            ivRecommendation.setImageResource(R.drawable.ic_place_holder)
+        }
 
         recomendationView.setOnClickListener {
             val intent = Intent(this, DetailCraftActivity::class.java).apply {
