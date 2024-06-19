@@ -1,14 +1,17 @@
 package com.bangkit.rebinmobileapps.view.search
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rebinmobileapps.adapter.CraftPagingAdapter
@@ -52,6 +55,7 @@ class SearchFragment : Fragment() {
                 //Toast.makeText(context, "Search for $query", Toast.LENGTH_SHORT).show()
                 if (!query.isNullOrEmpty()) {
                     viewModel.searchCraft(query)
+                    craftPagingAdapter.refresh()
                 }
                 return true
             }
@@ -67,6 +71,7 @@ class SearchFragment : Fragment() {
         getPagingCraft()
         setupAction()
         setupObservers()
+        setupLoadStateListener()
     }
 
     override fun onDestroyView() {
@@ -114,6 +119,28 @@ class SearchFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.craft.observe(viewLifecycleOwner) { pagingData ->
                 craftPagingAdapter.submitData(lifecycle, pagingData)
+            }
+        }
+    }
+
+    private fun setupLoadStateListener() {
+        craftPagingAdapter.addLoadStateListener { loadState ->
+            // Show loading spinner during initial load or refresh
+            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            searchCraftRecyclerView.isVisible = loadState.source.refresh !is LoadState.Loading
+
+            // If we have an error state
+            val errorState = loadState.source.append as? LoadState.Error
+                ?: loadState.source.prepend as? LoadState.Error
+                ?: loadState.source.refresh as? LoadState.Error
+
+            errorState?.let {
+                Toast.makeText(requireContext(), "Error: ${it.error.message}", Toast.LENGTH_SHORT).show()
+            }
+
+            // Show empty state if initial load not loading and item count is zero
+            if (loadState.source.refresh is LoadState.NotLoading && craftPagingAdapter.itemCount == 0) {
+                Toast.makeText(requireContext(), "Data tidak ditemukan", Toast.LENGTH_SHORT).show()
             }
         }
     }
