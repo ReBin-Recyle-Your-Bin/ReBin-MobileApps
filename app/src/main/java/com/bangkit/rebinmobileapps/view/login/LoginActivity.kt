@@ -45,6 +45,14 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonLoginGoogle.setOnClickListener {
+            Toast.makeText(this, "Fitur Masuk dengan Google akan segera hadir", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.forgotPasswordTextView.setOnClickListener {
+            Toast.makeText(this, "Fitur Lupa Password akan segera hadir", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupAction() {

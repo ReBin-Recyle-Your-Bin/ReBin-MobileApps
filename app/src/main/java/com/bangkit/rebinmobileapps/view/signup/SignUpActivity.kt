@@ -52,6 +52,10 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.buttonSignupGoogle.setOnClickListener {
+            Toast.makeText(this, "Fitur Daftar dengan Google akan segera hadir", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     //setup aksi signup
