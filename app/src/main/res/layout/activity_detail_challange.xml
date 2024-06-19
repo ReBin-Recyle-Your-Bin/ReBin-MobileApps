@@ -21,14 +21,12 @@
         app:title="Detail Misi"
         app:titleTextColor="@color/white" />
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@+id/tblDetailChallange"
         app:layout_constraintBottom_toBottomOf="parent">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,26 +43,12 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="contoh data title"
                 tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_point_challage_detail"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_challange_detail"
-                tools:text="@tools:sample/full_names"
-                />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_detail_challange"
@@ -74,17 +58,64 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintTop_toBottomOf="@id/tv_point_challage_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_challange_detail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
-                tools:src="@drawable/sample_craft"
-                />
+                tools:src="@drawable/sample_craft" />
 
             <TextView
+                android:id="@+id/tv_label_point_challage_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="Point : "
+                app:layout_constraintEnd_toStartOf="@id/tv_point_challage_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail_challange" />
+
+            <TextView
+                android:id="@+id/tv_point_challage_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="100"
+                app:layout_constraintStart_toEndOf="@id/tv_label_point_challage_detail"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail_challange" />
+
+            <TextView
+                android:id="@+id/tv_label_end_challage_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="Berakhir : "
+                app:layout_constraintEnd_toStartOf="@id/tv_end_date_challage_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_point_challage_detail" />
+
+            <TextView
+                android:id="@+id/tv_end_date_challage_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="10 Juli 2024"
+                app:layout_constraintStart_toEndOf="@id/tv_label_end_challage_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_point_challage_detail"/>
+
+            <TextView
                 android:id="@+id/tv_detail_description_challange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textSize="14sp"
                 android:fontFamily="@font/poppins_regular"
@@ -92,9 +123,8 @@
                 android:transitionName="description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_detail_challange"
-                android:text="ini data deskrpsi"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tv_label_end_challage_detail"
+                android:text="ini data deskripsi" />
 
             <Button
                 android:id="@+id/btn_start_challange"
@@ -110,15 +140,15 @@
                 app:cornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
         android:indeterminateTint="@color/dark_olive_green"
         style="?android:attr/progressBarStyle"
         android:visibility="gone"
@@ -126,7 +156,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="visible"
-        />
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

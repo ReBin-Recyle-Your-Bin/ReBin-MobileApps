@@ -83,7 +83,7 @@
             />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_description_detail_craft"
             android:layout_marginTop="12dp"
@@ -117,7 +117,7 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_ingredient_detail_craft"
                 android:textSize="14sp"
@@ -148,7 +148,7 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_step_detail_craft"
                 android:textSize="14sp"

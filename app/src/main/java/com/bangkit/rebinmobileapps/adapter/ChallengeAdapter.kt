@@ -28,7 +28,7 @@ class ChallengeAdapter : ListAdapter<ChallengeItem, ChallengeAdapter.MyViewHolde
         fun bind(challenge: ChallengeItem) {
             binding.tvDescPointHistory.text = challenge.title
             binding.tvPointChallage.text = challenge.point
-            binding.tvDateChallenge.text = DateFormat.getRelativeTime(challenge.expired)
+            binding.tvDateChallenge.text = challenge.expired
 
             Glide.with(itemView.context)
                 .load(challenge.photoUrl)
