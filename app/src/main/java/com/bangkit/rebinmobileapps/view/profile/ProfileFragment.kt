@@ -89,7 +89,7 @@ class ProfileFragment : Fragment() {
         }
 
         // Setup image selection
-        binding.ivProfile.setOnClickListener { startGallery() }
+//        binding.ivProfile.setOnClickListener { startGallery() }
 
         setupAction()
         setupUpdateProfile()
