@@ -22,7 +22,6 @@
             android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ibHistoryDetectionDelete"
             android:text="Saldo Dana Rp. 20.000" />
 
         <TextView

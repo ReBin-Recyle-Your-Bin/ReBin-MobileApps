@@ -10,6 +10,8 @@ import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.GiftPointResponse
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionResponse
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
+import com.bangkit.rebinmobileapps.data.response.PhotoProfileItem
+import com.bangkit.rebinmobileapps.data.response.PhotoProfileResponse
 import com.bangkit.rebinmobileapps.data.response.PointResponse
 import com.bangkit.rebinmobileapps.data.response.ProfileResponse
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
@@ -95,6 +97,11 @@ interface ApiService {
         @Part("userID") userID: RequestBody
 //        @Header("Authorization") token: String
     ): Call<ErrorResponse>
+
+    @GET("upload")
+    fun getPhotoProfile(
+        @Query("userID") userID: String
+    ): PhotoProfileResponse
 
     @GET("detect-waste/history")
     suspend fun getHistoryDetection(

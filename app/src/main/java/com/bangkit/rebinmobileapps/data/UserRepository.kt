@@ -16,6 +16,7 @@ import com.bangkit.rebinmobileapps.data.response.ErrorResponse
 import com.bangkit.rebinmobileapps.data.response.GiftPointItem
 import com.bangkit.rebinmobileapps.data.response.HistoryDetectionItem
 import com.bangkit.rebinmobileapps.data.response.LoginResponse
+import com.bangkit.rebinmobileapps.data.response.PhotoProfileItem
 import com.bangkit.rebinmobileapps.data.response.PointItem
 import com.bangkit.rebinmobileapps.data.response.ProfileItem
 import com.bangkit.rebinmobileapps.data.response.RegisterResponse
@@ -167,6 +168,21 @@ class UserRepository private constructor(
             val userId = userPreferences.getSession().first().userId
             val response = apiService.getProfile(userId)
             emit(ResultState.Success(response.profileList.first()))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val body = Gson().fromJson(error, ErrorResponse::class.java)
+            emit(ResultState.Error(body.message))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.message ?: "Unknown error occured"))
+        }
+    }
+
+    fun getPhotoProfile(): LiveData<ResultState<PhotoProfileItem>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val userId = userPreferences.getSession().first().userId
+            val response = apiService.getPhotoProfile(userId)
+            emit(ResultState.Success(response.dataPhoto.first()))
         } catch (e: HttpException) {
             val error = e.response()?.errorBody()?.string()
             val body = Gson().fromJson(error, ErrorResponse::class.java)

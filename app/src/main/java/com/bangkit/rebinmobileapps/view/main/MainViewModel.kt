@@ -18,6 +18,7 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
     fun getHistoryDetection() = repository.getHistoryDetection()
 
     fun getProfile() = repository.getProfile()
+    fun getPhotoProfile() = repository.getPhotoProfile()
 
     fun getChallenge() = repository.getChallenge()
     fun getGiftPoint() = repository.getGiftPoint()
