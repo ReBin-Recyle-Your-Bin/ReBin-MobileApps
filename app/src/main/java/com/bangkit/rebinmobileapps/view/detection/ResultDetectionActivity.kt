@@ -46,11 +46,14 @@ class ResultDetectionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tlbResultDetection.setNavigationOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, DetectionActivity::class.java))
         }
 
         binding.seeMoreButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            //startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("openSearchFragment", true)
+            startActivity(intent)
         }
 
         binding.btnToHome.setOnClickListener {

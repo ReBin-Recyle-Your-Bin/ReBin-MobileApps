@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
                 finish()
             } else {
                 setupUI()
+                // Check if intent has extra to open SearchFragment
+                if (intent.getBooleanExtra("openSearchFragment", false)) {
+                    binding.bottomNavigationView.selectedItemId = R.id.nav_search
+                }
             }
         }
 
