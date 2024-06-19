@@ -44,4 +44,5 @@
     <string name="skip">Lewati</string>
     <string name="toolbar_rebin">Icon Rebin</string>
     <string name="retry">Try Again</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>
