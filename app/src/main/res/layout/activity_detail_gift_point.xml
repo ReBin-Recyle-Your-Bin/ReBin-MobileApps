@@ -44,26 +44,13 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="contoh data title"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_point_gift_point_detail"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_gift_point_detail"
-                tools:text="@tools:sample/full_names"
-                />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_detail_gift_point"
@@ -73,7 +60,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintTop_toBottomOf="@id/tv_point_gift_point_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_gift_point_detail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
@@ -81,7 +68,32 @@
                 />
 
             <TextView
+                android:id="@+id/tv_label_point_needed"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="Point yang dibutuhkan : "
+                app:layout_constraintEnd_toStartOf="@id/tv_point_needed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail_gift_point" />
+
+            <TextView
+                android:id="@+id/tv_point_needed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="0"
+                app:layout_constraintStart_toEndOf="@id/tv_label_point_needed"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail_gift_point" />
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_detail_description_gift_point"
                 android:layout_marginTop="12dp"
@@ -91,7 +103,7 @@
                 android:transitionName="description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_detail_gift_point"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_point_needed"
                 android:text="ini data deskrpsi"
                 />
 

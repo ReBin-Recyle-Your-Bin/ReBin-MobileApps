@@ -24,7 +24,7 @@ class DetailGiftPointActivity : AppCompatActivity() {
 
     private fun setupGiftPointDetail(giftPoint: GiftPointItem) {
         binding.tvTitleGiftPointDetail.text = giftPoint.title
-        binding.tvPointGiftPointDetail.text = giftPoint.point
+        binding.tvPointNeeded.text = giftPoint.point
         binding.tvDetailDescriptionGiftPoint.text = giftPoint.description
 
         Glide.with(applicationContext)

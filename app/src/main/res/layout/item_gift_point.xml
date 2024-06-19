@@ -19,25 +19,35 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="16dp"
-            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Saldo Dana Rp. 20.000" />
+
+        <TextView
+            android:id="@+id/tv_label_point_gift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Point yang dibutuhkan : "
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_gift_point" />
 
         <TextView
             android:id="@+id/tv_point_gift"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_title_gift_point"
-            app:layout_constraintStart_toStartOf="@id/tv_title_gift_point"
+            app:layout_constraintStart_toEndOf="@+id/tv_label_point_gift"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="200.000 Point" />
+            android:fontFamily="@font/poppins_semibold"
+            android:text="200.000" />
 
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_gift_point"
             android:layout_width="70dp"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:src="@drawable/ic_person"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +56,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Delete"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RebinMobileApps.TextInputLayout.Rounded"
-            android:padding="8dp" />
+            android:padding="4dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
