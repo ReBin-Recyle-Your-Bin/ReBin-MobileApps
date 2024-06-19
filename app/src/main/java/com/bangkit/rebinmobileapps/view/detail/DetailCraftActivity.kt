@@ -1,6 +1,7 @@
 package com.bangkit.rebinmobileapps.view.detail
 
 import android.os.Bundle
+import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.response.Recommendation
@@ -36,8 +37,16 @@ class DetailCraftActivity : AppCompatActivity() {
         val formattedClassName = detailCraft.className.replace("-", " ")
         binding.tvLabelDetailCraft.text = formattedClassName
         binding.tvDescriptionDetailCraft.text = detailCraft.description
-        binding.tvIngredientDetailCraft.text = detailCraft.ingredients
-        binding.tvStepDetailCraft.text = detailCraft.steps
+        //binding.tvIngredientDetailCraft.text = detailCraft.ingredients
+        //binding.tvStepDetailCraft.text = detailCraft.steps
+
+        // Format bahan-bahan
+        val formattedIngredients = formatAsNumberedList(detailCraft.ingredients)
+        binding.tvIngredientDetailCraft.text = Html.fromHtml(formattedIngredients, Html.FROM_HTML_MODE_COMPACT)
+
+        // Format langkah-langkah
+        val formattedSteps = formatAsNumberedList(detailCraft.steps)
+        binding.tvStepDetailCraft.text = Html.fromHtml(formattedSteps, Html.FROM_HTML_MODE_COMPACT)
 
         Glide.with(applicationContext)
             .load(detailCraft.photoUrl)
@@ -48,13 +57,32 @@ class DetailCraftActivity : AppCompatActivity() {
         binding.tvTitleDetailCraft.text = recommendation.name
         binding.tvLabelDetailCraft.text = recommendation.classItem
         binding.tvDescriptionDetailCraft.text = recommendation.description
-        binding.tvIngredientDetailCraft.text = recommendation.ingredients
-        binding.tvStepDetailCraft.text = recommendation.steps
+        //binding.tvIngredientDetailCraft.text = recommendation.ingredients
+        //binding.tvStepDetailCraft.text = recommendation.steps
+
+        // Format bahan-bahan
+        val formattedIngredients = formatAsNumberedList(recommendation.ingredients)
+        binding.tvIngredientDetailCraft.text = Html.fromHtml(formattedIngredients, Html.FROM_HTML_MODE_COMPACT)
+
+        // Format langkah-langkah
+        val formattedSteps = formatAsNumberedList(recommendation.steps)
+        binding.tvStepDetailCraft.text = Html.fromHtml(formattedSteps, Html.FROM_HTML_MODE_COMPACT)
 
         Glide.with(this)
             .load(recommendation.pics_url)
             .placeholder(R.drawable.ic_place_holder)
             .into(binding.ivDetailCraft)
+    }
+
+    // Fungsi untuk memformat teks sebagai daftar bernomor
+    private fun formatAsNumberedList(text: String): String {
+        val items = text.split("\n")  // Asumsikan setiap item dipisahkan dengan newline
+        val stringBuilder = StringBuilder("<ol>")
+        for (item in items) {
+            stringBuilder.append("<li>").append(item).append("</li>")
+        }
+        stringBuilder.append("</ol>")
+        return stringBuilder.toString()
     }
 
     companion object {
