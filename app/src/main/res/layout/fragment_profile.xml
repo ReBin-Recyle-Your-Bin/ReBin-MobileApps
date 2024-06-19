@@ -46,38 +46,108 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="16dp"
         android:src="@drawable/ic_user"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tlb_profile"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tlb_profile" />
 
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/poppins_regular"
-        tools:text="@tools:sample/full_names"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/iv_profile"
-        app:layout_constraintTop_toTopOf="@id/iv_profile"/>
 
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
+    <!-- Konten lain di bawahnya -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_profile_info"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_regular"
-        tools:text="@string/email"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/iv_profile"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"/>
+        android:layout_weight="3"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/idLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:text="ID : "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/idTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    tools:text="12312424 "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/nameLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:text="Nama : "
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    tools:text="@tools:sample/full_names"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/emailLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:text="Email : "
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/emailTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    tools:text="contohemail@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/editButton"
@@ -95,6 +165,6 @@
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+        app:layout_constraintTop_toBottomOf="@id/cv_profile_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

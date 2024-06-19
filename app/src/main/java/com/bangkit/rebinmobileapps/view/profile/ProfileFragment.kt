@@ -75,6 +75,11 @@ class ProfileFragment : Fragment() {
                 is ResultState.Success -> {
                     val username = user.data.name
                     val email = user.data.email
+                    val id = user.data.id
+                    binding.idLabelTextView.text = "ID :"
+                    binding.nameLabelTextView.text = "Name :"
+                    binding.emailLabelTextView.text = "Email :"
+                    binding.idTextView.text = id
                     binding.nameTextView.text = username
                     binding.emailTextView.text = email
                 }
