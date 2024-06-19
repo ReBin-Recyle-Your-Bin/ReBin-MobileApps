@@ -47,18 +47,27 @@ class ResultDetectionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tlbResultDetection.setNavigationOnClickListener {
-            startActivity(Intent(this, DetectionActivity::class.java))
+            //startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
         }
 
         binding.seeMoreButton.setOnClickListener {
             //startActivity(Intent(this, MainActivity::class.java))
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("openSearchFragment", true)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
+            finish()
         }
 
         binding.btnToHome.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            //startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
         }
 
         tvResultWashType = binding.tvResultWashType
