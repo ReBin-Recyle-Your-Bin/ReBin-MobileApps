@@ -67,6 +67,9 @@ class HomeFragment : Fragment() {
         binding.tvSeeAllStoryInspiration.setOnClickListener {
             startActivity(Intent(activity, StoryInspirationActivity::class.java))
         }
+        binding.notificationButton.setOnClickListener {
+            Toast.makeText(requireContext(), "Fitur Notifikasi akan segera hadir", Toast.LENGTH_SHORT).show()
+        }
 
         return view
     }
