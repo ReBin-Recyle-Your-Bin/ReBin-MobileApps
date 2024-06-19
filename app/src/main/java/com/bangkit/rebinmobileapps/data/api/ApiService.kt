@@ -94,13 +94,13 @@ interface ApiService {
     @POST("upload")
     fun uploadProfilePhoto(
         @Part photo: MultipartBody.Part,
-        @Part("userID") userID: RequestBody
+        @Part("userId") userID: RequestBody
 //        @Header("Authorization") token: String
     ): Call<ErrorResponse>
 
     @GET("upload")
     fun getPhotoProfile(
-        @Query("userID") userID: String
+        @Query("userId") userId: String
     ): PhotoProfileResponse
 
     @GET("detect-waste/history")

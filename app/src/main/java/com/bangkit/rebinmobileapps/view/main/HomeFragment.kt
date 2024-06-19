@@ -3,6 +3,7 @@ package com.bangkit.rebinmobileapps.view.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ import com.bangkit.rebinmobileapps.view.fitur.gift.GiftPointActivity
 import com.bangkit.rebinmobileapps.view.history.PointHistoryActivity
 import com.bangkit.rebinmobileapps.view.search.CraftByCategoryActivity
 import com.bangkit.rebinmobileapps.view.storyInspiration.StoryInspirationActivity
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -79,8 +81,7 @@ class HomeFragment : Fragment() {
         setupAction()
         setupPoint()
         setupUserName()
-
-
+        setupPhotoProfile()
     }
 
     override fun onDestroyView() {
@@ -176,7 +177,28 @@ class HomeFragment : Fragment() {
                     is ResultState.Loading -> {
                     }
                     is ResultState.Error -> {
-                        Toast.makeText(requireContext(), "Error: ${pointHistory.error}", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(requireContext(), "Error: ${pointHistory.error}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupPhotoProfile(){
+        lifecycleScope.launch {
+            viewModel.getPhotoProfile().observe(viewLifecycleOwner) { photoProfile ->
+                when (photoProfile) {
+                    is ResultState.Success -> {
+                        val photo = photoProfile.data.photoUrl
+                        Glide.with(requireContext())
+                            .load(photo)
+                            .into(binding.profileIcon)
+                    }
+                    is ResultState.Loading -> {
+                    }
+                    is ResultState.Error -> {
+                        Toast.makeText(requireContext(), "Error: ${photoProfile.error}", Toast.LENGTH_SHORT).show()
+                        Log.e("Error", photoProfile.error)
                     }
                 }
             }
