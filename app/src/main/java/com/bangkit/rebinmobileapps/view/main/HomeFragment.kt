@@ -172,10 +172,16 @@ class HomeFragment : Fragment() {
             viewModel.getPointHistory().observe(viewLifecycleOwner) { pointHistory ->
                 when (pointHistory) {
                     is ResultState.Success -> {
-                        val totalPoints = pointHistory.data
+                        val totalEntryPoints = pointHistory.data
                             .filter { it.status == "entry" }
                             .sumBy { it.point.toIntOrNull() ?: 0 }
-                        binding.tvTotalPoint.text = totalPoints.toString()
+
+                        val totalExitPoints = pointHistory.data
+                            .filter { it.status == "exit" }
+                            .sumBy { it.point.toIntOrNull() ?: 0 }
+
+                        val netPoints = totalEntryPoints - totalExitPoints
+                        binding.tvTotalPoint.text = netPoints.toString()
                     }
                     is ResultState.Loading -> {
                     }
