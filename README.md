@@ -12,7 +12,7 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 
 ## 📃 How to Install this Project
 
-## ▶️ How to Clone and Use This Project
+### ▶️ How to Clone and Use This Project
 1. Clone or download Source Code
    - In Your Terminal or Andorid Studio, clone repository `https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps.git`
    - Otherwise use Git, you can **Download Zip** and _extract_ to your own directory (example: C:\Users\Username\AndroidStudioProjects)
@@ -20,7 +20,7 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 3. Congrats, you are done to Install this project
 4. Run Apps With Your Emulator or Android Phone
 
-## ▶️ How to Install and Use Apps
+### ▶️ How to Install and Use Apps
 1. Download this Application in this link: https://drive.google.com/drive/folders/1p9Rs1mU_LS1KOZq-uqpTMk8D1QUZouwQ?usp=drive_link
 2. Install Apps in Your Android Phone
 3. Use This Application
