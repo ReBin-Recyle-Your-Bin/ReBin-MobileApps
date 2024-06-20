@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow"
         app:showAsAction="ifRoom"
-        app:title="History Point"
+        app:title="Riwayat Point"
         android:background="@color/dark_olive_green"
         app:titleTextColor="@color/white"  />
 
