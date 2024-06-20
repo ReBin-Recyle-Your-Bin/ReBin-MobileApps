@@ -24,6 +24,8 @@ class HistoryPointAdapter: ListAdapter<PointItem, HistoryPointAdapter.MyViewHold
     inner class MyViewHolder(private val binding : ItemPointHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(point: PointItem) {
+            val statusPoint = if (point.status == "entry") "Masuk" else "Keluar"
+            binding.tvStatusPointHistory.text = statusPoint
             binding.tvPointHistory.text = point.point
             binding.tvDatePointHistory.text = DateFormat.getRelativeTime(point.date)
             binding.tvDescPointHistory.text = point.description
