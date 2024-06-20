@@ -8,12 +8,16 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.rebinmobileapps.R
 import com.bangkit.rebinmobileapps.data.ResultState
+import com.bangkit.rebinmobileapps.data.api.ApiConfig
 import com.bangkit.rebinmobileapps.data.response.GiftPointItem
 import com.bangkit.rebinmobileapps.databinding.ActivityDetailGiftPointBinding
 import com.bangkit.rebinmobileapps.view.ViewModelFactory
 import com.bangkit.rebinmobileapps.view.main.MainViewModel
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DetailGiftPointActivity : AppCompatActivity() {
 
@@ -27,9 +31,10 @@ class DetailGiftPointActivity : AppCompatActivity() {
         binding = ActivityDetailGiftPointBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupPoint()
-
         val giftPoint = intent.getParcelableExtra<GiftPointItem>(EXTRA_GIFT_POINT) as GiftPointItem
         setupGiftPointDetail(giftPoint)
+
+
 
         binding.tblDetailGiftPoint.setNavigationOnClickListener {
             onBackPressed()
@@ -37,7 +42,12 @@ class DetailGiftPointActivity : AppCompatActivity() {
 
         binding.btnPointGift.setOnClickListener {
             if (userPoints >= requiredPoints) {
-                // Handle point exchange logic here
+                viewModel.getSession().observe(this) { session ->
+                    val userId = session.userId
+                    val token = session.token
+
+                    exitPointUser(giftPoint.point, userId, token)
+                }
                 Toast.makeText(this, "Berhasil menukar point", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Point anda tidak cukup", Toast.LENGTH_SHORT).show()
@@ -77,6 +87,34 @@ class DetailGiftPointActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun exitPointUser(pointExit: String,userId: String, token: String){
+        val requestBody = mapOf(
+            "userId" to userId,
+            "description" to "Tukar point untuk hadiah",
+            "point" to pointExit,
+            "status" to "exit"
+        )
+        val apiService = ApiConfig.getDataApiService(token)
+        val call = apiService.postPoint(requestBody)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    showToast("Point berhasil ditukarkan")
+                } else {
+                    showToast("Gagal menukarkan point")
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                showToast("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     companion object {
