@@ -1,5 +1,6 @@
 package com.bangkit.rebinmobileapps.view.fitur.gift
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -41,13 +42,16 @@ class DetailGiftPointActivity : AppCompatActivity() {
         }
 
         binding.btnPointGift.setOnClickListener {
-            if (userPoints >= requiredPoints) {
+            if (userPoints >= 1000) {
                 viewModel.getSession().observe(this) { session ->
                     val userId = session.userId
                     val token = session.token
-
-                    exitPointUser(giftPoint.point, userId, token)
+                    exitPointUser("100", userId, token)
                 }
+                val intent = Intent(this, ResultGiftPointActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
                 Toast.makeText(this, "Berhasil menukar point", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Point anda tidak cukup", Toast.LENGTH_SHORT).show()
@@ -71,10 +75,15 @@ class DetailGiftPointActivity : AppCompatActivity() {
         viewModel.getPointHistory().observe(this) { pointHistory ->
             when (pointHistory) {
                 is ResultState.Success -> {
-                    val totalPoints = pointHistory.data
+                    val totalEntryPoints = pointHistory.data
                         .filter { it.status == "entry" }
                         .sumBy { it.point.toIntOrNull() ?: 0 }
-                    userPoints = totalPoints
+
+                    val totalExitPoints = pointHistory.data
+                        .filter { it.status == "exit" }
+                        .sumBy { it.point.toIntOrNull() ?: 0 }
+                    val netPoints = totalEntryPoints - totalExitPoints
+                    userPoints = netPoints
                     binding.tvPointYours.text = userPoints.toString()
                 }
 
