@@ -33,35 +33,50 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 
 ## 📲 Application Features and Appearance
 01. **Splash Screen**
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/splash_screen.png" alt="Splash Screen" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/splash_screen.png" alt="Splash Screen" width="200"/>
   
 02. **Welcome**
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome1.png" alt="Welcome 1" width="300"/>
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome2.png" alt="Welcome 2" width="300"/>
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome3.png" alt="Welcome 3" width="300"/>
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome4.png" alt="Welcome 4" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome1.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome2.png" alt="Welcome 2" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome3.png" alt="Welcome 3" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome4.png" alt="Welcome 4" width="200"/>
    
 03. **Login and Register**
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/login_data.png" alt="Login" width="300"/>
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/register_data.png" alt="Register" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/login_data.png" alt="Login" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/register_data.png" alt="Register" width="200"/>
    
 04. **Home**
-<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/beranda.png" alt="Home" width="300"/>
-
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/beranda.png" alt="Home" width="200"/>
 
 7. **Detection**
-    
-8. **Pencarian**
-    
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/deteksi_tanpa_foto" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/deteksi_dengan_foto" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/hasil_rekomendasi" alt="Welcome 1" width="200"/>
+
+
+8. **Searching**
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/pencarian.png" alt="Welcome 1" width="200"/>
+
 9. **Profile**
-   
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/profile.png" alt="Welcome 1" width="200"/>
+
 10. **History Detection and Point**
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/riwayat_kosong.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/riwayat_deteksi.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/riwayat_point.png" alt="Welcome 1" width="200"/>
    
 11. **Challange**
-    
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/list_misi.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/detail_misi.png" alt="Welcome 1" width="200"/>
+
 12. **Gift**
-    
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/list_tukar_point.png" alt="Welcome 1" width="200"/>
+
 13. **Craft & Story Inspiration**
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/list_kategori_kerajinan.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/list_kisah_inpirasi.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/detail_kerajinan.png" alt="Welcome 1" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/detail_kisah_inspirasi.png" alt="Welcome 1" width="200"/>
 
 ## 🔜 Future Development
 
