@@ -33,20 +33,21 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 
 ## 📲 Application Features and Appearance
 01. **Splash Screen**
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/splash_screen.png)
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/splash_screen.png" alt="Splash Screen" width="300"/>
   
 02. **Welcome**
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome1.png)
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome2.png)
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome3.png)
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome4.png)
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome1.png" alt="Welcome 1" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome2.png" alt="Welcome 2" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome3.png" alt="Welcome 3" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome4.png" alt="Welcome 4" width="300"/>
    
 03. **Login and Register**
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/login_data.png)
-![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/register_data.png)
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/login_data.png" alt="Login" width="300"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/register_data.png" alt="Register" width="300"/>
    
 04. **Home**
-![Beranda](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/beranda.png)
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/beranda.png" alt="Home" width="300"/>
+
 
 7. **Detection**
     
