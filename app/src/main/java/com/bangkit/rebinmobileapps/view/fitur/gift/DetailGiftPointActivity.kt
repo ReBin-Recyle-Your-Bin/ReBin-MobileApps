@@ -42,11 +42,11 @@ class DetailGiftPointActivity : AppCompatActivity() {
         }
 
         binding.btnPointGift.setOnClickListener {
-            if (userPoints >= 1000) {
+            if (userPoints >= requiredPoints) {
                 viewModel.getSession().observe(this) { session ->
                     val userId = session.userId
                     val token = session.token
-                    exitPointUser("100", userId, token)
+                    exitPointUser(giftPoint.point, userId, token)
                 }
                 val intent = Intent(this, ResultGiftPointActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
