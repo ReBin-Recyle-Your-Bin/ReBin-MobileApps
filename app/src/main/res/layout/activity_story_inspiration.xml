@@ -19,7 +19,7 @@
         app:navigationIcon="@drawable/ic_arrow"
         android:background="@color/dark_olive_green"
         app:showAsAction="ifRoom"
-        app:title="Story Inspiration"
+        app:title="Kisah Inspirasi"
         app:titleTextColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
