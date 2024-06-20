@@ -1,4 +1,7 @@
-<center>![ReBin Logo](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/app/src/main/res/drawable/logo_rebin.png)</center>
+<div align="center">
+  <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/app/src/main/res/drawable/logo_rebin.png" alt="ReBin Logo" width="200"/>
+</div>
+nter>
 
 # ️🪴🗑 REBIN MOBILE DEVELOPMENT PROJECT
 
