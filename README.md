@@ -63,8 +63,10 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/pencarian.png" alt="Searching" width="200"/>
 
 09. **Profile**
+<p float="left">
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/profile.png" alt="Profile" width="200"/>
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/edit_profile.png" alt="Profile" width="200"/>
+</p>
 
 10. **History Detection and Point**
 <p float="left">
@@ -80,9 +82,11 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 </p>
 
 12. **Gift**
+<p float="left">
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/list_tukar_point.png" alt="Gift" width="200"/>
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/detail_hadiah.png" alt="Gift" width="200"/>
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/berhasil_tukar_hadiah.png" alt="Gift" width="200"/>
+</p>
 
 13. **Craft & Story Inspiration**
 <p float="left">
@@ -95,4 +99,4 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 
 ## 🔜 Future Development
 
-
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/future_deploy.png" alt="Future" width="200"/>
