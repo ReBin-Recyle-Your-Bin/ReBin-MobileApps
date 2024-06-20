@@ -85,7 +85,7 @@ class ResultDetectionActivity : AppCompatActivity() {
 
             detectionResult?.let {
                 tvResultWashType.text = it.label ?: "Unknown"
-                tvResultConfidence.text = "${it.accuracy} %" ?: "Unknown"
+                tvResultConfidence.text = "${it.accuracy}" ?: "Unknown"
                 tvRecomendation.text = "Rekomendasi :"
                 if (it.recommendation.isNotEmpty()) {
                     val recommendationsToShow = it.recommendation.take(3)
