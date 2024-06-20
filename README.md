@@ -1,7 +1,6 @@
 <div align="center">
   <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/app/src/main/res/drawable/logo_rebin.png" alt="ReBin Logo" width="200"/>
 </div>
-nter>
 
 # ️🪴🗑 REBIN MOBILE DEVELOPMENT PROJECT
 
@@ -33,6 +32,36 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 <br>
 
 ## 📲 Application Features and Appearance
+01. **Splash Screen**
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/splash_screen.png)
+  
+02. **Welcome**
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome1.png)
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome2.png)
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome3.png)
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/welcome4.png)
+   
+03. **Login and Register**
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/login_data.png)
+![Welcome](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/register_data.png)
+   
+04. **Home**
+![Beranda](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/beranda.png)
 
+7. **Detection**
+    
+8. **Pencarian**
+    
+9. **Profile**
+   
+10. **History Detection and Point**
+   
+11. **Challange**
+    
+12. **Gift**
+    
+13. **Craft & Story Inspiration**
 
 ## 🔜 Future Development
+
+
