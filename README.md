@@ -1,4 +1,4 @@
-<div align="center">
+![berhasil_tukar_hadiah](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/assets/92713979/9a65daf2-b478-4cb3-883b-4d1b2dc7f9b5)![berhasil_tukar_hadiah](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/assets/92713979/6679a1de-4f3c-40c3-82d5-43a515797fcc)<div align="center">
   <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/app/src/main/res/drawable/logo_rebin.png" alt="ReBin Logo" width="200"/>
 </div>
 
@@ -64,6 +64,7 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 
 09. **Profile**
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/profile.png" alt="Profile" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/edit_profile.png" alt="Profile" width="200"/>
 
 10. **History Detection and Point**
 <p float="left">
@@ -80,6 +81,8 @@ The issue of waste in Indonesia has become increasingly complex, with communitie
 
 12. **Gift**
 <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/list_tukar_point.png" alt="Gift" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/detail_hadiah.png" alt="Gift" width="200"/>
+<img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/berhasil_tukar_hadiah.png" alt="Gift" width="200"/>
 
 13. **Craft & Story Inspiration**
 <p float="left">
