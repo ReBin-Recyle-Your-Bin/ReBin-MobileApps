@@ -1,6 +1,9 @@
+![ReBin Logo](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/app/src/main/res/drawable/logo_rebin.png)
+
 # ️🪴🗑 REBIN MOBILE DEVELOPMENT PROJECT
 
 ## About the project
+![ReBin App UI](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/rebinAppsUI.jpg)
 
 ## Mobile Development Team Members:
 
