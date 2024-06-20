@@ -1,4 +1,4 @@
-![berhasil_tukar_hadiah](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/assets/92713979/9a65daf2-b478-4cb3-883b-4d1b2dc7f9b5)![berhasil_tukar_hadiah](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/assets/92713979/6679a1de-4f3c-40c3-82d5-43a515797fcc)<div align="center">
+<div align="center">
   <img src="https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/app/src/main/res/drawable/logo_rebin.png" alt="ReBin Logo" width="200"/>
 </div>
 
