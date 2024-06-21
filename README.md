@@ -6,6 +6,7 @@
 
 ## About the project
 ![ReBin App UI](https://github.com/ReBin-Recyle-Your-Bin/ReBin-MobileApps/blob/main/gambar_hasil/rebinAppsUI.jpg)
+ReBin: Recycle Your Bin, aims to address waste management challenges in Indonesia by offering real-time waste classification. This feature enables accurate identification and categorization of waste items into 10 different categories, thereby promoting efficient recycling and sustainable practices. Additionally, ReBin provides educational resources to users, raising awareness about the significance of proper waste disposal and recycling. Through tips, tutorials, and interactive content, the app educates the community on adopting sustainable practices.
 
 ## Mobile Development Team Members:
 
